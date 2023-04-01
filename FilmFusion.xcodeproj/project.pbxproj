@@ -37,6 +37,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A1613D1B29D8615E000EB1B5 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				A17C9DCF29D84F8700413796 /* AppDelegate.swift */,
+				A17C9DD129D84F8700413796 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		A1613D1C29D86170000EB1B5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A17C9DD529D84F8700413796 /* Main.storyboard */,
+				A17C9DDA29D84F8800413796 /* LaunchScreen.storyboard */,
+				A17C9DD829D84F8800413796 /* Assets.xcassets */,
+				A17C9DDD29D84F8800413796 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A1613D1D29D86179000EB1B5 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				A1613D1E29D861AC000EB1B5 /* Main */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		A1613D1E29D861AC000EB1B5 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				A17C9DD329D84F8700413796 /* ViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		A17C9DC329D84F8700413796 = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +92,9 @@
 		A17C9DCE29D84F8700413796 /* FilmFusion */ = {
 			isa = PBXGroup;
 			children = (
-				A17C9DCF29D84F8700413796 /* AppDelegate.swift */,
-				A17C9DD129D84F8700413796 /* SceneDelegate.swift */,
-				A17C9DD329D84F8700413796 /* ViewController.swift */,
-				A17C9DD529D84F8700413796 /* Main.storyboard */,
-				A17C9DD829D84F8800413796 /* Assets.xcassets */,
-				A17C9DDA29D84F8800413796 /* LaunchScreen.storyboard */,
-				A17C9DDD29D84F8800413796 /* Info.plist */,
+				A1613D1B29D8615E000EB1B5 /* Application */,
+				A1613D1D29D86179000EB1B5 /* Screens */,
+				A1613D1C29D86170000EB1B5 /* Resources */,
 			);
 			path = FilmFusion;
 			sourceTree = "<group>";
@@ -289,7 +321,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Z262BFFWGC;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FilmFusion/Info.plist;
+				INFOPLIST_FILE = FilmFusion/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FilmFusion;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -323,7 +355,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Z262BFFWGC;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FilmFusion/Info.plist;
+				INFOPLIST_FILE = FilmFusion/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FilmFusion;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
