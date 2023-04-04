@@ -19,7 +19,7 @@ class SearchVC: UIViewController {
         searchView.searchTableView.delegate = self
         setupView()
         title = "Search"
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "customBackground")
     }
     
     
@@ -53,13 +53,11 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
             
             let cell = collectionView.cellForItem(at: indexPath) as! CategoryCell
             setupUICell(cell: cell, backColor: UIColor(named: "customTabBarIconSelectedTint")!, borderColor: .clear)
-//            let label = cell.viewWithTag(100) as? UILabel
-//                    label?.textColor = UIColor.white
             cell.categoryLabel.textColor = .white
             selectedCategory = searchView.categories[indexPath.row]
             
             if let cell1 = collectionView.cellForItem(at: searchView.lastIndexActive) as? CategoryCell {
-                setupUICell(cell: cell1, backColor: .white, borderColor: UIColor(named: "customCategoryBoard")!)
+                setupUICell(cell: cell1, backColor: UIColor(named: "customBackground")!, borderColor: UIColor(named: "customCategoryBoard")!)
                 cell1.categoryLabel.textColor = UIColor(named: "customCategoryTextUnselected")!
             }
             searchView.lastIndexActive = indexPath
@@ -69,7 +67,6 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if searchView.isSelected && indexPath == [0,0]{
             setupUICell(cell: cell, backColor: UIColor(named: "customTabBarIconSelectedTint")!, borderColor: .clear)
-//            cell.categoryLabel.textColor = .white
             searchView.isSelected = false
             searchView.lastIndexActive = [0,0]
         }
@@ -85,7 +82,8 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.identifier, for: indexPath) as! CategoryCell
-        setupUICell(cell: cell, backColor: .white, borderColor: UIColor(named: "customCategoryBoard")!)
+        cell.backgroundColor = .red
+        setupUICell(cell: cell, backColor: UIColor(named: "customBackground")!, borderColor: UIColor(named: "customCategoryBoard")!)
         if searchView.isSelected == false {
             cell.categoryLabel.textColor = UIColor(named: "customCategoryTextUnselected")!
         }
@@ -116,6 +114,7 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FilmTableViewCell.identifier, for: indexPath) as! FilmTableViewCell
+
         //        cell.configure(recipe)
         return cell
     }

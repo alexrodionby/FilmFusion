@@ -13,7 +13,7 @@ final class SearchView: UIView {
     var lastIndexActive:IndexPath = [1 ,0]
     lazy var searchView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "customBackground")
         view.layer.cornerRadius = 24
         view.layer.borderColor = UIColor(named: "customTabBarIconSelectedTint")?.cgColor
         view.layer.borderWidth = 1
@@ -49,7 +49,7 @@ final class SearchView: UIView {
             let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
             collectionView.translatesAutoresizingMaskIntoConstraints = false
             collectionView.showsHorizontalScrollIndicator = false
-            collectionView.backgroundColor = .white
+            collectionView.backgroundColor = UIColor(named: "customBackground")
             return collectionView
         }()
     
