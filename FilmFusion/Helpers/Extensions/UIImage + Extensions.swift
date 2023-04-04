@@ -15,6 +15,7 @@ extension UIImage {
         }
         return image
     }
+
 }
 
 extension UIImage {
