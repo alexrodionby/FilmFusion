@@ -38,6 +38,7 @@ final class SearchView: UIView {
             let tableView = UITableView()
 //            tableView.rowHeight = 180
 //            tableView.layer.cornerRadius = 10
+            tableView.separatorStyle = .none
             tableView.translatesAutoresizingMaskIntoConstraints = false
             return tableView
         }()
@@ -86,9 +87,9 @@ final class SearchView: UIView {
             
 
             searchTableView.topAnchor.constraint(equalTo: categoryCollectionView.bottomAnchor),
-            searchTableView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -27),
-            searchTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            searchTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
+            searchTableView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            searchTableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            searchTableView.trailingAnchor.constraint(equalTo: trailingAnchor)
                 
             
         ])
