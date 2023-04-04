@@ -27,7 +27,7 @@ final class FavoritesViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(FilmTableViewCell.self, forCellReuseIdentifier: "FilmTableViewCell")
         title = "Favorites"
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "customBackground")
         view.addSubview(tableView)
         setupConstraints()
         setupNavCont()

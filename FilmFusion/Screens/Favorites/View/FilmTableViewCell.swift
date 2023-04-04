@@ -22,6 +22,7 @@ final class FilmTableViewCell: UITableViewCell {
     private let titleLabel: UILabel = {
         let view = UILabel()
         view.text = "Luck"
+        view.textColor = UIColor(named: "customLabelName")
         view.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         return view
     }()
@@ -137,7 +138,7 @@ final class FilmTableViewCell: UITableViewCell {
 //MARK: - Setup View
     
     private func setupView() {
-        backgroundColor = .white
+        backgroundColor = UIColor(named: "customBackground")
         contentView.addSubview(pictureImageView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(timeImageView)
