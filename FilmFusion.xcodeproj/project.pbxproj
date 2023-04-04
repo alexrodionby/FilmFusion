@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		24B15CC329DC062000CBC959 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B15CC229DC062000CBC959 /* APICaller.swift */; };
 		24B15CC829DC28F700CBC959 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B15CC729DC28F700CBC959 /* Movie.swift */; };
+		5600A03A29DC6B1100BF83EA /* DetailSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5600A03929DC6B1100BF83EA /* DetailSubview.swift */; };
+		5600A03C29DC6CCB00BF83EA /* UIImageView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5600A03B29DC6CCB00BF83EA /* UIImageView + Extensions.swift */; };
+		5600A03E29DC749A00BF83EA /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5600A03D29DC749A00BF83EA /* UILabel + Extensions.swift */; };
+		5648415529DC531300E3F9AC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5648415429DC531300E3F9AC /* DetailViewController.swift */; };
 		A1613D2129D89C05000EB1B5 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1613D2029D89C05000EB1B5 /* TabBarVC.swift */; };
 		A1613D2429D89DF6000EB1B5 /* UIColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1613D2329D89DF6000EB1B5 /* UIColor + Extensions.swift */; };
 		A1613D2729D8A046000EB1B5 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1613D2629D8A046000EB1B5 /* Resources.swift */; };
@@ -27,6 +31,10 @@
 /* Begin PBXFileReference section */
 		24B15CC229DC062000CBC959 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		24B15CC729DC28F700CBC959 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		5600A03929DC6B1100BF83EA /* DetailSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSubview.swift; sourceTree = "<group>"; };
+		5600A03B29DC6CCB00BF83EA /* UIImageView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extensions.swift"; sourceTree = "<group>"; };
+		5600A03D29DC749A00BF83EA /* UILabel + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
+		5648415429DC531300E3F9AC /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		A1613D2029D89C05000EB1B5 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		A1613D2329D89DF6000EB1B5 /* UIColor + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extensions.swift"; sourceTree = "<group>"; };
 		A1613D2629D8A046000EB1B5 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
@@ -71,6 +79,23 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		5600A03829DC6AF100BF83EA /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				5600A03929DC6B1100BF83EA /* DetailSubview.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		5648415329DC524000E3F9AC /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				5600A03829DC6AF100BF83EA /* Subviews */,
+				5648415429DC531300E3F9AC /* DetailViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		A1613D1B29D8615E000EB1B5 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +118,7 @@
 		A1613D1D29D86179000EB1B5 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				5648415329DC524000E3F9AC /* Detail */,
 				A1613D1F29D89BE1000EB1B5 /* TabBar */,
 				A1613D2B29DA25DB000EB1B5 /* Search */,
 				A1613D2E29DA25F9000EB1B5 /* RecentVideo */,
@@ -125,6 +151,8 @@
 			children = (
 				A1613D2329D89DF6000EB1B5 /* UIColor + Extensions.swift */,
 				A1613D3729DA2861000EB1B5 /* UIImage + Extensions.swift */,
+				5600A03B29DC6CCB00BF83EA /* UIImageView + Extensions.swift */,
+				5600A03D29DC749A00BF83EA /* UILabel + Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -272,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5600A03C29DC6CCB00BF83EA /* UIImageView + Extensions.swift in Sources */,
 				24B15CC829DC28F700CBC959 /* Movie.swift in Sources */,
 				A17C9DD029D84F8700413796 /* AppDelegate.swift in Sources */,
 				A1613D2429D89DF6000EB1B5 /* UIColor + Extensions.swift in Sources */,
@@ -279,12 +308,15 @@
 				A1613D2A29DA1BA5000EB1B5 /* HomeVC.swift in Sources */,
 				A1613D2729D8A046000EB1B5 /* Resources.swift in Sources */,
 				A1613D3329DA2633000EB1B5 /* FavoritesVC.swift in Sources */,
+				5600A03E29DC749A00BF83EA /* UILabel + Extensions.swift in Sources */,
 				A17C9DD229D84F8700413796 /* SceneDelegate.swift in Sources */,
+				5600A03A29DC6B1100BF83EA /* DetailSubview.swift in Sources */,
 				24B15CC329DC062000CBC959 /* APICaller.swift in Sources */,
 				A1613D2D29DA25EF000EB1B5 /* SearchVC.swift in Sources */,
 				A1613D3829DA2861000EB1B5 /* UIImage + Extensions.swift in Sources */,
 				A1613D3029DA260E000EB1B5 /* RecentVideoVC.swift in Sources */,
 				A1613D3629DA2652000EB1B5 /* SettingsVC.swift in Sources */,
+				5648415529DC531300E3F9AC /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

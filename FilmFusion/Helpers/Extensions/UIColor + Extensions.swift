@@ -8,6 +8,9 @@
 import UIKit
 
 extension UIColor {
+    
+    static let customGrayColor = UIColor(hexString: "78828A")
+    
     convenience init(hexString: String) {
         let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt64()
