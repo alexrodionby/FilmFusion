@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24B15CC329DC062000CBC959 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B15CC229DC062000CBC959 /* APICaller.swift */; };
+		24B15CC829DC28F700CBC959 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B15CC729DC28F700CBC959 /* Movie.swift */; };
 		A1613D2129D89C05000EB1B5 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1613D2029D89C05000EB1B5 /* TabBarVC.swift */; };
 		A1613D2429D89DF6000EB1B5 /* UIColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1613D2329D89DF6000EB1B5 /* UIColor + Extensions.swift */; };
 		A1613D2729D8A046000EB1B5 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1613D2629D8A046000EB1B5 /* Resources.swift */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		24B15CC229DC062000CBC959 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
+		24B15CC729DC28F700CBC959 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		A1613D2029D89C05000EB1B5 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		A1613D2329D89DF6000EB1B5 /* UIColor + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extensions.swift"; sourceTree = "<group>"; };
 		A1613D2629D8A046000EB1B5 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
@@ -51,6 +55,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24B15CC129DC061100CBC959 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				24B15CC229DC062000CBC959 /* APICaller.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		24B15CC429DC064A00CBC959 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				24B15CC729DC28F700CBC959 /* Movie.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		A1613D1B29D8615E000EB1B5 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +188,8 @@
 		A17C9DCE29D84F8700413796 /* FilmFusion */ = {
 			isa = PBXGroup;
 			children = (
+				24B15CC129DC061100CBC959 /* Managers */,
+				24B15CC429DC064A00CBC959 /* Models */,
 				A1613D1B29D8615E000EB1B5 /* Application */,
 				A1613D1D29D86179000EB1B5 /* Screens */,
 				A1613D2229D89D78000EB1B5 /* Helpers */,
@@ -192,6 +214,8 @@
 			dependencies = (
 			);
 			name = FilmFusion;
+			packageProductDependencies = (
+			);
 			productName = FilmFusion;
 			productReference = A17C9DCC29D84F8700413796 /* FilmFusion.app */;
 			productType = "com.apple.product-type.application";
@@ -220,6 +244,8 @@
 				Base,
 			);
 			mainGroup = A17C9DC329D84F8700413796;
+			packageReferences = (
+			);
 			productRefGroup = A17C9DCD29D84F8700413796 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -246,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24B15CC829DC28F700CBC959 /* Movie.swift in Sources */,
 				A17C9DD029D84F8700413796 /* AppDelegate.swift in Sources */,
 				A1613D2429D89DF6000EB1B5 /* UIColor + Extensions.swift in Sources */,
 				A1613D2129D89C05000EB1B5 /* TabBarVC.swift in Sources */,
@@ -253,6 +280,7 @@
 				A1613D2729D8A046000EB1B5 /* Resources.swift in Sources */,
 				A1613D3329DA2633000EB1B5 /* FavoritesVC.swift in Sources */,
 				A17C9DD229D84F8700413796 /* SceneDelegate.swift in Sources */,
+				24B15CC329DC062000CBC959 /* APICaller.swift in Sources */,
 				A1613D2D29DA25EF000EB1B5 /* SearchVC.swift in Sources */,
 				A1613D3829DA2861000EB1B5 /* UIImage + Extensions.swift in Sources */,
 				A1613D3029DA260E000EB1B5 /* RecentVideoVC.swift in Sources */,
