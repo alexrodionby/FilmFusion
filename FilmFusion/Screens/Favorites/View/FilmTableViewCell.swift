@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 final class FilmTableViewCell: UITableViewCell {
-    
+    static let identifier = "FilmCell"
     private let pictureImageView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "luck-movie")

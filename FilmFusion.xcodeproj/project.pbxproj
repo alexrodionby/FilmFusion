@@ -26,6 +26,10 @@
 		A17C9DD229D84F8700413796 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17C9DD129D84F8700413796 /* SceneDelegate.swift */; };
 		A17C9DD929D84F8800413796 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A17C9DD829D84F8800413796 /* Assets.xcassets */; };
 		A17C9DDC29D84F8800413796 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A17C9DDA29D84F8800413796 /* LaunchScreen.storyboard */; };
+		FCEE143829DCA084006B6109 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE143729DCA084006B6109 /* SearchView.swift */; };
+		FCEE143B29DCA0A4006B6109 /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE143929DCA0A4006B6109 /* UIView + Extensions.swift */; };
+		FCEE143C29DCA0A4006B6109 /* UITextField + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE143A29DCA0A4006B6109 /* UITextField + Extensions.swift */; };
+		FCEE143F29DCA0CF006B6109 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE143E29DCA0CF006B6109 /* CategoryCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +51,10 @@
 		A17C9DD829D84F8800413796 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A17C9DDB29D84F8800413796 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A17C9DDD29D84F8800413796 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCEE143729DCA084006B6109 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		FCEE143929DCA0A4006B6109 /* UIView + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
+		FCEE143A29DCA0A4006B6109 /* UITextField + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField + Extensions.swift"; sourceTree = "<group>"; };
+		FCEE143E29DCA0CF006B6109 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +147,8 @@
 		A1613D2529D89E24000EB1B5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FCEE143A29DCA0A4006B6109 /* UITextField + Extensions.swift */,
+				FCEE143929DCA0A4006B6109 /* UIView + Extensions.swift */,
 				A13034DA29DC7E1100703F86 /* UIColor + Extensions.swift */,
 				A1613D3729DA2861000EB1B5 /* UIImage + Extensions.swift */,
 			);
@@ -156,7 +166,9 @@
 		A1613D2B29DA25DB000EB1B5 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				A1613D2C29DA25EF000EB1B5 /* SearchVC.swift */,
+				FCEE143D29DCA0C1006B6109 /* Cells */,
+				FCEE143629DCA05A006B6109 /* View */,
+				FCEE143529DCA050006B6109 /* Controller */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -213,6 +225,30 @@
 				A1613D1C29D86170000EB1B5 /* Resources */,
 			);
 			path = FilmFusion;
+			sourceTree = "<group>";
+		};
+		FCEE143529DCA050006B6109 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A1613D2C29DA25EF000EB1B5 /* SearchVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FCEE143629DCA05A006B6109 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FCEE143729DCA084006B6109 /* SearchView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FCEE143D29DCA0C1006B6109 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FCEE143E29DCA0CF006B6109 /* CategoryCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,13 +333,17 @@
 				24B15CC829DC28F700CBC959 /* Movie.swift in Sources */,
 				A17C9DD029D84F8700413796 /* AppDelegate.swift in Sources */,
 				A1613D2A29DA1BA5000EB1B5 /* HomeVC.swift in Sources */,
+				FCEE143C29DCA0A4006B6109 /* UITextField + Extensions.swift in Sources */,
 				A13034DB29DC7E1100703F86 /* UIColor + Extensions.swift in Sources */,
+				FCEE143F29DCA0CF006B6109 /* CategoryCell.swift in Sources */,
 				A1613D2729D8A046000EB1B5 /* Resources.swift in Sources */,
 				A1613D3329DA2633000EB1B5 /* FavoritesViewController.swift in Sources */,
 				2C6D90DB29DC6EF400FC34BB /* FilmTableViewCell.swift in Sources */,
 				A17C9DD229D84F8700413796 /* SceneDelegate.swift in Sources */,
+				FCEE143B29DCA0A4006B6109 /* UIView + Extensions.swift in Sources */,
 				24B15CC329DC062000CBC959 /* APICaller.swift in Sources */,
 				A1613D2D29DA25EF000EB1B5 /* SearchVC.swift in Sources */,
+				FCEE143829DCA084006B6109 /* SearchView.swift in Sources */,
 				A1613D3829DA2861000EB1B5 /* UIImage + Extensions.swift in Sources */,
 				A1613D3029DA260E000EB1B5 /* RecentVideoVC.swift in Sources */,
 				A1613D3629DA2652000EB1B5 /* SettingsVC.swift in Sources */,
