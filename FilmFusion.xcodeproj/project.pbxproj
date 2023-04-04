@@ -7,22 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-
-		2C6D90C029DC271D00FC34BB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2C6D90BF29DC271D00FC34BB /* SnapKit */; };
-		2C6D90C329DC279B00FC34BB /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 2C6D90C229DC279B00FC34BB /* Realm */; };
-		2C6D90C529DC279B00FC34BB /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2C6D90C429DC279B00FC34BB /* RealmSwift */; };
-		2C6D90C829DC2DE900FC34BB /* FilmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6D90C729DC2DE900FC34BB /* FilmTableViewCell.swift */; };
-
 		24B15CC329DC062000CBC959 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B15CC229DC062000CBC959 /* APICaller.swift */; };
 		24B15CC829DC28F700CBC959 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B15CC729DC28F700CBC959 /* Movie.swift */; };
-
 		A1613D2129D89C05000EB1B5 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1613D2029D89C05000EB1B5 /* TabBarVC.swift */; };
 		A1613D2429D89DF6000EB1B5 /* UIColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1613D2329D89DF6000EB1B5 /* UIColor + Extensions.swift */; };
 		A1613D2729D8A046000EB1B5 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1613D2629D8A046000EB1B5 /* Resources.swift */; };
 		A1613D2A29DA1BA5000EB1B5 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1613D2929DA1BA5000EB1B5 /* HomeVC.swift */; };
 		A1613D2D29DA25EF000EB1B5 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1613D2C29DA25EF000EB1B5 /* SearchVC.swift */; };
 		A1613D3029DA260E000EB1B5 /* RecentVideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1613D2F29DA260E000EB1B5 /* RecentVideoVC.swift */; };
-		A1613D3329DA2633000EB1B5 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1613D3229DA2633000EB1B5 /* FavoritesViewController.swift */; };
+		A1613D3329DA2633000EB1B5 /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1613D3229DA2633000EB1B5 /* FavoritesVC.swift */; };
 		A1613D3629DA2652000EB1B5 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1613D3529DA2652000EB1B5 /* SettingsVC.swift */; };
 		A1613D3829DA2861000EB1B5 /* UIImage + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1613D3729DA2861000EB1B5 /* UIImage + Extensions.swift */; };
 		A17C9DD029D84F8700413796 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17C9DCF29D84F8700413796 /* AppDelegate.swift */; };
@@ -32,19 +25,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-
-		2C6D90C729DC2DE900FC34BB /* FilmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmTableViewCell.swift; sourceTree = "<group>"; };
-
 		24B15CC229DC062000CBC959 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		24B15CC729DC28F700CBC959 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
-
 		A1613D2029D89C05000EB1B5 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		A1613D2329D89DF6000EB1B5 /* UIColor + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extensions.swift"; sourceTree = "<group>"; };
 		A1613D2629D8A046000EB1B5 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		A1613D2929DA1BA5000EB1B5 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		A1613D2C29DA25EF000EB1B5 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		A1613D2F29DA260E000EB1B5 /* RecentVideoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentVideoVC.swift; sourceTree = "<group>"; };
-		A1613D3229DA2633000EB1B5 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		A1613D3229DA2633000EB1B5 /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
 		A1613D3529DA2652000EB1B5 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		A1613D3729DA2861000EB1B5 /* UIImage + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extensions.swift"; sourceTree = "<group>"; };
 		A17C9DCC29D84F8700413796 /* FilmFusion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilmFusion.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,23 +49,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C6D90C529DC279B00FC34BB /* RealmSwift in Frameworks */,
-				2C6D90C329DC279B00FC34BB /* Realm in Frameworks */,
-				2C6D90C029DC271D00FC34BB /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-
-		2C6D90C629DC2DA000FC34BB /* View */ = {
-			isa = PBXGroup;
-			children = (
-				2C6D90C729DC2DE900FC34BB /* FilmTableViewCell.swift */,
-			);
-			path = View;
-
 		24B15CC129DC061100CBC959 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,7 +69,6 @@
 				24B15CC729DC28F700CBC959 /* Movie.swift */,
 			);
 			path = Models;
-
 			sourceTree = "<group>";
 		};
 		A1613D1B29D8615E000EB1B5 /* Application */ = {
@@ -179,8 +156,7 @@
 		A1613D3129DA2618000EB1B5 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
-				2C6D90C629DC2DA000FC34BB /* View */,
-				A1613D3229DA2633000EB1B5 /* FavoritesViewController.swift */,
+				A1613D3229DA2633000EB1B5 /* FavoritesVC.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -239,10 +215,6 @@
 			);
 			name = FilmFusion;
 			packageProductDependencies = (
-
-				2C6D90BF29DC271D00FC34BB /* SnapKit */,
-				2C6D90C229DC279B00FC34BB /* Realm */,
-				2C6D90C429DC279B00FC34BB /* RealmSwift */,
 			);
 			productName = FilmFusion;
 			productReference = A17C9DCC29D84F8700413796 /* FilmFusion.app */;
@@ -273,8 +245,6 @@
 			);
 			mainGroup = A17C9DC329D84F8700413796;
 			packageReferences = (
-				2C6D90BE29DC271D00FC34BB /* XCRemoteSwiftPackageReference "SnapKit" */,
-				2C6D90C129DC279B00FC34BB /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = A17C9DCD29D84F8700413796 /* Products */;
 			projectDirPath = "";
@@ -305,11 +275,10 @@
 				24B15CC829DC28F700CBC959 /* Movie.swift in Sources */,
 				A17C9DD029D84F8700413796 /* AppDelegate.swift in Sources */,
 				A1613D2429D89DF6000EB1B5 /* UIColor + Extensions.swift in Sources */,
-				2C6D90C829DC2DE900FC34BB /* FilmTableViewCell.swift in Sources */,
 				A1613D2129D89C05000EB1B5 /* TabBarVC.swift in Sources */,
 				A1613D2A29DA1BA5000EB1B5 /* HomeVC.swift in Sources */,
 				A1613D2729D8A046000EB1B5 /* Resources.swift in Sources */,
-				A1613D3329DA2633000EB1B5 /* FavoritesViewController.swift in Sources */,
+				A1613D3329DA2633000EB1B5 /* FavoritesVC.swift in Sources */,
 				A17C9DD229D84F8700413796 /* SceneDelegate.swift in Sources */,
 				24B15CC329DC062000CBC959 /* APICaller.swift in Sources */,
 				A1613D2D29DA25EF000EB1B5 /* SearchVC.swift in Sources */,
@@ -535,43 +504,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		2C6D90BE29DC271D00FC34BB /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		2C6D90C129DC279B00FC34BB /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		2C6D90BF29DC271D00FC34BB /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2C6D90BE29DC271D00FC34BB /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-		2C6D90C229DC279B00FC34BB /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2C6D90C129DC279B00FC34BB /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		2C6D90C429DC279B00FC34BB /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2C6D90C129DC279B00FC34BB /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A17C9DC429D84F8700413796 /* Project object */;
 }

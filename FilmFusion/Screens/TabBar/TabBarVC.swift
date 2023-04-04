@@ -33,7 +33,7 @@ final class TabBarVC: UITabBarController {
             generateVC(viewController: SearchVC(), image: Resources.Images.TabBar.searchOff, selectedImage: Resources.Images.TabBar.searchOn, tag: Tabs.search.rawValue),
             generateVC(viewController: RecentVideoVC(), image: Resources.Images.TabBar.recentVideoOff, selectedImage: Resources.Images.TabBar.recentVideoOn, tag: Tabs.recentVideo.rawValue),
             generateVC(viewController: HomeVC(), image: Resources.Images.TabBar.home, selectedImage: Resources.Images.TabBar.home, tag: Tabs.home.rawValue),
-            generateVC(viewController: FavoritesViewController(), image: Resources.Images.TabBar.favoritesOff, selectedImage: Resources.Images.TabBar.favoritesOn, tag: Tabs.favorites.rawValue),
+            generateVC(viewController: FavoritesVC(), image: Resources.Images.TabBar.favoritesOff, selectedImage: Resources.Images.TabBar.favoritesOn, tag: Tabs.favorites.rawValue),
             generateVC(viewController: SettingsVC(), image: Resources.Images.TabBar.settingsOff, selectedImage: Resources.Images.TabBar.settingsOn, tag: Tabs.search.rawValue)
         ]
     }
@@ -48,7 +48,7 @@ final class TabBarVC: UITabBarController {
     }
     
     private func setTabBarAppearance() {
-        selectedIndex = 3 // Стартуем с экрана номер 3
+        selectedIndex = 2 // Стартуем с экрана номер 3
     }
     
 }
