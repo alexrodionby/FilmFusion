@@ -36,7 +36,7 @@ final class FilmTableViewCell: UITableViewCell {
     private let timeLabel: UILabel = {
         let view = UILabel()
         view.text = "148 Minutes"
-        view.textColor = .gray
+        view.textColor = UIColor(named: "customMiniLabel")
         view.font = UIFont.systemFont(ofSize: 14)
         return view
     }()
@@ -50,7 +50,7 @@ final class FilmTableViewCell: UITableViewCell {
     private let calendarLabel: UILabel = {
         let view = UILabel()
         view.text = "17 Sep 2021"
-        view.textColor = .gray
+        view.textColor = UIColor(named: "customMiniLabel")
         view.font = UIFont.systemFont(ofSize: 14)
         return view
     }()
@@ -63,7 +63,7 @@ final class FilmTableViewCell: UITableViewCell {
     
     private let categoryView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(red: 81/255, green: 78/255, blue: 182/255, alpha: 1)
+        view.backgroundColor = UIColor(hexString: "514EB6")
         view.layer.cornerRadius = 6
         return view
     }()
@@ -72,14 +72,7 @@ final class FilmTableViewCell: UITableViewCell {
         let view = UILabel()
         view.text = "Action"
         view.textColor = .white
-        view.font = UIFont.systemFont(ofSize: 12)
-        return view
-    }()
-    
-    private let favImageView: UIImageView = {
-        let view = UIImageView()
-        view.image = UIImage(systemName: "heart")
-        view.tintColor = UIColor(red: 191/255, green: 198/255, blue: 203/255, alpha: 1)
+        view.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         return view
     }()
     
@@ -101,8 +94,15 @@ final class FilmTableViewCell: UITableViewCell {
     private let reviewsLabel: UILabel = {
         let view = UILabel()
         view.text = "(52)"
-        view.textColor = UIColor(hexString: "9CA4AB")
+        view.textColor = UIColor(named: "customMiniLabel")
         view.font = UIFont.systemFont(ofSize: 14)
+        return view
+    }()
+    
+    private let favImageView: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(systemName: "heart")
+        view.tintColor = UIColor(named: "customMiniLabel")
         return view
     }()
     
@@ -117,7 +117,7 @@ final class FilmTableViewCell: UITableViewCell {
             favImageView.image = isSaved ?
             UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
             favImageView.tintColor = isSaved ?
-            UIColor(red: 81/255, green: 78/255, blue: 182/255, alpha: 1) : UIColor(red: 191/255, green: 198/255, blue: 203/255, alpha: 1)
+            UIColor(hexString: "514EB6") : UIColor(named: "customMiniLabel")
         }
     }
     
