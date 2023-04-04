@@ -26,6 +26,16 @@
 		A17C9DD229D84F8700413796 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17C9DD129D84F8700413796 /* SceneDelegate.swift */; };
 		A17C9DD929D84F8800413796 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A17C9DD829D84F8800413796 /* Assets.xcassets */; };
 		A17C9DDC29D84F8800413796 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A17C9DDA29D84F8800413796 /* LaunchScreen.storyboard */; };
+		A1CD8EEB29DCA9FE00E7F6B6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A1CD8ECF29DCA2D100E7F6B6 /* FirebaseAnalytics */; };
+		A1CD8EEC29DCA9FE00E7F6B6 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A1CD8ED129DCA2D100E7F6B6 /* FirebaseAnalyticsSwift */; };
+		A1CD8EED29DCA9FE00E7F6B6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A1CD8ED329DCA2D100E7F6B6 /* FirebaseAuth */; };
+		A1CD8EEE29DCA9FE00E7F6B6 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = A1CD8ED529DCA2D100E7F6B6 /* FirebaseDatabase */; };
+		A1CD8EEF29DCA9FE00E7F6B6 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A1CD8ED729DCA2D100E7F6B6 /* FirebaseDatabaseSwift */; };
+		A1CD8EF029DCA9FE00E7F6B6 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A1CD8ED929DCA2D100E7F6B6 /* FirebaseFirestore */; };
+		A1CD8EF129DCA9FE00E7F6B6 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A1CD8EDB29DCA2D100E7F6B6 /* FirebaseFirestoreSwift */; };
+		A1CD8EF229DCA9FE00E7F6B6 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A1CD8EDD29DCA2D100E7F6B6 /* FirebaseStorage */; };
+		A1CD8EF329DCA9FE00E7F6B6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A1CD8EE029DCA88000E7F6B6 /* Kingfisher */; };
+		A1CD8EF529DCAAC600E7F6B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1CD8EF429DCAAC600E7F6B6 /* GoogleService-Info.plist */; };
 		FCEE143829DCA084006B6109 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE143729DCA084006B6109 /* SearchView.swift */; };
 		FCEE143B29DCA0A4006B6109 /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE143929DCA0A4006B6109 /* UIView + Extensions.swift */; };
 		FCEE143C29DCA0A4006B6109 /* UITextField + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE143A29DCA0A4006B6109 /* UITextField + Extensions.swift */; };
@@ -51,6 +61,7 @@
 		A17C9DD829D84F8800413796 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A17C9DDB29D84F8800413796 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A17C9DDD29D84F8800413796 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1CD8EF429DCAAC600E7F6B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FCEE143729DCA084006B6109 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		FCEE143929DCA0A4006B6109 /* UIView + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
 		FCEE143A29DCA0A4006B6109 /* UITextField + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField + Extensions.swift"; sourceTree = "<group>"; };
@@ -62,18 +73,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1CD8EE129DCA88000E7F6B6 /* Kingfisher in Frameworks */,
-				A1CD8ED829DCA2D100E7F6B6 /* FirebaseDatabaseSwift in Frameworks */,
+				A1CD8EF329DCA9FE00E7F6B6 /* Kingfisher in Frameworks */,
+				A1CD8EF229DCA9FE00E7F6B6 /* FirebaseStorage in Frameworks */,
+				A1CD8EF129DCA9FE00E7F6B6 /* FirebaseFirestoreSwift in Frameworks */,
+				A1CD8EF029DCA9FE00E7F6B6 /* FirebaseFirestore in Frameworks */,
+				A1CD8EEF29DCA9FE00E7F6B6 /* FirebaseDatabaseSwift in Frameworks */,
+				A1CD8EEE29DCA9FE00E7F6B6 /* FirebaseDatabase in Frameworks */,
+				A1CD8EED29DCA9FE00E7F6B6 /* FirebaseAuth in Frameworks */,
+				A1CD8EEC29DCA9FE00E7F6B6 /* FirebaseAnalyticsSwift in Frameworks */,
+				A1CD8EEB29DCA9FE00E7F6B6 /* FirebaseAnalytics in Frameworks */,
 				2C6D90D829DC6D7200FC34BB /* SnapKit in Frameworks */,
-				A1CD8ED429DCA2D100E7F6B6 /* FirebaseAuth in Frameworks */,
 				2C6D90D529DC6D6500FC34BB /* RealmSwift in Frameworks */,
-				A1CD8ED029DCA2D100E7F6B6 /* FirebaseAnalytics in Frameworks */,
-				A1CD8EDC29DCA2D100E7F6B6 /* FirebaseFirestoreSwift in Frameworks */,
-				A1CD8EDA29DCA2D100E7F6B6 /* FirebaseFirestore in Frameworks */,
 				2C6D90D329DC6D6500FC34BB /* Realm in Frameworks */,
-				A1CD8EDE29DCA2D100E7F6B6 /* FirebaseStorage in Frameworks */,
-				A1CD8ED629DCA2D100E7F6B6 /* FirebaseDatabase in Frameworks */,
-				A1CD8ED229DCA2D100E7F6B6 /* FirebaseAnalyticsSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,7 +129,6 @@
 			children = (
 				A17C9DDA29D84F8800413796 /* LaunchScreen.storyboard */,
 				A17C9DD829D84F8800413796 /* Assets.xcassets */,
-				A1CD8ECC29DCA0AB00E7F6B6 /* GoogleService-Info.plist */,
 				A17C9DDD29D84F8800413796 /* Info.plist */,
 			);
 			path = Resources;
@@ -227,6 +237,7 @@
 		A17C9DCE29D84F8700413796 /* FilmFusion */ = {
 			isa = PBXGroup;
 			children = (
+				A1CD8EF429DCAAC600E7F6B6 /* GoogleService-Info.plist */,
 				24B15CC129DC061100CBC959 /* Managers */,
 				24B15CC429DC064A00CBC959 /* Models */,
 				A1613D1B29D8615E000EB1B5 /* Application */,
@@ -341,7 +352,7 @@
 			files = (
 				A17C9DDC29D84F8800413796 /* LaunchScreen.storyboard in Resources */,
 				A17C9DD929D84F8800413796 /* Assets.xcassets in Resources */,
-				A1CD8ECD29DCA0AB00E7F6B6 /* GoogleService-Info.plist in Resources */,
+				A1CD8EF529DCAAC600E7F6B6 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
