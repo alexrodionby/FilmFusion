@@ -27,7 +27,7 @@ final class SearchView: UIView {
     lazy var searchTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = " Search"
-        textField.backgroundColor = .clear
+        textField.backgroundColor = .none
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.heightAnchor.constraint(equalToConstant: 24).isActive = true
         textField.setIcon(UIImage(named: "Search")!)
@@ -53,6 +53,39 @@ final class SearchView: UIView {
             return collectionView
         }()
     
+    lazy var seporatorImage: UIImageView = {
+        let image = UIImageView(image: UIImage(named: "Vector"))
+        image.contentMode = .scaleAspectFill
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.layer.masksToBounds = true
+        image.clipsToBounds = true
+        return image
+    }()
+ 
+    lazy var clearSearchButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(named: "Clear"), for: .normal)
+        button.addTarget(self, action: #selector(clearButtonPressed), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    lazy var filterSearchButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(named: "Filter"), for: .normal)
+        button.addTarget(self, action: #selector(filterButtonPressed), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    @objc func clearButtonPressed() {
+        searchTextField.text = ""
+        print("clear")
+    }
+    @objc func filterButtonPressed() {
+        print("filter")
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
@@ -60,7 +93,7 @@ final class SearchView: UIView {
         categoryCollectionView.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.identifier)
         //        tableView.register(CustomHeader.self, forHeaderFooterViewReuseIdentifier: "sectionHeader")
         //        addSubviews(searchBar, tableView)
-        searchView.addSubview(searchTextField)
+        searchView.addSubviews(searchTextField,clearSearchButton,filterSearchButton,seporatorImage)
         addSubviews(searchView, searchTextField,categoryCollectionView,searchTableView)
 
         addConstraints()
@@ -76,9 +109,19 @@ final class SearchView: UIView {
             searchView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             searchView.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -24),
             
-            searchTextField.topAnchor.constraint(equalTo: topAnchor,constant: 25),
-            searchTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
-            searchTextField.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -35),
+            searchTextField.topAnchor.constraint(equalTo: searchView.topAnchor,constant: 15),
+            searchTextField.leadingAnchor.constraint(equalTo: searchView.leadingAnchor, constant: 10),
+            searchTextField.trailingAnchor.constraint(equalTo:searchView.trailingAnchor,constant: -60),
+            
+            clearSearchButton.topAnchor.constraint(equalTo: searchView.topAnchor,constant: 21),
+            clearSearchButton.leadingAnchor.constraint(equalTo: searchTextField.trailingAnchor, constant: 5),
+//            clearSearchButton.bottomAnchor.constraint(equalTo: searchView.bottomAnchor,constant: -20),
+            
+            seporatorImage.topAnchor.constraint(equalTo: searchView.topAnchor,constant: 17),
+            seporatorImage.leadingAnchor.constraint(equalTo: clearSearchButton.trailingAnchor, constant: 7),
+            
+            filterSearchButton.topAnchor.constraint(equalTo: searchView.topAnchor,constant: 20),
+            filterSearchButton.leadingAnchor.constraint(equalTo: seporatorImage.trailingAnchor, constant: 7),
             
             categoryCollectionView.topAnchor.constraint(equalTo: searchView.bottomAnchor),
             categoryCollectionView.centerYAnchor.constraint(equalTo: topAnchor, constant: 100),
