@@ -12,7 +12,6 @@ struct MovieResponse: Codable {
 }
 
 struct Movie: Codable {
-    let id: Int
     let media_type: String?
     let original_name: String?
     let original_title: String?
@@ -21,4 +20,14 @@ struct Movie: Codable {
     let vote_count: Int
     let release_date: String?
     let vote_average: Double
+//    let runtime: Int?
+}
+
+struct MovieViewModel {
+    let titleName: String
+    let posterURL: String
+    let releaseDate: String
+    let voteAverage: Double
+    let voteCount: Int
+//    let runtime: Int
 }

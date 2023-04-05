@@ -9,6 +9,8 @@ import UIKit
 
 class SearchVC: UIViewController {
     
+    private var movies: [Movie] = [Movie]()
+    
     private let searchView = SearchView()
     var selectedCategory = "all"
     override func viewDidLoad() {
@@ -20,6 +22,7 @@ class SearchVC: UIViewController {
         setupView()
         title = "Search"
         view.backgroundColor = UIColor(named: "customBackground")
+        fetchDiscoverMovies()
     }
     
     
@@ -41,6 +44,19 @@ class SearchVC: UIViewController {
         cell.layer.borderWidth = 1
     }
     
+    private func fetchDiscoverMovies() {
+        APICaller.shared.getDiscoverMovies { [weak self] result in
+            switch result {
+                case.success(let movies):
+                    self?.movies = movies
+                    DispatchQueue.main.async {
+                        self?.searchView.searchTableView.reloadData()
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+            }
+        }
+    }
 }
 
 
@@ -109,13 +125,15 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
 extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        movies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FilmTableViewCell.identifier, for: indexPath) as! FilmTableViewCell
-
-        //        cell.configure(recipe)
+        
+        let movies = movies[indexPath.row]
+        let model = MovieViewModel(titleName: movies.original_name ?? movies.original_title ?? "Unknown title name", posterURL: movies.poster_path ?? "", releaseDate: movies.release_date ?? "", voteAverage: movies.vote_average, voteCount: movies.vote_count)
+        cell.configure(with: model)
         return cell
     }
     

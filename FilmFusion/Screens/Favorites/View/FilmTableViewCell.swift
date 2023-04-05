@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 final class FilmTableViewCell: UITableViewCell {
     static let identifier = "FilmCell"
@@ -22,6 +23,7 @@ final class FilmTableViewCell: UITableViewCell {
     private let titleLabel: UILabel = {
         let view = UILabel()
         view.text = "Luck"
+        view.numberOfLines = 2
         view.textColor = UIColor(named: "customLabelName")
         view.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         return view
@@ -126,6 +128,18 @@ final class FilmTableViewCell: UITableViewCell {
         setupView()
     }
     
+    func configure(with model: MovieViewModel) {
+        
+        guard let url = URL(string: "https://image.tmdb.org/t/p/w500\(model.posterURL)") else { return }
+        
+        pictureImageView.kf.setImage(with: url)
+        titleLabel.text = model.titleName
+        calendarLabel.text = model.releaseDate
+        raitingLabel.text = "\(model.voteAverage)"
+        reviewsLabel.text = "\(model.voteCount)"
+//        timeLabel.text = "\(model.runtime)"
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -166,6 +180,7 @@ final class FilmTableViewCell: UITableViewCell {
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(10)
             make.leading.equalTo(pictureImageView.snp.trailing).offset(15)
+            make.trailing.equalToSuperview().inset(40)
         }
         
         timeImageView.snp.makeConstraints { make in
