@@ -7,11 +7,9 @@
 
 import UIKit
 
-
 @available(iOS 15.0, *)
-
 class SearchVC: UIViewController {
-
+    
     private var movies: [Movie] = [Movie]()
     
     private let searchView = SearchView()
@@ -30,13 +28,6 @@ class SearchVC: UIViewController {
 
     }
     
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        searchView.searchTableView.reloadData()
-    }
-    
-
     func prepareBackgroundView(){
 
         let blurEffectView = UIVisualEffectView()
@@ -62,7 +53,6 @@ class SearchVC: UIViewController {
         prepareBackgroundView()
           present(viewControllerToPresent, animated: true, completion: nil)
       }
-
     
     private func setupView() {
         view.addSubview(searchView)
@@ -167,7 +157,6 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         movies.count
-        //10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
