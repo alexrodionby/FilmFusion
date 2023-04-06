@@ -8,6 +8,8 @@
 import UIKit
 
 
+@available(iOS 15.0, *)
+
 class SearchVC: UIViewController {
 
     private var movies: [Movie] = [Movie]()
@@ -20,17 +22,47 @@ class SearchVC: UIViewController {
         searchView.categoryCollectionView.delegate = self
         searchView.searchTableView.dataSource = self
         searchView.searchTableView.delegate = self
+        searchView.filterSearchButton.addTarget(self, action: #selector(filterButtonPressed), for: .touchUpInside)
         setupView()
+        fetchDiscoverMovies()
         title = "Search"
         view.backgroundColor = UIColor(named: "customBackground")
-        fetchDiscoverMovies()
+
     }
     
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         searchView.searchTableView.reloadData()
     }
     
+
+    func prepareBackgroundView(){
+
+        let blurEffectView = UIVisualEffectView()
+        let blurEffect = UIBlurEffect.init(style: .systemUltraThinMaterial)
+//        let visualEffect = UIVisualEffectView.init(effect: blurEffect)
+        let bluredView = UIVisualEffectView.init(effect: blurEffect)
+//        bluredView.alpha = 0.8
+//        bluredView.contentView.addSubview(visualEffect)
+//        visualEffect.frame = UIScreen.main.bounds
+        bluredView.frame = UIScreen.main.bounds
+        view.addSubview(bluredView)
+    }
+    @objc func filterButtonPressed() {
+        print("filter")
+        let viewControllerToPresent = FilterVC()
+          if let sheet = viewControllerToPresent.sheetPresentationController {
+              sheet.detents = [.medium(), .large()]
+              sheet.largestUndimmedDetentIdentifier = .medium
+              sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+              sheet.prefersEdgeAttachedInCompactHeight = true
+              sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
+          }
+        prepareBackgroundView()
+          present(viewControllerToPresent, animated: true, completion: nil)
+      }
+
     
     private func setupView() {
         view.addSubview(searchView)
@@ -51,8 +83,9 @@ class SearchVC: UIViewController {
     }
     
     private func fetchDiscoverMovies() {
-        APICaller.shared.getDiscoverMovies { [weak self] result in
-            switch result {
+    print("pereshlo")
+        APICaller.shared.getDiscoverMovies { [weak self] res in
+            switch res {
                 case.success(let movies):
                     self?.movies = movies
                     DispatchQueue.main.async {
@@ -66,6 +99,7 @@ class SearchVC: UIViewController {
 }
 
 
+@available(iOS 15.0, *)
 extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -128,6 +162,7 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     }
 }
 
+@available(iOS 15.0, *)
 extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
