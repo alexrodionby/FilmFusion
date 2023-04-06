@@ -13,11 +13,15 @@
 		2C6D90D529DC6D6500FC34BB /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2C6D90D429DC6D6500FC34BB /* RealmSwift */; };
 		2C6D90D829DC6D7200FC34BB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2C6D90D729DC6D7200FC34BB /* SnapKit */; };
 		2C6D90DB29DC6EF400FC34BB /* FilmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6D90DA29DC6EF400FC34BB /* FilmTableViewCell.swift */; };
+
+		2CD86D2B29DDAC4B00163A55 /* RealmFilm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD86D2A29DDAC4B00163A55 /* RealmFilm.swift */; };
+		2CD86D2D29DDC16700163A55 /* RealmDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD86D2C29DDC16700163A55 /* RealmDataBase.swift */; };
 		5635EE6429DD5705007CFC3D /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5635EE6329DD5705007CFC3D /* DetailVC.swift */; };
 		5635EE6729DD58B2007CFC3D /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5635EE6629DD58B2007CFC3D /* DetailView.swift */; };
 		5635EE6B29DD5993007CFC3D /* UIImageView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5635EE6A29DD5993007CFC3D /* UIImageView + Extensions.swift */; };
 		5635EE6D29DD5A22007CFC3D /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5635EE6C29DD5A22007CFC3D /* UILabel + Extensions.swift */; };
 		563B45FE29DD8FEB00BE065D /* StoryLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563B45FD29DD8FEB00BE065D /* StoryLineView.swift */; };
+
 		A13034DB29DC7E1100703F86 /* UIColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13034DA29DC7E1100703F86 /* UIColor + Extensions.swift */; };
 		A1613D2729D8A046000EB1B5 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1613D2629D8A046000EB1B5 /* Resources.swift */; };
 		A1613D2A29DA1BA5000EB1B5 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1613D2929DA1BA5000EB1B5 /* HomeVC.swift */; };
@@ -53,11 +57,16 @@
 		24B15CC229DC062000CBC959 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		24B15CC729DC28F700CBC959 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		2C6D90DA29DC6EF400FC34BB /* FilmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmTableViewCell.swift; sourceTree = "<group>"; };
+
+		2CD86D2A29DDAC4B00163A55 /* RealmFilm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFilm.swift; sourceTree = "<group>"; };
+		2CD86D2C29DDC16700163A55 /* RealmDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataBase.swift; sourceTree = "<group>"; };
+
 		5635EE6329DD5705007CFC3D /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		5635EE6629DD58B2007CFC3D /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		5635EE6A29DD5993007CFC3D /* UIImageView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extensions.swift"; sourceTree = "<group>"; };
 		5635EE6C29DD5A22007CFC3D /* UILabel + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
 		563B45FD29DD8FEB00BE065D /* StoryLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryLineView.swift; sourceTree = "<group>"; };
+
 		A13034DA29DC7E1100703F86 /* UIColor + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor + Extensions.swift"; sourceTree = "<group>"; };
 		A1613D2629D8A046000EB1B5 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		A1613D2929DA1BA5000EB1B5 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -129,6 +138,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+
+		2CD86D2929DDAB8900163A55 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				2CD86D2A29DDAC4B00163A55 /* RealmFilm.swift */,
+				2CD86D2C29DDC16700163A55 /* RealmDataBase.swift */,
+			);
+			path = Realm;
+
 		5635EE6129DD5675007CFC3D /* Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +171,7 @@
 				563B45FD29DD8FEB00BE065D /* StoryLineView.swift */,
 			);
 			path = View;
+
 			sourceTree = "<group>";
 		};
 		A1613D1B29D8615E000EB1B5 /* Application */ = {
@@ -199,6 +218,7 @@
 		A1613D2229D89D78000EB1B5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				2CD86D2929DDAB8900163A55 /* Realm */,
 				A1613D2529D89E24000EB1B5 /* Extensions */,
 				A1613D2629D8A046000EB1B5 /* Resources.swift */,
 			);
@@ -426,12 +446,17 @@
 				5635EE6D29DD5A22007CFC3D /* UILabel + Extensions.swift in Sources */,
 				FCEE143B29DCA0A4006B6109 /* UIView + Extensions.swift in Sources */,
 				24B15CC329DC062000CBC959 /* APICaller.swift in Sources */,
+
+				2CD86D2D29DDC16700163A55 /* RealmDataBase.swift in Sources */,
+
 				5635EE6729DD58B2007CFC3D /* DetailView.swift in Sources */,
+
 				A1613D2D29DA25EF000EB1B5 /* SearchVC.swift in Sources */,
 				FCEE143829DCA084006B6109 /* SearchView.swift in Sources */,
 				A1613D3829DA2861000EB1B5 /* UIImage + Extensions.swift in Sources */,
 				A1613D3029DA260E000EB1B5 /* RecentVideoVC.swift in Sources */,
 				A1613D3629DA2652000EB1B5 /* SettingsVC.swift in Sources */,
+				2CD86D2B29DDAC4B00163A55 /* RealmFilm.swift in Sources */,
 				A1613D3C29DB748E000EB1B5 /* TabBarVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -571,7 +596,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+
 				DEVELOPMENT_TEAM = WCYDKCV3N3;
+
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FilmFusion/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FilmFusion;
@@ -604,7 +631,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+
 				DEVELOPMENT_TEAM = WCYDKCV3N3;
+
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FilmFusion/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FilmFusion;
