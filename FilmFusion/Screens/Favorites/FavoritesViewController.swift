@@ -7,9 +7,12 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 final class FavoritesViewController: UIViewController {
     
+    private var films: Results<RealmFilm>!
+   
     private let tableView: UITableView = {
         let view = UITableView()
         view.separatorStyle = .none
@@ -19,6 +22,12 @@ final class FavoritesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        films = RealmDataBase.shared.read()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
 
 //MARK: - Setup UI
@@ -36,6 +45,13 @@ final class FavoritesViewController: UIViewController {
     private func setupNavCont() {
         navigationController?.navigationBar.barTintColor = .systemBackground
         navigationController?.navigationBar.shadowImage = UIImage()
+        let deleteAllItems = UIBarButtonItem(
+            image: UIImage(systemName: "trash.fill"),
+            style: .plain,
+            target: self,
+            action: #selector(deleteAllButtonTapped))
+        navigationItem.rightBarButtonItem = deleteAllItems
+        deleteAllItems.tintColor = UIColor(named: "customMiniLabel")
     }
     
     private func setupConstraints() {
@@ -48,8 +64,37 @@ final class FavoritesViewController: UIViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
     }
-
-
+    
+    @objc private func deleteAllButtonTapped() {
+        if films.isEmpty {
+            let alert = UIAlertController(
+                title: "Favorites is already empty",
+                message: "",
+                preferredStyle: .alert)
+            let actionOK = UIAlertAction(
+                title: "OK",
+                style: .default)
+            alert.addAction(actionOK)
+            present(alert, animated: true)
+        } else {
+            let alert = UIAlertController(
+                title: "Clear favorites?",
+                message: "",
+                preferredStyle: .alert)
+            let actionYes = UIAlertAction(
+                title: "Yes",
+                style: .destructive) { action in
+                RealmDataBase.shared.deleteAll()
+                self.tableView.reloadData()
+            }
+            let actionNo = UIAlertAction(
+                title: "No",
+                style: .cancel)
+            alert.addAction(actionNo)
+            alert.addAction(actionYes)
+            present(alert, animated: true)
+        }
+    }
 }
 
 //MARK: - UITableViewDelegate
@@ -62,12 +107,15 @@ extension FavoritesViewController: UITableViewDelegate {
 //MARK: - UITableViewDataSource
 extension FavoritesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        print("КОЛИЧЕСТВО ЯЧЕЕК В ТАБЛИЦЕ: \(films.count)")
+        return films.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "FilmTableViewCell") as? FilmTableViewCell
             else { return UITableViewCell() }
+        cell.delegate = self
+        cell.configureWithRealm(film: films[indexPath.row])
         return cell
     }
     
@@ -76,4 +124,11 @@ extension FavoritesViewController: UITableViewDataSource {
     }
     
     
+}
+
+//MARK: - Cell delegate
+extension FavoritesViewController: FilmTableViewCellDelegate {
+    func didTapFavoriteButton(onCell cell: FilmTableViewCell) {
+        tableView.reloadData()
+    }
 }
