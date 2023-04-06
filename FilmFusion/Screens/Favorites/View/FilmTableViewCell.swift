@@ -9,8 +9,16 @@ import UIKit
 import SnapKit
 import Kingfisher
 
+protocol FilmTableViewCellDelegate: AnyObject {
+    func didTapFavoriteButton(onCell cell: FilmTableViewCell)
+}
+
 final class FilmTableViewCell: UITableViewCell {
+    
+    weak var delegate: FilmTableViewCellDelegate?
+        
     static let identifier = "FilmCell"
+    
     private let pictureImageView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "luck-movie")
@@ -25,7 +33,7 @@ final class FilmTableViewCell: UITableViewCell {
         view.text = "Luck"
         view.numberOfLines = 2
         view.textColor = UIColor(named: "customLabelName")
-        view.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        view.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         return view
     }()
     
@@ -120,6 +128,7 @@ final class FilmTableViewCell: UITableViewCell {
             UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
             favImageView.tintColor = isSaved ?
             UIColor(hexString: "514EB6") : UIColor(named: "customMiniLabel")
+            print("isSaved: \(self.isSaved)")
         }
     }
     
@@ -128,25 +137,47 @@ final class FilmTableViewCell: UITableViewCell {
         setupView()
     }
     
+    @objc func favButtonTapped() {
+        print("Кнопка избранное нажалась")
+        if isSaved {
+            RealmDataBase.shared.deleteitem(withName: titleLabel.text!)
+        } else {
+            let newFilm = RealmFilm()
+            newFilm.titleName = titleLabel.text!
+            newFilm.image = (pictureImageView.image?.pngData()!)!
+            newFilm.releaseDate = calendarLabel.text!
+            newFilm.voteAverage = Double(raitingLabel.text!)!
+            newFilm.voteCount = Int(reviewsLabel.text!)!
+            RealmDataBase.shared.write(realmFilm: newFilm)
+        }
+        delegate?.didTapFavoriteButton(onCell: self)
+        isSaved.toggle()
+    }
+    
+    
     func configure(with model: MovieViewModel) {
         
         guard let url = URL(string: "https://image.tmdb.org/t/p/w500\(model.posterURL)") else { return }
-        
         pictureImageView.kf.setImage(with: url)
         titleLabel.text = model.titleName
         calendarLabel.text = model.releaseDate
         raitingLabel.text = "\(model.voteAverage)"
         reviewsLabel.text = "\(model.voteCount)"
 //        timeLabel.text = "\(model.runtime)"
+        isSaved = RealmDataBase.shared.isItemSaved(withName: titleLabel.text!)
+    }
+    
+    func configureWithRealm(film: RealmFilm) {
+        pictureImageView.image = UIImage(data: film.image)
+        titleLabel.text = film.titleName
+        calendarLabel.text = film.releaseDate
+        raitingLabel.text = "\(film.voteAverage)"
+        reviewsLabel.text = "\(film.voteCount)"
+        isSaved = true
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    @objc private func favButtonTapped() {
-        print("Кнопка избранное нажалась")
-        isSaved.toggle()
     }
     
 //MARK: - Setup View
@@ -180,39 +211,39 @@ final class FilmTableViewCell: UITableViewCell {
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(10)
             make.leading.equalTo(pictureImageView.snp.trailing).offset(15)
-            make.trailing.equalToSuperview().inset(40)
+            make.trailing.equalToSuperview().inset(55)
         }
         
         timeImageView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(15)
+            make.top.equalTo(titleLabel.snp.bottom).offset(13)
             make.leading.equalTo(pictureImageView.snp.trailing).offset(15)
             make.height.width.equalTo(16)
         }
         
         timeLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(15)
+            make.top.equalTo(titleLabel.snp.bottom).offset(13)
             make.leading.equalTo(timeImageView.snp.trailing).offset(5)
         }
         
         calendarImageView.snp.makeConstraints { make in
-            make.top.equalTo(timeImageView.snp.bottom).offset(15)
+            make.top.equalTo(timeImageView.snp.bottom).offset(13)
             make.leading.equalTo(pictureImageView.snp.trailing).offset(15)
             make.height.width.equalTo(16)
         }
         
         calendarLabel.snp.makeConstraints { make in
-            make.top.equalTo(timeLabel.snp.bottom).offset(15)
+            make.top.equalTo(timeLabel.snp.bottom).offset(13)
             make.leading.equalTo(calendarImageView.snp.trailing).offset(5)
         }
         
         filmImageView.snp.makeConstraints { make in
-            make.top.equalTo(calendarImageView.snp.bottom).offset(15)
+            make.top.equalTo(calendarImageView.snp.bottom).offset(13)
             make.leading.equalTo(pictureImageView.snp.trailing).offset(15)
             make.height.width.equalTo(16)
         }
         
         categoryView.snp.makeConstraints { make in
-            make.top.equalTo(calendarLabel.snp.bottom).offset(9)
+            make.top.equalTo(calendarLabel.snp.bottom).offset(8)
             make.leading.equalTo(filmImageView.snp.trailing).offset(5)
             make.height.equalTo(24)
             make.width.equalTo(65)
@@ -223,18 +254,21 @@ final class FilmTableViewCell: UITableViewCell {
         }
         
         starImageView.snp.makeConstraints { make in
-            make.top.equalTo(filmImageView.snp.bottom).offset(15)
+            make.top.equalTo(filmImageView.snp.bottom).offset(13)
+            make.bottom.lessThanOrEqualToSuperview().inset(10)
             make.leading.equalTo(pictureImageView.snp.trailing).offset(15)
             make.height.width.equalTo(16)
         }
         
         raitingLabel.snp.makeConstraints { make in
-            make.top.equalTo(filmImageView.snp.bottom).offset(15)
+            make.top.equalTo(filmImageView.snp.bottom).offset(13)
+            make.bottom.lessThanOrEqualToSuperview().inset(10)
             make.leading.equalTo(starImageView.snp.trailing).offset(5)
         }
         
         reviewsLabel.snp.makeConstraints { make in
-            make.top.equalTo(filmImageView.snp.bottom).offset(15)
+            make.top.equalTo(filmImageView.snp.bottom).offset(13)
+            make.bottom.lessThanOrEqualToSuperview().inset(10)
             make.leading.equalTo(raitingLabel.snp.trailing).offset(5)
         }
         
