@@ -41,6 +41,8 @@
 		A1CD8EF229DCA9FE00E7F6B6 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A1CD8EDD29DCA2D100E7F6B6 /* FirebaseStorage */; };
 		A1CD8EF329DCA9FE00E7F6B6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A1CD8EE029DCA88000E7F6B6 /* Kingfisher */; };
 		A1CD8EF529DCAAC600E7F6B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1CD8EF429DCAAC600E7F6B6 /* GoogleService-Info.plist */; };
+		FCBE50C029DEA1B4002AD6CA /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE50BF29DEA1B4002AD6CA /* FilterView.swift */; };
+		FCBE50C229DEA4D9002AD6CA /* FilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE50C129DEA4D9002AD6CA /* FilterVC.swift */; };
 		FCEE143829DCA084006B6109 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE143729DCA084006B6109 /* SearchView.swift */; };
 		FCEE143B29DCA0A4006B6109 /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE143929DCA0A4006B6109 /* UIView + Extensions.swift */; };
 		FCEE143C29DCA0A4006B6109 /* UITextField + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE143A29DCA0A4006B6109 /* UITextField + Extensions.swift */; };
@@ -72,6 +74,8 @@
 		A17C9DDB29D84F8800413796 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A17C9DDD29D84F8800413796 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1CD8EF429DCAAC600E7F6B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FCBE50BF29DEA1B4002AD6CA /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		FCBE50C129DEA4D9002AD6CA /* FilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterVC.swift; sourceTree = "<group>"; };
 		FCEE143729DCA084006B6109 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		FCEE143929DCA0A4006B6109 /* UIView + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
 		FCEE143A29DCA0A4006B6109 /* UITextField + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField + Extensions.swift"; sourceTree = "<group>"; };
@@ -291,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				A1613D2C29DA25EF000EB1B5 /* SearchVC.swift */,
+				FCBE50C129DEA4D9002AD6CA /* FilterVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -299,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				FCEE143729DCA084006B6109 /* SearchView.swift */,
+				FCBE50BF29DEA1B4002AD6CA /* FilterView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -406,11 +412,13 @@
 				A17C9DD029D84F8700413796 /* AppDelegate.swift in Sources */,
 				A1613D2A29DA1BA5000EB1B5 /* HomeVC.swift in Sources */,
 				5635EE6429DD5705007CFC3D /* DetailVC.swift in Sources */,
+				FCBE50C029DEA1B4002AD6CA /* FilterView.swift in Sources */,
 				FCEE143C29DCA0A4006B6109 /* UITextField + Extensions.swift in Sources */,
 				A13034DB29DC7E1100703F86 /* UIColor + Extensions.swift in Sources */,
 				FCEE143F29DCA0CF006B6109 /* CategoryCell.swift in Sources */,
 				A1613D2729D8A046000EB1B5 /* Resources.swift in Sources */,
 				563B45FE29DD8FEB00BE065D /* StoryLineView.swift in Sources */,
+				FCBE50C229DEA4D9002AD6CA /* FilterVC.swift in Sources */,
 				A1613D3329DA2633000EB1B5 /* FavoritesViewController.swift in Sources */,
 				2C6D90DB29DC6EF400FC34BB /* FilmTableViewCell.swift in Sources */,
 				A17C9DD229D84F8700413796 /* SceneDelegate.swift in Sources */,
