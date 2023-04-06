@@ -8,8 +8,7 @@
 import UIKit
 
 struct Constants {
-    //static let API_KEY = "75707bcf3f52a789b5dc3dee9cf12032"
-    static let API_KEY = "64499fef386c694cd9d738388c448e08"
+    static let API_KEY = "75707bcf3f52a789b5dc3dee9cf12032"
     static let baseURL = "https://api.themoviedb.org"
 }
 
