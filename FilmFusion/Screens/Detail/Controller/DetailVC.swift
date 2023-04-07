@@ -9,6 +9,10 @@ import UIKit
 
 class DetailVC: UIViewController {
     
+    let additionalInfo = DetailView()
+    let DiscrpitionView = DescriptionView()
+    let castCollection = CastView()
+    
     private lazy var scrollView:UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.frame = view.bounds
@@ -27,9 +31,6 @@ class DetailVC: UIViewController {
         CGSize(width: view.frame.width, height: view.frame.height - 50 )
     }
     
-    let additionalInfo = DetailView()
-    let DiscrpitionView = DescriptionView()
-    let castCollection = CastView()
     
     private let posterImage: UIImageView = {
         let imageView = UIImageView()
