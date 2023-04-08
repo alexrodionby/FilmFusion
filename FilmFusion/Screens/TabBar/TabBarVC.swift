@@ -21,6 +21,7 @@ class TabBarVC: UITabBarController {
         super.viewDidLoad()
         generateTabBar()
         setTabBarAppearance()
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     private func generateTabBar() {
@@ -50,8 +51,8 @@ class TabBarVC: UITabBarController {
         let tabBarItemSize = CGSize(width: tabBar.frame.width / 5, height: tabBar.frame.height * 0.7)
         let centerItem = tabBar.items?[2]
         centerItem?.title = ""
-        centerItem?.selectedImage = centerItem?.selectedImage?.resize(to: CGSize(width: tabBarItemSize.width * 0.55, height: tabBarItemSize.height * 1.25)).withRenderingMode(.alwaysOriginal)
-        centerItem?.image = centerItem?.selectedImage?.resize(to: CGSize(width: tabBarItemSize.width * 0.55, height: tabBarItemSize.height * 1.25)).withRenderingMode(.alwaysOriginal)
+        centerItem?.selectedImage = centerItem?.selectedImage?.resize(to: CGSize(width: tabBarItemSize.width * 0.55, height: tabBarItemSize.height * 1.2)).withRenderingMode(.alwaysOriginal)
+        centerItem?.image = centerItem?.selectedImage?.resize(to: CGSize(width: tabBarItemSize.width * 0.55, height: tabBarItemSize.height * 1.2)).withRenderingMode(.alwaysOriginal)
         
         // устанавливаем отступы между ячейками таб-бара
         tabBar.itemSpacing = (tabBar.frame.width - tabBarItemSize.width) / 8
