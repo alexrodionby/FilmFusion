@@ -13,6 +13,8 @@
 		2C6D90D529DC6D6500FC34BB /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2C6D90D429DC6D6500FC34BB /* RealmSwift */; };
 		2C6D90D829DC6D7200FC34BB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2C6D90D729DC6D7200FC34BB /* SnapKit */; };
 		2C6D90DB29DC6EF400FC34BB /* FilmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6D90DA29DC6EF400FC34BB /* FilmTableViewCell.swift */; };
+		2CD86D3229DF421B00163A55 /* RealmFilm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD86D3129DF421B00163A55 /* RealmFilm.swift */; };
+		2CD86D3429DF422900163A55 /* RealmDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD86D3329DF422900163A55 /* RealmDataBase.swift */; };
 		5635EE6429DD5705007CFC3D /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5635EE6329DD5705007CFC3D /* DetailVC.swift */; };
 		5635EE6729DD58B2007CFC3D /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5635EE6629DD58B2007CFC3D /* DetailView.swift */; };
 		5635EE6B29DD5993007CFC3D /* UIImageView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5635EE6A29DD5993007CFC3D /* UIImageView + Extensions.swift */; };
@@ -44,6 +46,8 @@
 		A1CD8EF229DCA9FE00E7F6B6 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A1CD8EDD29DCA2D100E7F6B6 /* FirebaseStorage */; };
 		A1CD8EF329DCA9FE00E7F6B6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A1CD8EE029DCA88000E7F6B6 /* Kingfisher */; };
 		A1CD8EF529DCAAC600E7F6B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1CD8EF429DCAAC600E7F6B6 /* GoogleService-Info.plist */; };
+		FCBE50C029DEA1B4002AD6CA /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE50BF29DEA1B4002AD6CA /* FilterView.swift */; };
+		FCBE50C229DEA4D9002AD6CA /* FilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE50C129DEA4D9002AD6CA /* FilterVC.swift */; };
 		FCEE143829DCA084006B6109 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE143729DCA084006B6109 /* SearchView.swift */; };
 		FCEE143B29DCA0A4006B6109 /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE143929DCA0A4006B6109 /* UIView + Extensions.swift */; };
 		FCEE143C29DCA0A4006B6109 /* UITextField + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE143A29DCA0A4006B6109 /* UITextField + Extensions.swift */; };
@@ -54,6 +58,8 @@
 		24B15CC229DC062000CBC959 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		24B15CC729DC28F700CBC959 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		2C6D90DA29DC6EF400FC34BB /* FilmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmTableViewCell.swift; sourceTree = "<group>"; };
+		2CD86D3129DF421B00163A55 /* RealmFilm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFilm.swift; sourceTree = "<group>"; };
+		2CD86D3329DF422900163A55 /* RealmDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataBase.swift; sourceTree = "<group>"; };
 		5635EE6329DD5705007CFC3D /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		5635EE6629DD58B2007CFC3D /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		5635EE6A29DD5993007CFC3D /* UIImageView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extensions.swift"; sourceTree = "<group>"; };
@@ -78,6 +84,8 @@
 		A17C9DDB29D84F8800413796 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A17C9DDD29D84F8800413796 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1CD8EF429DCAAC600E7F6B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FCBE50BF29DEA1B4002AD6CA /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		FCBE50C129DEA4D9002AD6CA /* FilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterVC.swift; sourceTree = "<group>"; };
 		FCEE143729DCA084006B6109 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		FCEE143929DCA0A4006B6109 /* UIView + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
 		FCEE143A29DCA0A4006B6109 /* UITextField + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField + Extensions.swift"; sourceTree = "<group>"; };
@@ -130,6 +138,15 @@
 				2C6D90DA29DC6EF400FC34BB /* FilmTableViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		2CD86D3029DF420700163A55 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				2CD86D3129DF421B00163A55 /* RealmFilm.swift */,
+				2CD86D3329DF422900163A55 /* RealmDataBase.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 		5635EE6129DD5675007CFC3D /* Detail */ = {
@@ -203,6 +220,7 @@
 		A1613D2229D89D78000EB1B5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				2CD86D3029DF420700163A55 /* Realm */,
 				A1613D2529D89E24000EB1B5 /* Extensions */,
 				A1613D2629D8A046000EB1B5 /* Resources.swift */,
 			);
@@ -308,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				A1613D2C29DA25EF000EB1B5 /* SearchVC.swift */,
+				FCBE50C129DEA4D9002AD6CA /* FilterVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -316,6 +335,7 @@
 			isa = PBXGroup;
 			children = (
 				FCEE143729DCA084006B6109 /* SearchView.swift */,
+				FCBE50BF29DEA1B4002AD6CA /* FilterView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -421,14 +441,18 @@
 			files = (
 				24B15CC829DC28F700CBC959 /* Movie.swift in Sources */,
 				A17C9DD029D84F8700413796 /* AppDelegate.swift in Sources */,
+				2CD86D3429DF422900163A55 /* RealmDataBase.swift in Sources */,
 				A1613D2A29DA1BA5000EB1B5 /* HomeVC.swift in Sources */,
 				5635EE6429DD5705007CFC3D /* DetailVC.swift in Sources */,
+				FCBE50C029DEA1B4002AD6CA /* FilterView.swift in Sources */,
+				2CD86D3229DF421B00163A55 /* RealmFilm.swift in Sources */,
 				FCEE143C29DCA0A4006B6109 /* UITextField + Extensions.swift in Sources */,
 				A13034DB29DC7E1100703F86 /* UIColor + Extensions.swift in Sources */,
 				FCEE143F29DCA0CF006B6109 /* CategoryCell.swift in Sources */,
 				A16D1D5929DDE971001E7123 /* AuthenticationManager.swift in Sources */,
 				A1613D2729D8A046000EB1B5 /* Resources.swift in Sources */,
 				563B45FE29DD8FEB00BE065D /* StoryLineView.swift in Sources */,
+				FCBE50C229DEA4D9002AD6CA /* FilterVC.swift in Sources */,
 				A1613D3329DA2633000EB1B5 /* FavoritesViewController.swift in Sources */,
 				A16D1D5729DDDB45001E7123 /* LoginWithEmailVC.swift in Sources */,
 				2C6D90DB29DC6EF400FC34BB /* FilmTableViewCell.swift in Sources */,
