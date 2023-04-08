@@ -7,7 +7,7 @@
 
 import UIKit
 
-@available(iOS 15.0, *)
+//@available(iOS 15.0, *)
 class TabBarVC: UITabBarController {
     
     enum Tabs: Int {

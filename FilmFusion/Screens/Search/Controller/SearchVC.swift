@@ -7,7 +7,7 @@
 
 import UIKit
 
-@available(iOS 15.0, *)
+//@available(iOS 15.0, *)
 class SearchVC: UIViewController {
     
     private var movies: [Movie] = [Movie]()
@@ -20,7 +20,7 @@ class SearchVC: UIViewController {
         searchView.categoryCollectionView.delegate = self
         searchView.searchTableView.dataSource = self
         searchView.searchTableView.delegate = self
-        searchView.filterSearchButton.addTarget(self, action: #selector(filterButtonPressed), for: .touchUpInside)
+    //    searchView.filterSearchButton.addTarget(self, action: #selector(filterButtonPressed), for: .touchUpInside)
         setupView()
         fetchDiscoverMovies()
         title = "Search"
@@ -45,19 +45,19 @@ class SearchVC: UIViewController {
         bluredView.frame = UIScreen.main.bounds
         view.addSubview(bluredView)
     }
-    @objc func filterButtonPressed() {
-        print("filter")
-        let viewControllerToPresent = FilterVC()
-          if let sheet = viewControllerToPresent.sheetPresentationController {
-              sheet.detents = [.medium(), .large()]
-              sheet.largestUndimmedDetentIdentifier = .medium
-              sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-              sheet.prefersEdgeAttachedInCompactHeight = true
-              sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
-          }
-        prepareBackgroundView()
-          present(viewControllerToPresent, animated: true, completion: nil)
-      }
+//    @objc func filterButtonPressed() {
+//        print("filter")
+//        let viewControllerToPresent = FilterVC()
+//          if let sheet = viewControllerToPresent.sheetPresentationController {
+//              sheet.detents = [.medium(), .large()]
+//              sheet.largestUndimmedDetentIdentifier = .medium
+//              sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+//              sheet.prefersEdgeAttachedInCompactHeight = true
+//              sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
+//          }
+//        prepareBackgroundView()
+//          present(viewControllerToPresent, animated: true, completion: nil)
+//      }
     
     private func setupView() {
         view.addSubview(searchView)

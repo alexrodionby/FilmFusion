@@ -14,8 +14,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-        let tabBarController = AuthVC()
-      //  let tabBarController = TabBarVC()
+        // let tabBarController = AuthVC()
+        let tabBarController = TabBarVC()
         //let DetailVC = UINavigationController(rootViewController: DetailVC())
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)

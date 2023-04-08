@@ -7,7 +7,7 @@
 
 import UIKit
 
-@available(iOS 15.0, *)
+//@available(iOS 15.0, *)
 final class SearchView: UIView {
     var categories = ["all", "side dish", "dessert", "appetizer", "salad", "bread", "breakfast", "soup", "beverage", "sauce", "marinade", "fingerfood", "snack", "drink"]
     var isSelected = true
@@ -84,18 +84,18 @@ final class SearchView: UIView {
         print("clear")
     }
 //    @available(iOS 15.0, *)
-    @objc func filterButtonPressed() {
-        print("filter")
-        let viewControllerToPresent = FilterVC()
-          if let sheet = viewControllerToPresent.sheetPresentationController {
-              sheet.detents = [.medium(), .large()]
-              sheet.largestUndimmedDetentIdentifier = .medium
-              sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-              sheet.prefersEdgeAttachedInCompactHeight = true
-              sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
-          }
-//          present(viewControllerToPresent, animated: true, completion: nil)
-      }
+//    @objc func filterButtonPressed() {
+//        print("filter")
+//        let viewControllerToPresent = FilterVC()
+//          if let sheet = viewControllerToPresent.sheetPresentationController {
+//              sheet.detents = [.medium(), .large()]
+//              sheet.largestUndimmedDetentIdentifier = .medium
+//              sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+//              sheet.prefersEdgeAttachedInCompactHeight = true
+//              sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
+//          }
+////          present(viewControllerToPresent, animated: true, completion: nil)
+//      }
         
     
     override init(frame: CGRect) {
