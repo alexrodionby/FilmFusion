@@ -25,6 +25,7 @@ class DescriptionView: UIView {
         textView.backgroundColor = .clear
         textView.isSelectable = false
         textView.isScrollEnabled = false
+        textView.textContainer.heightTracksTextView = true
         textView.isEditable = false
         textView.font = UIFont.PlusJakartaSansMedium14()
         textView.textColor = UIColor(named: "customMiniLabel")
