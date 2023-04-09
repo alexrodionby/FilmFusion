@@ -10,9 +10,9 @@ import UIKit
 //@available(iOS 15.0, *)
 class SearchVC: UIViewController {
     
-    private var movies: [Movie] = [Movie]()
+    var movies: [Movie] = [Movie]()
     
-    private let searchView = SearchView()
+    let searchView = SearchView()
     var selectedCategory = "all"
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,21 @@ class SearchVC: UIViewController {
         fetchDiscoverMovies()
         title = "Search"
         view.backgroundColor = UIColor(named: "customBackground")
-
+    }
+    
+    private func fetchDiscoverMovies() {
+        APICaller.shared.getDiscoverMovies() { [weak self] results in
+            switch results {
+                case.success(let movies):
+                    print("1st request")
+                    self?.movies = movies
+                    DispatchQueue.main.async {
+                        self?.searchView.searchTableView.reloadData()
+                    }
+                case.failure(let error):
+                    print(error)
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,21 +89,6 @@ class SearchVC: UIViewController {
         cell.layer.cornerRadius = 15
         cell.layer.borderColor = borderColor.cgColor
         cell.layer.borderWidth = 1
-    }
-    
-    private func fetchDiscoverMovies() {
-    print("pereshlo")
-        APICaller.shared.getDiscoverMovies { [weak self] res in
-            switch res {
-                case.success(let movies):
-                    self?.movies = movies
-                    DispatchQueue.main.async {
-                        self?.searchView.searchTableView.reloadData()
-                    }
-                case .failure(let error):
-                    print(error.localizedDescription)
-            }
-        }
     }
 }
 
@@ -167,9 +166,24 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FilmTableViewCell.identifier, for: indexPath) as! FilmTableViewCell
         
+        let id = movies[indexPath.row].id
         let movies = movies[indexPath.row]
-        let model = MovieViewModel(titleName: movies.original_name ?? movies.original_title ?? "Unknown title name", posterURL: movies.poster_path ?? "", releaseDate: movies.release_date ?? "", voteAverage: movies.vote_average, voteCount: movies.vote_count)
+        APICaller.shared.getDetailsMovies(id: id) { [weak self] results in
+            switch results {
+                case.success(let movies):
+                    print("Работает")
+                    guard let self = self else { return }
+                    DispatchQueue.main.async {
+                        self.searchView.searchTableView.reloadData()
+                    }
+                case.failure(let error):
+                    print("Запрос не работает\(error)")
+            }
+        }
+        
+        let model = MovieViewModel(id: id, titleName: movies.original_title ?? movies.original_name ?? "", posterURL: movies.poster_path ?? "", releaseDate: movies.release_date ?? "", voteAverage: movies.vote_average, voteCount: movies.vote_count, runtime: movies.runtime ?? movies.id)
         cell.configure(with: model)
+        print(model)
         return cell
     }
     
@@ -178,7 +192,11 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("SELECTED!!!!!!!")
+        let vc = DetailVC()
+        let movies = movies[indexPath.row]
+        let model = DetailMovieViewModel(id: movies.id, titleName: movies.title , posterURL: movies.poster_path ?? "", releaseDate: movies.release_date ?? "", voteAverage: movies.vote_average, overview: movies.overview ?? "" , runtime: movies.runtime ?? 0)
+        vc.configure(with: model)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import Kingfisher
 
 class DetailVC: UIViewController {
     
     let additionalInfo = DetailView()
     let storyLine = StoryLineView()
-    
+    private var movies: [Movie] = [Movie]()
     
     private let posterImage: UIImageView = {
        let imageView = UIImageView()
@@ -82,7 +83,15 @@ class DetailVC: UIViewController {
         view.addSubview(storyLine)
     }
     
-    
+    func configure(with model: DetailMovieViewModel) {
+        
+        guard let url = URL(string: "https://image.tmdb.org/t/p/w500\(model.posterURL)") else { return }
+        posterImage.kf.setImage(with: url)
+        posterTitle.text = model.titleName
+        additionalInfo.dataReleaseLabel.text = model.releaseDate
+        storyLine.storyLineTextView.text = model.overview
+        additionalInfo.runTimeLabel.text = "\(model.runtime)"
+    }
 }
 
 extension DetailVC {
