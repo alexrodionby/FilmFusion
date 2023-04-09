@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		24B15CC329DC062000CBC959 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B15CC229DC062000CBC959 /* APICaller.swift */; };
 		24B15CC829DC28F700CBC959 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B15CC729DC28F700CBC959 /* Movie.swift */; };
+		24DA551A29E2D6C000CD70DD /* YoutubeSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DA551929E2D6C000CD70DD /* YoutubeSearchResponse.swift */; };
 		2C6D90D329DC6D6500FC34BB /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 2C6D90D229DC6D6500FC34BB /* Realm */; };
 		2C6D90D529DC6D6500FC34BB /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2C6D90D429DC6D6500FC34BB /* RealmSwift */; };
 		2C6D90D829DC6D7200FC34BB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2C6D90D729DC6D7200FC34BB /* SnapKit */; };
@@ -57,6 +58,7 @@
 /* Begin PBXFileReference section */
 		24B15CC229DC062000CBC959 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		24B15CC729DC28F700CBC959 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		24DA551929E2D6C000CD70DD /* YoutubeSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeSearchResponse.swift; sourceTree = "<group>"; };
 		2C6D90DA29DC6EF400FC34BB /* FilmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmTableViewCell.swift; sourceTree = "<group>"; };
 		2CD86D3129DF421B00163A55 /* RealmFilm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFilm.swift; sourceTree = "<group>"; };
 		2CD86D3329DF422900163A55 /* RealmDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataBase.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				24B15CC729DC28F700CBC959 /* Movie.swift */,
+				24DA551929E2D6C000CD70DD /* YoutubeSearchResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 				FCEE143829DCA084006B6109 /* SearchView.swift in Sources */,
 				A1613D3829DA2861000EB1B5 /* UIImage + Extensions.swift in Sources */,
 				A1613D3029DA260E000EB1B5 /* RecentVideoVC.swift in Sources */,
+				24DA551A29E2D6C000CD70DD /* YoutubeSearchResponse.swift in Sources */,
 				A1613D3629DA2652000EB1B5 /* SettingsVC.swift in Sources */,
 				A1613D3C29DB748E000EB1B5 /* TabBarVC.swift in Sources */,
 			);

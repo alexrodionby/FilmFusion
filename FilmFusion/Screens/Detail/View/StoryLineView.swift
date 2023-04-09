@@ -16,7 +16,7 @@ class StoryLineView: UIView {
     return label
     }()
     
-    private let storyLineTextView: UITextView = {
+    let storyLineTextView: UITextView = {
         let textView = UITextView()
         textView.backgroundColor = .clear
         textView.isSelectable = false

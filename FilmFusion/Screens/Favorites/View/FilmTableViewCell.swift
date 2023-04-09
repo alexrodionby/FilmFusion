@@ -163,7 +163,7 @@ final class FilmTableViewCell: UITableViewCell {
         calendarLabel.text = model.releaseDate
         raitingLabel.text = "\(model.voteAverage)"
         reviewsLabel.text = "\(model.voteCount)"
-//        timeLabel.text = "\(model.runtime)"
+        timeLabel.text = "\(model.runtime)"
         isSaved = RealmDataBase.shared.isItemSaved(withName: titleLabel.text!)
     }
     
