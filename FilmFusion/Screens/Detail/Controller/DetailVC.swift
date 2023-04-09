@@ -115,6 +115,18 @@ class DetailVC: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        addNewRecentWatch()
+    }
+    
+    func addNewRecentWatch() {
+        let newFilm = RealmFilm()
+        newFilm.titleName = posterTitle.text!
+        newFilm.image = (posterImage.image?.pngData()!)!
+        newFilm.releaseDate = additionalInfo.dataReleaseLabel.text!
+        RealmDataBase.shared.write(recentWatchRealmFilm: newFilm)
+    }
+    
     private func setupNavBar() {
         navigationController?.isToolbarHidden = false
         navigationItem.leftBarButtonItem =  UIBarButtonItem(image: UIImage(systemName: "arrow.left.circle"), style: .done, target: self, action: #selector(tappedbackButton))

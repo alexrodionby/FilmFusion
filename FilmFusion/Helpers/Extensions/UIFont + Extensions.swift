@@ -4,7 +4,6 @@
 //
 //  Created by Sergey Azimov on 06.04.2023.
 //
-
 import UIKit
 
 extension UIFont {

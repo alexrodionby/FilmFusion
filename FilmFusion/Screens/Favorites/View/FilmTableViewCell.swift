@@ -148,7 +148,7 @@ final class FilmTableViewCell: UITableViewCell {
             newFilm.releaseDate = calendarLabel.text!
             newFilm.voteAverage = Double(raitingLabel.text!)!
             newFilm.voteCount = Int(reviewsLabel.text!)!
-            RealmDataBase.shared.write(realmFilm: newFilm)
+            RealmDataBase.shared.write(favoritesRealmFilm: newFilm)
         }
         delegate?.didTapFavoriteButton(onCell: self)
         isSaved.toggle()
@@ -163,7 +163,7 @@ final class FilmTableViewCell: UITableViewCell {
         calendarLabel.text = model.releaseDate
         raitingLabel.text = "\(model.voteAverage)"
         reviewsLabel.text = "\(model.voteCount)"
-        timeLabel.text = "\(model.runtime)"
+//        timeLabel.text = "\(model.runtime)"
         isSaved = RealmDataBase.shared.isItemSaved(withName: titleLabel.text!)
     }
     
@@ -173,7 +173,8 @@ final class FilmTableViewCell: UITableViewCell {
         calendarLabel.text = film.releaseDate
         raitingLabel.text = "\(film.voteAverage)"
         reviewsLabel.text = "\(film.voteCount)"
-        isSaved = true
+//        isSaved = true
+        isSaved = RealmDataBase.shared.isItemSaved(withName: film.titleName)
     }
     
     required init?(coder: NSCoder) {

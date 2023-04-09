@@ -11,7 +11,7 @@ import RealmSwift
 
 final class FavoritesViewController: UIViewController {
     
-    private var films: Results<RealmFilm>!
+    private var films: List<RealmFilm>!
    
     private let tableView: UITableView = {
         let view = UITableView()
@@ -22,7 +22,7 @@ final class FavoritesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        films = RealmDataBase.shared.read()
+        films = RealmDataBase.shared.readFavorites()
     }
     
     override func viewWillAppear(_ animated: Bool) {
