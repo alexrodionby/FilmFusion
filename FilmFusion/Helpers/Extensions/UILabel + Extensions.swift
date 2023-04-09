@@ -12,6 +12,8 @@ extension UILabel {
     convenience init(text: String) {
         self.init()
         self.text = text
+        self.textColor = UIColor(named: "customLabelName")
+        self.font = UIFont.PoppinsMedium12()
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     
