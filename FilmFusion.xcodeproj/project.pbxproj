@@ -16,11 +16,14 @@
 		2C6D90DB29DC6EF400FC34BB /* FilmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6D90DA29DC6EF400FC34BB /* FilmTableViewCell.swift */; };
 		2CD86D3229DF421B00163A55 /* RealmFilm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD86D3129DF421B00163A55 /* RealmFilm.swift */; };
 		2CD86D3429DF422900163A55 /* RealmDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD86D3329DF422900163A55 /* RealmDataBase.swift */; };
-		5635EE6429DD5705007CFC3D /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5635EE6329DD5705007CFC3D /* DetailVC.swift */; };
-		5635EE6729DD58B2007CFC3D /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5635EE6629DD58B2007CFC3D /* DetailView.swift */; };
+		562DECF029E316CA00F9E7D9 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562DECEB29E316C900F9E7D9 /* DetailVC.swift */; };
+		562DECF129E316CA00F9E7D9 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562DECEC29E316C900F9E7D9 /* DescriptionView.swift */; };
+		562DECF229E316CA00F9E7D9 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562DECED29E316C900F9E7D9 /* DetailView.swift */; };
+		562DECF329E316CA00F9E7D9 /* CrewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562DECEE29E316CA00F9E7D9 /* CrewCollectionViewCell.swift */; };
+		562DECF429E316CA00F9E7D9 /* CastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562DECEF29E316CA00F9E7D9 /* CastView.swift */; };
+		562DECF629E316D300F9E7D9 /* UIFont + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562DECF529E316D300F9E7D9 /* UIFont + Extensions.swift */; };
 		5635EE6B29DD5993007CFC3D /* UIImageView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5635EE6A29DD5993007CFC3D /* UIImageView + Extensions.swift */; };
 		5635EE6D29DD5A22007CFC3D /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5635EE6C29DD5A22007CFC3D /* UILabel + Extensions.swift */; };
-		563B45FE29DD8FEB00BE065D /* StoryLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563B45FD29DD8FEB00BE065D /* StoryLineView.swift */; };
 		A13034DB29DC7E1100703F86 /* UIColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13034DA29DC7E1100703F86 /* UIColor + Extensions.swift */; };
 		A1613D2729D8A046000EB1B5 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1613D2629D8A046000EB1B5 /* Resources.swift */; };
 		A1613D2A29DA1BA5000EB1B5 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1613D2929DA1BA5000EB1B5 /* HomeVC.swift */; };
@@ -62,11 +65,14 @@
 		2C6D90DA29DC6EF400FC34BB /* FilmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmTableViewCell.swift; sourceTree = "<group>"; };
 		2CD86D3129DF421B00163A55 /* RealmFilm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFilm.swift; sourceTree = "<group>"; };
 		2CD86D3329DF422900163A55 /* RealmDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataBase.swift; sourceTree = "<group>"; };
-		5635EE6329DD5705007CFC3D /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
-		5635EE6629DD58B2007CFC3D /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		562DECEB29E316C900F9E7D9 /* DetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
+		562DECEC29E316C900F9E7D9 /* DescriptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
+		562DECED29E316C900F9E7D9 /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		562DECEE29E316CA00F9E7D9 /* CrewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrewCollectionViewCell.swift; sourceTree = "<group>"; };
+		562DECEF29E316CA00F9E7D9 /* CastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CastView.swift; sourceTree = "<group>"; };
+		562DECF529E316D300F9E7D9 /* UIFont + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIFont + Extensions.swift"; path = "../../../../../UIFont + Extensions.swift"; sourceTree = "<group>"; };
 		5635EE6A29DD5993007CFC3D /* UIImageView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extensions.swift"; sourceTree = "<group>"; };
 		5635EE6C29DD5A22007CFC3D /* UILabel + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
-		563B45FD29DD8FEB00BE065D /* StoryLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryLineView.swift; sourceTree = "<group>"; };
 		A13034DA29DC7E1100703F86 /* UIColor + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor + Extensions.swift"; sourceTree = "<group>"; };
 		A1613D2629D8A046000EB1B5 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		A1613D2929DA1BA5000EB1B5 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -164,7 +170,11 @@
 		5635EE6229DD56E9007CFC3D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5635EE6329DD5705007CFC3D /* DetailVC.swift */,
+				562DECEF29E316CA00F9E7D9 /* CastView.swift */,
+				562DECEE29E316CA00F9E7D9 /* CrewCollectionViewCell.swift */,
+				562DECEC29E316C900F9E7D9 /* DescriptionView.swift */,
+				562DECEB29E316C900F9E7D9 /* DetailVC.swift */,
+				562DECED29E316C900F9E7D9 /* DetailView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -172,8 +182,6 @@
 		5635EE6529DD5898007CFC3D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5635EE6629DD58B2007CFC3D /* DetailView.swift */,
-				563B45FD29DD8FEB00BE065D /* StoryLineView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -237,6 +245,7 @@
 				FCEE143929DCA0A4006B6109 /* UIView + Extensions.swift */,
 				A13034DA29DC7E1100703F86 /* UIColor + Extensions.swift */,
 				A1613D3729DA2861000EB1B5 /* UIImage + Extensions.swift */,
+				562DECF529E316D300F9E7D9 /* UIFont + Extensions.swift */,
 				5635EE6A29DD5993007CFC3D /* UIImageView + Extensions.swift */,
 				5635EE6C29DD5A22007CFC3D /* UILabel + Extensions.swift */,
 			);
@@ -446,28 +455,31 @@
 				A17C9DD029D84F8700413796 /* AppDelegate.swift in Sources */,
 				2CD86D3429DF422900163A55 /* RealmDataBase.swift in Sources */,
 				A1613D2A29DA1BA5000EB1B5 /* HomeVC.swift in Sources */,
-				5635EE6429DD5705007CFC3D /* DetailVC.swift in Sources */,
+				562DECF629E316D300F9E7D9 /* UIFont + Extensions.swift in Sources */,
 				FCBE50C029DEA1B4002AD6CA /* FilterView.swift in Sources */,
 				2CD86D3229DF421B00163A55 /* RealmFilm.swift in Sources */,
 				FCEE143C29DCA0A4006B6109 /* UITextField + Extensions.swift in Sources */,
 				A13034DB29DC7E1100703F86 /* UIColor + Extensions.swift in Sources */,
 				FCEE143F29DCA0CF006B6109 /* CategoryCell.swift in Sources */,
+				562DECF129E316CA00F9E7D9 /* DescriptionView.swift in Sources */,
 				A16D1D5929DDE971001E7123 /* AuthenticationManager.swift in Sources */,
 				A1613D2729D8A046000EB1B5 /* Resources.swift in Sources */,
-				563B45FE29DD8FEB00BE065D /* StoryLineView.swift in Sources */,
 				FCBE50C229DEA4D9002AD6CA /* FilterVC.swift in Sources */,
 				A1613D3329DA2633000EB1B5 /* FavoritesViewController.swift in Sources */,
 				A16D1D5729DDDB45001E7123 /* LoginWithEmailVC.swift in Sources */,
+				562DECF329E316CA00F9E7D9 /* CrewCollectionViewCell.swift in Sources */,
 				2C6D90DB29DC6EF400FC34BB /* FilmTableViewCell.swift in Sources */,
+				562DECF229E316CA00F9E7D9 /* DetailView.swift in Sources */,
 				A17C9DD229D84F8700413796 /* SceneDelegate.swift in Sources */,
 				5635EE6B29DD5993007CFC3D /* UIImageView + Extensions.swift in Sources */,
+				562DECF029E316CA00F9E7D9 /* DetailVC.swift in Sources */,
 				5635EE6D29DD5A22007CFC3D /* UILabel + Extensions.swift in Sources */,
 				FCEE143B29DCA0A4006B6109 /* UIView + Extensions.swift in Sources */,
 				24B15CC329DC062000CBC959 /* APICaller.swift in Sources */,
-				5635EE6729DD58B2007CFC3D /* DetailView.swift in Sources */,
 				A1613D2D29DA25EF000EB1B5 /* SearchVC.swift in Sources */,
 				A16D1D5529DDCEFA001E7123 /* AuthVC.swift in Sources */,
 				FCEE143829DCA084006B6109 /* SearchView.swift in Sources */,
+				562DECF429E316CA00F9E7D9 /* CastView.swift in Sources */,
 				A1613D3829DA2861000EB1B5 /* UIImage + Extensions.swift in Sources */,
 				A1613D3029DA260E000EB1B5 /* RecentVideoVC.swift in Sources */,
 				24DA551A29E2D6C000CD70DD /* YoutubeSearchResponse.swift in Sources */,
@@ -609,9 +621,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z262BFFWGC;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FilmFusion/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FilmFusion;
@@ -628,6 +640,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = alexrodionby.FilmFusion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -642,9 +655,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z262BFFWGC;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FilmFusion/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FilmFusion;
@@ -661,6 +674,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = alexrodionby.FilmFusion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
