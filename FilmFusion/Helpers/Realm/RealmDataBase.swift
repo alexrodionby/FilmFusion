@@ -63,8 +63,27 @@ class RealmDataBase {
         return items
     }
     
-    func readRecentWatch() -> List<RealmFilm> {
-        items = realmUser.recentWatchFilms
+    func readRecentWatch(category: String) -> List<RealmFilm> {
+        if category == "All" {
+            items = realmUser.recentWatchFilms
+        } else {
+            let results = realmUser.recentWatchFilms.where {
+                $0.category == category
+            }
+//            for i in results {
+//                items.append(i)
+//            }
+            items = results.list
+            //items = realmUser.recentWatchFilms.filter({ $0.category == category })
+            
+            
+            //items = items.append(
+            
+//            where({ film in
+//                film.category == category
+//            })
+        }
+        
         return items
     }
     

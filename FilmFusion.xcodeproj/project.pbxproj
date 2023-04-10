@@ -13,6 +13,7 @@
 		2C376B0929E3398A0047A764 /* RealmUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C376B0829E3398A0047A764 /* RealmUser.swift */; };
 		2C376B0C29E33A220047A764 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C376B0B29E33A220047A764 /* CategoryCollectionViewCell.swift */; };
 		2C376B0E29E33AC10047A764 /* UIFont + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C376B0D29E33AC10047A764 /* UIFont + Extensions.swift */; };
+		2C376B1029E42C820047A764 /* Ext + Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C376B0F29E42C820047A764 /* Ext + Realm.swift */; };
 		2C6D90D329DC6D6500FC34BB /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 2C6D90D229DC6D6500FC34BB /* Realm */; };
 		2C6D90D529DC6D6500FC34BB /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2C6D90D429DC6D6500FC34BB /* RealmSwift */; };
 		2C6D90D829DC6D7200FC34BB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2C6D90D729DC6D7200FC34BB /* SnapKit */; };
@@ -70,6 +71,7 @@
 		2C376B0829E3398A0047A764 /* RealmUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUser.swift; sourceTree = "<group>"; };
 		2C376B0B29E33A220047A764 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		2C376B0D29E33AC10047A764 /* UIFont + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extensions.swift"; sourceTree = "<group>"; };
+		2C376B0F29E42C820047A764 /* Ext + Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext + Realm.swift"; sourceTree = "<group>"; };
 		2C6D90DA29DC6EF400FC34BB /* FilmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmTableViewCell.swift; sourceTree = "<group>"; };
 		2CD86D3129DF421B00163A55 /* RealmFilm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFilm.swift; sourceTree = "<group>"; };
 		2CD86D3329DF422900163A55 /* RealmDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataBase.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				2CD86D3129DF421B00163A55 /* RealmFilm.swift */,
 				2CD86D3329DF422900163A55 /* RealmDataBase.swift */,
 				2C376B0829E3398A0047A764 /* RealmUser.swift */,
+				2C376B0F29E42C820047A764 /* Ext + Realm.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 				A1613D3329DA2633000EB1B5 /* FavoritesViewController.swift in Sources */,
 				A16D1D5729DDDB45001E7123 /* LoginWithEmailVC.swift in Sources */,
 				562DECF329E316CA00F9E7D9 /* CrewCollectionViewCell.swift in Sources */,
+				2C376B1029E42C820047A764 /* Ext + Realm.swift in Sources */,
 				2C6D90DB29DC6EF400FC34BB /* FilmTableViewCell.swift in Sources */,
 				562DECF229E316CA00F9E7D9 /* DetailView.swift in Sources */,
 				A17C9DD229D84F8700413796 /* SceneDelegate.swift in Sources */,

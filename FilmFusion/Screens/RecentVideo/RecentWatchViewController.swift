@@ -18,8 +18,7 @@ class RecentWatchViewController: UIViewController {
         flowLayout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.showsHorizontalScrollIndicator = false
-        //collectionView.backgroundColor = UIColor(named: "customBackground")
-        collectionView.backgroundColor = .yellow
+        collectionView.backgroundColor = UIColor(named: "customBackground")
         return collectionView
     }()
     
@@ -32,7 +31,6 @@ class RecentWatchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //setupCollectionView()
         tableView.delegate = self
         tableView.dataSource = self
         collectionView.delegate = self
@@ -40,7 +38,8 @@ class RecentWatchViewController: UIViewController {
         tableView.register(FilmTableViewCell.self, forCellReuseIdentifier: "FilmTableViewCell")
         collectionView.register(CatgoryCell.self, forCellWithReuseIdentifier: "Category Cell")
         setupView()
-        recentWatchFilms = RealmDataBase.shared.readRecentWatch()
+        recentWatchFilms = RealmDataBase.shared.readRecentWatch(category: "All")
+        collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: [])
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,18 +55,12 @@ class RecentWatchViewController: UIViewController {
         setupConstraints()
     }
     
-//    private func setupCollectionView() {
-//        let collectionViewLayout = UICollectionViewFlowLayout()
-//        collectionViewLayout.scrollDirection = .horizontal
-//        collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
-//    }
-    
     private func setupConstraints() {
         
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(90)
+            make.height.equalTo(40)
         }
         
         tableView.snp.makeConstraints { make in
@@ -120,17 +113,25 @@ extension RecentWatchViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("тынули по ячейке номер \(indexPath.item)")
+        
+        switch indexPath.item {
+        case 0: recentWatchFilms = RealmDataBase.shared.readRecentWatch(category: "All")
+        case 1: recentWatchFilms = RealmDataBase.shared.readRecentWatch(category: "Action")
+        default: print("EEEEEERRRRRRROOOOOORRRRR!!!!")
+        }
+        tableView.reloadData()
     }
 }
 
 //MARK: - UICollectionViewDataSource
 extension RecentWatchViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        dataArray.count
+        return dataArray.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Category Cell", for: indexPath) as? CatgoryCell else { return UICollectionViewCell() }
+        
         cell.configure(text: dataArray[indexPath.item])
         return cell
     }
@@ -143,12 +144,12 @@ extension RecentWatchViewController: UICollectionViewDataSource {
 extension RecentWatchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let text = dataArray[indexPath.item]
-        let cellWidth = text.size(withAttributes:[.font: UIFont.systemFont(ofSize: 17.0)]).width + 40.0
-        return CGSize(width: cellWidth, height: 50)
+        let cellWidth = text.size(withAttributes:[.font: UIFont.systemFont(ofSize: 14.0)]).width + 50.0
+        return CGSize(width: cellWidth, height: 40)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
     }
 }
 
