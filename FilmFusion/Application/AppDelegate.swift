@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("пользователь не залогинился")
         } else {
             print("пользователь залогинился")
+            print("UID пользователя", authUser?.uid ?? "Нет правильного UID")
         }
         return true
     }
