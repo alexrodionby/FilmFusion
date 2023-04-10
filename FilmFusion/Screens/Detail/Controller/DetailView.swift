@@ -27,11 +27,11 @@ class DetailView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-        
     }
     
+    //MARK: - setup Views
     private func setupViews() {
-       addSubview(dataReleaseImage)
+        addSubview(dataReleaseImage)
         addSubview(dataReleaseLabel)
         
         addSubview(runTimeImage)
@@ -43,29 +43,28 @@ class DetailView: UIView {
     
 }
 
+//MARK: - setConstraints
 extension DetailView {
-    
     private func setConstraints() {
         NSLayoutConstraint.activate([
             dataReleaseImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             dataReleaseImage.centerYAnchor.constraint(equalTo: centerYAnchor),
             dataReleaseImage.widthAnchor.constraint(equalToConstant: 15),
             dataReleaseImage.heightAnchor.constraint(equalToConstant: 15),
+        
+            dataReleaseLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            dataReleaseLabel.leadingAnchor.constraint(equalTo: dataReleaseImage.trailingAnchor, constant: 5),
             
-        dataReleaseLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-        dataReleaseLabel.leadingAnchor.constraint(equalTo: dataReleaseImage.trailingAnchor, constant: 5),
-           
-            
-        runTimeImage.leadingAnchor.constraint(equalTo: dataReleaseLabel.trailingAnchor, constant: 25),
-        runTimeImage.centerYAnchor.constraint(equalTo: centerYAnchor),
+            runTimeImage.leadingAnchor.constraint(equalTo: dataReleaseLabel.trailingAnchor, constant: 25),
+            runTimeImage.centerYAnchor.constraint(equalTo: centerYAnchor),
             runTimeImage.widthAnchor.constraint(equalToConstant: 15),
             runTimeImage.heightAnchor.constraint(equalToConstant: 15),
             
-        runTimeLabel.leadingAnchor.constraint(equalTo: runTimeImage.trailingAnchor, constant: 5),
-        runTimeLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-        
-        genreImage.leadingAnchor.constraint(equalTo: runTimeLabel.trailingAnchor, constant: 25),
-        genreImage.centerYAnchor.constraint(equalTo: centerYAnchor),
+            runTimeLabel.leadingAnchor.constraint(equalTo: runTimeImage.trailingAnchor, constant: 5),
+            runTimeLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            
+            genreImage.leadingAnchor.constraint(equalTo: runTimeLabel.trailingAnchor, constant: 25),
+            genreImage.centerYAnchor.constraint(equalTo: centerYAnchor),
             genreImage.widthAnchor.constraint(equalToConstant: 15),
             genreImage.heightAnchor.constraint(equalToConstant: 15),
             

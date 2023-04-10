@@ -28,7 +28,7 @@ class TabBarVC: UITabBarController {
     private func generateTabBar() {
         viewControllers = [
             generateVC(viewController: SearchVC(), title: Resources.Strings.TabBar.search, image: Resources.Images.TabBar.searchOff, selectedImage: Resources.Images.TabBar.searchOn, tag: Tabs.search.rawValue),
-            generateVC(viewController: RecentVideoVC(), title: Resources.Strings.TabBar.recentWatch, image: Resources.Images.TabBar.recentWatchOff, selectedImage: Resources.Images.TabBar.recentWatchOn, tag: Tabs.recentWatch.rawValue),
+            generateVC(viewController: RecentWatchViewController(), title: Resources.Strings.TabBar.recentWatch, image: Resources.Images.TabBar.recentWatchOff, selectedImage: Resources.Images.TabBar.recentWatchOn, tag: Tabs.recentWatch.rawValue),
             generateVC(viewController: HomeVC(), title: Resources.Strings.TabBar.home, image: Resources.Images.TabBar.homeOff, selectedImage: Resources.Images.TabBar.homeOn, tag: Tabs.home.rawValue),
             generateVC(viewController: FavoritesViewController(), title: Resources.Strings.TabBar.favorites, image: Resources.Images.TabBar.favoritesOff, selectedImage: Resources.Images.TabBar.favoritesOn, tag: Tabs.favorites.rawValue),
             generateVC(viewController: SettingsVC(), title: Resources.Strings.TabBar.settings, image: Resources.Images.TabBar.settingsOff, selectedImage: Resources.Images.TabBar.settingsOn, tag: Tabs.search.rawValue)
