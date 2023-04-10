@@ -26,6 +26,7 @@ class RecentWatchViewController: UIViewController {
     
     private let tableView: UITableView = {
         let view = UITableView()
+        view.separatorStyle = .none
         return view
     }()
 
