@@ -163,7 +163,7 @@ class CreateUserViaEmailVC: UIViewController {
         emailUser = emailTextField.text ?? "None"
         passwordUser = passwordTextField.text ?? "None"
         passwordUserConfirm = confirmPasswordTextField.text ?? "None"
-        print("Логин, пароль, контроль =", emailUser, passwordUser, passwordUserConfirm)
+        print("Логин, пароль, контрольный =", emailUser, passwordUser, passwordUserConfirm)
         guard emailUser != "None", passwordUser != "None", passwordUser == passwordUserConfirm else {
             print("Не ввели логин или пароль, или пароли не совпадают")
             return
@@ -172,11 +172,11 @@ class CreateUserViaEmailVC: UIViewController {
             let returnedUserData = try await AuthenticationManager.shared.createUser(email: emailUser, password: passwordUser)
             //            RealmDataBase.shared.createUserWith(uuid: returnedUserData.uid, firstName: <#T##String#>, lastName: <#T##String#>, email: <#T##String#>, dateOfBirth: <#T##String#>, gender: <#T##String#>, profilePicture: <#T##Data#>)
             print("Удалось создать пользователя")
-            print(returnedUserData)
-            let user = RealmUser()
-            user.uuid = returnedUserData.uid
-            //RealmDataBase.shared.write(realmUser: user)
-            
+            let vc = TabBarVC()
+            if let window = UIApplication.shared.windows.first {
+                window.rootViewController = vc
+                window.makeKeyAndVisible()
+            }
         } catch {
             print("Ошибка создания пользователя", error.localizedDescription)
         }
