@@ -20,8 +20,8 @@ class RealmDataBase {
     
     private lazy var authUserUid = {
         do {
-            let tempUser = try AuthenticationManager.shared.getAuthenticatedUser()
-            return tempUser.uid
+            let user = try AuthenticationManager.shared.getAuthenticatedUser()
+            return user.uid
         } catch {
             print("Ошибка при аутентификации")
             return "0"
