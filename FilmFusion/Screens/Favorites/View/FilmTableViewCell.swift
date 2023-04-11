@@ -140,7 +140,7 @@ final class FilmTableViewCell: UITableViewCell {
     @objc func favButtonTapped() {
         print("Кнопка избранное нажалась")
         if isSaved {
-            RealmDataBase.shared.deleteitem(withName: titleLabel.text!)
+            RealmDataBase.shared.deleteItem(withName: titleLabel.text!)
         } else {
             let newFilm = RealmFilm()
             newFilm.titleName = titleLabel.text!
