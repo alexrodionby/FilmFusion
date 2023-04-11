@@ -88,7 +88,6 @@ class AuthVC: UIViewController {
     @objc func loginTapped() {
         print("Нажали Login")
         let vc = SignInViaEmailVC()
-      //  navigationController?.pushViewController(vc, animated: true)
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
     }
@@ -96,8 +95,9 @@ class AuthVC: UIViewController {
     @objc private func createUser() {
         print("Нажали Continue with Email")
         let vc = CreateUserViaEmailVC()
+        vc.modalPresentationStyle = .fullScreen
         vc.emailUser = emailTextField.text ?? ""
-        navigationController?.pushViewController(vc, animated: true)
+        self.present(vc, animated: true)
     }
     
     override func viewDidLoad() {

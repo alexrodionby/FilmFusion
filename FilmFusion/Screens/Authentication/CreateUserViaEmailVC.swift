@@ -130,7 +130,7 @@ class CreateUserViaEmailVC: UIViewController {
         textField.rightView?.tintColor = UIColor(named: "customMiniLabel")
         return textField
     }()
-
+    
     private let signUpButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(named: "customTabBarIconSelectedTint")
@@ -170,12 +170,12 @@ class CreateUserViaEmailVC: UIViewController {
         }
         do {
             let returnedUserData = try await AuthenticationManager.shared.createUser(email: emailUser, password: passwordUser)
-//            RealmDataBase.shared.createUserWith(uuid: returnedUserData.uid, firstName: <#T##String#>, lastName: <#T##String#>, email: <#T##String#>, dateOfBirth: <#T##String#>, gender: <#T##String#>, profilePicture: <#T##Data#>)
+            //            RealmDataBase.shared.createUserWith(uuid: returnedUserData.uid, firstName: <#T##String#>, lastName: <#T##String#>, email: <#T##String#>, dateOfBirth: <#T##String#>, gender: <#T##String#>, profilePicture: <#T##Data#>)
             print("Удалось создать пользователя")
             print(returnedUserData)
             let user = RealmUser()
             user.uuid = returnedUserData.uid
-            RealmDataBase.shared.write(realmUser: user)
+            //RealmDataBase.shared.write(realmUser: user)
             
         } catch {
             print("Ошибка создания пользователя", error.localizedDescription)
@@ -212,9 +212,9 @@ class CreateUserViaEmailVC: UIViewController {
         navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrow.backward.circle.fill")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "arrow.backward.circle.fill")
         navigationController?.navigationBar.tintColor = UIColor(named: "customMiniLabel")
-
+        
     }
-
+    
     private func setupView() {
         view.backgroundColor = UIColor(named: "customBackground")
         view.addSubview(completAccountLabel)
@@ -322,12 +322,8 @@ class CreateUserViaEmailVC: UIViewController {
             $0.leading.equalToSuperview().offset(width + 90)
             $0.height.equalTo(size.height)
         }
-        
-        
     }
-
 }
-
 
 extension CreateUserViaEmailVC: UITextFieldDelegate  {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
