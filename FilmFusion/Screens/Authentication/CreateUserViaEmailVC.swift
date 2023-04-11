@@ -170,6 +170,7 @@ class CreateUserViaEmailVC: UIViewController {
         }
         do {
             let returnedUserData = try await AuthenticationManager.shared.createUser(email: emailUser, password: passwordUser)
+//            RealmDataBase.shared.createUserWith(uuid: returnedUserData.uid, firstName: <#T##String#>, lastName: <#T##String#>, email: <#T##String#>, dateOfBirth: <#T##String#>, gender: <#T##String#>, profilePicture: <#T##Data#>)
             print("Удалось создать пользователя")
             print(returnedUserData)
         } catch {

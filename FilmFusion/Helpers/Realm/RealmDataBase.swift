@@ -17,7 +17,7 @@ class RealmDataBase {
     private let realm = try! Realm()
     private var items: List<RealmFilm>!
 //    private var users: Results<RealmUser>!
-    private lazy var realmUser: RealmUser = loadUsers()
+    private lazy var realmUser: RealmUser = loadCurrentUserWith(email: "vasya.pupkin@mail.ru")
     
     // MARK: - Initialization
     
@@ -52,11 +52,28 @@ class RealmDataBase {
         
 //    }
     
-    func write(realmUser: RealmUser) {
+    
+    func createUserWith(uuid: String, firstName: String, lastName: String, email: String, dateOfBirth: String, gender: String, profilePicture: Data) {
+        let newUser = RealmUser()
+        newUser.uuid = uuid
+        newUser.firstname = firstName
+        newUser.lastName = lastName
+        newUser.email = email
+        newUser.dateOfBirth = dateOfBirth
+        newUser.gender = gender
+        newUser.profilePicture = profilePicture
+        
         try! realm.write({
-            self.realm.add(realmUser)
+            self.realm.add(newUser)
+            print("ЮЗЕР ДОБАВЛЕН ЕПТЫ БЛЯ")
         })
     }
+    
+//    func write(realmUser: RealmUser) {
+//        try! realm.write({
+//            self.realm.add(realmUser)
+//        })
+//    }
     
     func readFavorites() -> List<RealmFilm> {
         items = realmUser.favoritesFilms
@@ -92,7 +109,7 @@ class RealmDataBase {
 //        return items
 //    }
     
-    func deleteitem(withName titleName: String) {
+    func deleteItem(withName titleName: String) {
         
         try! realm.write {
             let film = realmUser.favoritesFilms.where {
@@ -111,8 +128,17 @@ class RealmDataBase {
         
     }
     
-    func loadUsers() -> RealmUser { //Results<RealmUser>
-        let users = realm.objects(RealmUser.self)
-        return users.last!
+//    func loadUsers() -> RealmUser { //Results<RealmUser>
+//        let users = realm.objects(RealmUser.self)
+//        return users.last!
+//    }
+    
+    func loadCurrentUserWith(email: String) -> RealmUser {
+        let users = realm.objects(RealmUser.self).where {
+            $0.email == email
+        }
+        let currentUser = users.first ?? RealmUser()
+        
+        return currentUser
     }
 }
