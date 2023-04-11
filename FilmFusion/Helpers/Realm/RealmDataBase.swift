@@ -17,7 +17,7 @@ class RealmDataBase {
     private let realm = try! Realm()
     private var items: List<RealmFilm>!
 //    private var users: Results<RealmUser>!
-    private lazy var realmUser: RealmUser = loadCurrentUserWith(email: "vasya.pupkin@mail.ru")
+    lazy var currentRealmUser: RealmUser = loadCurrentUserWith(email: "vasya.pupkin@mail.ru") // вот сюда добавить загрузку текущего юзера из firebase и взять у него email, если Саша email не хранит, то брать uuid и чуть чуть подправить реализацию метода, спросить у Саши какой метод я должен использовать для этого
     
     // MARK: - Initialization
     
@@ -28,20 +28,20 @@ class RealmDataBase {
     // MARK: - Public methods
     
     func isItemSaved(withName titleName: String) -> Bool {
-        let itemsWithName = realmUser.favoritesFilms.filter("titleName = %@", titleName)
+        let itemsWithName = currentRealmUser.favoritesFilms.filter("titleName = %@", titleName)
         return !itemsWithName.isEmpty
     }
     
     func write(favoritesRealmFilm: RealmFilm) {
         try! realm.write({
-            realmUser.favoritesFilms.append(favoritesRealmFilm)
+            currentRealmUser.favoritesFilms.append(favoritesRealmFilm)
         })
         
     }
     
     func write(recentWatchRealmFilm: RealmFilm) {
         try! realm.write({
-            realmUser.recentWatchFilms.append(recentWatchRealmFilm)
+            currentRealmUser.recentWatchFilms.append(recentWatchRealmFilm)
         })
     }
     
@@ -53,19 +53,28 @@ class RealmDataBase {
 //    }
     
     
-    func createUserWith(uuid: String, firstName: String, lastName: String, email: String, dateOfBirth: String, gender: String, profilePicture: Data) {
+    func createUserWith(uuid: String, firstName: String, lastName: String, email: String) {
         let newUser = RealmUser()
         newUser.uuid = uuid
         newUser.firstname = firstName
         newUser.lastName = lastName
         newUser.email = email
-        newUser.dateOfBirth = dateOfBirth
-        newUser.gender = gender
-        newUser.profilePicture = profilePicture
         
         try! realm.write({
             self.realm.add(newUser)
-            print("ЮЗЕР ДОБАВЛЕН ЕПТЫ БЛЯ")
+        })
+    }
+    
+    func updateUserDataWith(uuid: String, firstName: String, lastName: String, email: String, dateOfBirth: String, gender: String, profilePicture: Data) {
+        
+        try! realm.write({
+            currentRealmUser.uuid = uuid
+            currentRealmUser.firstname = firstName
+            currentRealmUser.lastName = lastName
+            currentRealmUser.email = email
+            currentRealmUser.dateOfBirth = dateOfBirth
+            currentRealmUser.gender = gender
+            currentRealmUser.profilePicture = profilePicture
         })
     }
     
@@ -76,15 +85,15 @@ class RealmDataBase {
 //    }
     
     func readFavorites() -> List<RealmFilm> {
-        items = realmUser.favoritesFilms
+        items = currentRealmUser.favoritesFilms
         return items
     }
     
     func readRecentWatch(category: String) -> List<RealmFilm> {
         if category == "All" {
-            items = realmUser.recentWatchFilms
+            items = currentRealmUser.recentWatchFilms
         } else {
-            let results = realmUser.recentWatchFilms.where {
+            let results = currentRealmUser.recentWatchFilms.where {
                 $0.category == category
             }
 //            for i in results {
@@ -112,7 +121,7 @@ class RealmDataBase {
     func deleteItem(withName titleName: String) {
         
         try! realm.write {
-            let film = realmUser.favoritesFilms.where {
+            let film = currentRealmUser.favoritesFilms.where {
                 $0.titleName == titleName
             }
             realm.delete(film)
@@ -122,7 +131,7 @@ class RealmDataBase {
     func deleteAll() {
         
         try! realm.write {
-            let allFilms = realmUser.favoritesFilms
+            let allFilms = currentRealmUser.favoritesFilms
             realm.delete(allFilms)
         }
         
@@ -133,7 +142,7 @@ class RealmDataBase {
 //        return users.last!
 //    }
     
-    func loadCurrentUserWith(email: String) -> RealmUser {
+    private func loadCurrentUserWith(email: String) -> RealmUser {
         let users = realm.objects(RealmUser.self).where {
             $0.email == email
         }

@@ -13,7 +13,7 @@ class HomeVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-//        RealmDataBase.shared.createUserWith(uuid: "111222333", firstName: "Вася", lastName: "Пупкин", email: "vasya.pupkin@mail.ru", dateOfBirth: "10.10.2010", gender: "Male", profilePicture: Data())
+//        RealmDataBase.shared.createUserWith(uuid: "111222333", firstName: "Вася", lastName: "Пупкин", email: "vasya.pupkin@mail.ru")
     }
 
 
