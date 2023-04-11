@@ -201,7 +201,8 @@ class CreateUserViaEmailVC: UIViewController {
     @objc func loginTapped() {
         print("Нажали Login")
         let vc = SignInViaEmailVC()
-        navigationController?.pushViewController(vc, animated: true)
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
     }
     
     override func viewDidLoad() {
