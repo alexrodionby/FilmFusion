@@ -22,7 +22,8 @@ class TabBarVC: UITabBarController {
         super.viewDidLoad()
         generateTabBar()
         setTabBarAppearance()
-        self.navigationController?.navigationBar.isHidden = true
+  //      self.navigationController?.navigationBar.isHidden = true
+       
     }
     
     private func generateTabBar() {
@@ -35,7 +36,7 @@ class TabBarVC: UITabBarController {
         ]
     }
     
-    private func generateVC(viewController: UIViewController, title: String, image: UIImage?, selectedImage: UIImage?, tag: Int) -> UINavigationController {
+    private func generateVC(viewController: UIViewController, title: String, image: UIImage?, selectedImage: UIImage?, tag: Int) -> UIViewController {
         viewController.tabBarItem.image = image?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
         viewController.tabBarItem.selectedImage = selectedImage?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
         viewController.tabBarItem.tag = tag

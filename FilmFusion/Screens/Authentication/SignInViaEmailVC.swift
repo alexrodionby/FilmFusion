@@ -106,6 +106,11 @@ class SignInViaEmailVC: UIViewController {
             let returnedUserData = try await AuthenticationManager.shared.signInUser(email: emailUser, password: passwordUser)
             print("Удалось войти под логином и паролем")
             print(returnedUserData)
+            let vc = TabBarVC()
+            if let window = UIApplication.shared.windows.first {
+                window.rootViewController = vc
+                window.makeKeyAndVisible()
+            }
         } catch {
             print("Ошибка входа по логину и паролю", error.localizedDescription)
         }

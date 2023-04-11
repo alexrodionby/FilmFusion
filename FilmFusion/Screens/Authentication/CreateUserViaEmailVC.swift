@@ -172,6 +172,10 @@ class CreateUserViaEmailVC: UIViewController {
             let returnedUserData = try await AuthenticationManager.shared.createUser(email: emailUser, password: passwordUser)
             print("Удалось создать пользователя")
             print(returnedUserData)
+            let user = RealmUser()
+            user.uuid = returnedUserData.uid
+            RealmDataBase.shared.write(realmUser: user)
+            
         } catch {
             print("Ошибка создания пользователя", error.localizedDescription)
         }

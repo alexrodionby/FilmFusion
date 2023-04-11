@@ -113,6 +113,7 @@ class RealmDataBase {
     
     func loadUsers() -> RealmUser { //Results<RealmUser>
         let users = realm.objects(RealmUser.self)
-        return users.last!
+        print("Из реалма ответ", users.first?.uuid ?? "Ничего не вернулось UID")
+        return users.first!
     }
 }
