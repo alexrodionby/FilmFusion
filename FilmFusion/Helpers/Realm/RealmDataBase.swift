@@ -71,15 +71,26 @@ class RealmDataBase {
     }
     
     func createUserWith(uuid: String, firstName: String, lastName: String, email: String) {
-        let newUser = RealmUser()
-        newUser.uuid = uuid
-        newUser.firstname = firstName
-        newUser.lastName = lastName
-        newUser.email = email
         
-        try! realm.write({
-            self.realm.add(newUser)
-        })
+        let users = realm.objects(RealmUser.self).where {
+            $0.uuid == uuid
+        }
+        
+        if let currentUser = users.first {
+            return
+        } else {
+            let newUser = RealmUser()
+            newUser.uuid = uuid
+            newUser.firstname = firstName
+            newUser.lastName = lastName
+            newUser.email = email
+            
+            try! realm.write({
+                self.realm.add(newUser)
+            })
+        }
+        
+        
     }
     
     func updateUserDataWith(uuid: String, firstName: String, lastName: String, email: String, dateOfBirth: String, gender: String, profilePicture: Data) {
@@ -110,7 +121,7 @@ class RealmDataBase {
             items = results.list
         }
         
-        return items
+        return items //приложуха падает, если ничего нет в items
     }
     
     func deleteItem(withName titleName: String) {
