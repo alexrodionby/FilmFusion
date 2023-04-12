@@ -149,7 +149,8 @@ class DetailVC: UIViewController {
    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+        navigationController?.isToolbarHidden = true
+        tabBarController?.tabBar.isHidden = false
     }
     
     private func setupNavBar() {
@@ -247,7 +248,6 @@ extension DetailVC {
             //toolBarWatchButton.heightAnchor.constraint(equalToConstant: 100),
             
             navigationController!.toolbar.heightAnchor.constraint(equalToConstant: 100),
-            
             watchButton.topAnchor.constraint(equalTo: navigationController!.toolbar.topAnchor, constant: 5),
             watchButton.centerXAnchor.constraint(equalTo: navigationController!.toolbar.centerXAnchor),
             
