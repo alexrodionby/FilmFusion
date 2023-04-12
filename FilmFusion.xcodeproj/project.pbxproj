@@ -20,6 +20,9 @@
 		2C6D90DB29DC6EF400FC34BB /* FilmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6D90DA29DC6EF400FC34BB /* FilmTableViewCell.swift */; };
 		2CD86D3229DF421B00163A55 /* RealmFilm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD86D3129DF421B00163A55 /* RealmFilm.swift */; };
 		2CD86D3429DF422900163A55 /* RealmDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD86D3329DF422900163A55 /* RealmDataBase.swift */; };
+		4D09A83729E69C1300B7F6C6 /* LaunchAnimationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D09A83629E69C1300B7F6C6 /* LaunchAnimationVC.swift */; };
+		4D09A83A29E69CEA00B7F6C6 /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D09A83929E69CEA00B7F6C6 /* OnboardingVC.swift */; };
+		4D09A83D29E69D4300B7F6C6 /* CHIPageControl in Frameworks */ = {isa = PBXBuildFile; productRef = 4D09A83C29E69D4300B7F6C6 /* CHIPageControl */; };
 		562DECF029E316CA00F9E7D9 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562DECEB29E316C900F9E7D9 /* DetailVC.swift */; };
 		562DECF129E316CA00F9E7D9 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562DECEC29E316C900F9E7D9 /* DescriptionView.swift */; };
 		562DECF229E316CA00F9E7D9 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562DECED29E316C900F9E7D9 /* DetailView.swift */; };
@@ -76,6 +79,8 @@
 		2C6D90DA29DC6EF400FC34BB /* FilmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmTableViewCell.swift; sourceTree = "<group>"; };
 		2CD86D3129DF421B00163A55 /* RealmFilm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFilm.swift; sourceTree = "<group>"; };
 		2CD86D3329DF422900163A55 /* RealmDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataBase.swift; sourceTree = "<group>"; };
+		4D09A83629E69C1300B7F6C6 /* LaunchAnimationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAnimationVC.swift; sourceTree = "<group>"; };
+		4D09A83929E69CEA00B7F6C6 /* OnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVC.swift; sourceTree = "<group>"; };
 		562DECEB29E316C900F9E7D9 /* DetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		562DECEC29E316C900F9E7D9 /* DescriptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
 		562DECED29E316C900F9E7D9 /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
@@ -120,6 +125,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1CD8EF329DCA9FE00E7F6B6 /* Kingfisher in Frameworks */,
+				4D09A83D29E69D4300B7F6C6 /* CHIPageControl in Frameworks */,
 				A1CD8EF229DCA9FE00E7F6B6 /* FirebaseStorage in Frameworks */,
 				A1CD8EF129DCA9FE00E7F6B6 /* FirebaseFirestoreSwift in Frameworks */,
 				A1CD8EF029DCA9FE00E7F6B6 /* FirebaseFirestore in Frameworks */,
@@ -182,6 +188,14 @@
 			path = Realm;
 			sourceTree = "<group>";
 		};
+		4D09A83829E69CAE00B7F6C6 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				4D09A83929E69CEA00B7F6C6 /* OnboardingVC.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		562DECFF29E31FB100F9E7D9 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +248,7 @@
 			children = (
 				562DECFF29E31FB100F9E7D9 /* Fonts */,
 				A17C9DDA29D84F8800413796 /* LaunchScreen.storyboard */,
+				4D09A83629E69C1300B7F6C6 /* LaunchAnimationVC.swift */,
 				A17C9DD829D84F8800413796 /* Assets.xcassets */,
 				A17C9DDD29D84F8800413796 /* Info.plist */,
 			);
@@ -243,6 +258,7 @@
 		A1613D1D29D86179000EB1B5 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				4D09A83829E69CAE00B7F6C6 /* Onboarding */,
 				A16D1D5329DDCE53001E7123 /* Authentication */,
 				5635EE6129DD5675007CFC3D /* Detail */,
 				A1613D1F29D89BE1000EB1B5 /* TabBar */,
@@ -426,6 +442,7 @@
 				A1CD8EDB29DCA2D100E7F6B6 /* FirebaseFirestoreSwift */,
 				A1CD8EDD29DCA2D100E7F6B6 /* FirebaseStorage */,
 				A1CD8EE029DCA88000E7F6B6 /* Kingfisher */,
+				4D09A83C29E69D4300B7F6C6 /* CHIPageControl */,
 			);
 			productName = FilmFusion;
 			productReference = A17C9DCC29D84F8700413796 /* FilmFusion.app */;
@@ -460,6 +477,7 @@
 				2C6D90D629DC6D7200FC34BB /* XCRemoteSwiftPackageReference "SnapKit" */,
 				A1CD8ECE29DCA2D100E7F6B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				A1CD8EDF29DCA88000E7F6B6 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				4D09A83B29E69D4300B7F6C6 /* XCRemoteSwiftPackageReference "CHIPageControl" */,
 			);
 			productRefGroup = A17C9DCD29D84F8700413796 /* Products */;
 			projectDirPath = "";
@@ -507,9 +525,10 @@
 				A16D1D5929DDE971001E7123 /* AuthenticationManager.swift in Sources */,
 				A1505A6D29E2A87700FD90A2 /* CreateUserViaEmailVC.swift in Sources */,
 				A1613D2729D8A046000EB1B5 /* Resources.swift in Sources */,
+				4D09A83729E69C1300B7F6C6 /* LaunchAnimationVC.swift in Sources */,
+				4D09A83A29E69CEA00B7F6C6 /* OnboardingVC.swift in Sources */,
 				FCBE50C229DEA4D9002AD6CA /* FilterVC.swift in Sources */,
 				A1613D3329DA2633000EB1B5 /* FavoritesViewController.swift in Sources */,
-				A16D1D5729DDDB45001E7123 /* LoginWithEmailVC.swift in Sources */,
 				562DECF329E316CA00F9E7D9 /* CrewCollectionViewCell.swift in Sources */,
 				2C376B1029E42C820047A764 /* Ext + Realm.swift in Sources */,
 				2C6D90DB29DC6EF400FC34BB /* FilmTableViewCell.swift in Sources */,
@@ -769,6 +788,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		4D09A83B29E69D4300B7F6C6 /* XCRemoteSwiftPackageReference "CHIPageControl" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ChiliLabs/CHIPageControl.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.1;
+			};
+		};
 		A1CD8ECE29DCA2D100E7F6B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -802,6 +829,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2C6D90D629DC6D7200FC34BB /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		4D09A83C29E69D4300B7F6C6 /* CHIPageControl */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4D09A83B29E69D4300B7F6C6 /* XCRemoteSwiftPackageReference "CHIPageControl" */;
+			productName = CHIPageControl;
 		};
 		A1CD8ECF29DCA2D100E7F6B6 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;

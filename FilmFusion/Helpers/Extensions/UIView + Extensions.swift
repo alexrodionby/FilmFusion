@@ -13,5 +13,11 @@ extension UIView {
             addSubview($0)
         })
     }
+    
+    func rotate(angle: CGFloat) {
+        let radians = angle
+        let rotation = CGAffineTransformRotate(self.transform, radians);
+        self.transform = rotation
+    }
 }
 

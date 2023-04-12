@@ -25,4 +25,7 @@ extension UIColor {
         }
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
     }
+    
+    static var mainPink = UIColor(red: 232/255, green: 68/255, blue: 133/255, alpha: 1)
+    static var mainPurple = UIColor(red: 81/255, green: 78/255, blue: 182/255, alpha: 1)
 }
