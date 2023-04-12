@@ -75,10 +75,10 @@ final class LaunchAnimationVC: UIViewController {
         let timer = Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(delayedAction), userInfo: nil, repeats: false)
     }
     @objc func delayedAction() {
-//        let vc = OBScreen()
-//        vc.modalPresentationStyle = .overFullScreen
-//        vc.modalTransitionStyle = .crossDissolve
-//        self.present(vc, animated: true)
+        let vc = AuthVC()
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        self.present(vc, animated: true)
     }
 }
 
