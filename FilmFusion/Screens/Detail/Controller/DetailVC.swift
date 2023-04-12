@@ -135,6 +135,17 @@ class DetailVC: UIViewController {
         setupNavBar()
         addStarsToRateView()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let newFilm = RealmFilm()
+        newFilm.titleName = posterTitle.text!
+        newFilm.image = (posterImage.image?.pngData()!)!
+        newFilm.releaseDate = additionalInfo.dataReleaseLabel.text!
+        newFilm.voteAverage = voteAverage
+        newFilm.voteCount = voteCount
+        RealmDataBase.shared.write(recentWatchRealmFilm: newFilm)
+    }
    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
