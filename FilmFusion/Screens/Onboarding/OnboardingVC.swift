@@ -26,9 +26,9 @@ final class OBScreen: UIViewController {
     private let descriptionTextView: UITextView = {
         
         let textView = UITextView()
-        let attributedText = NSMutableAttributedString(string: "Text1", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 24)])
+        let attributedText = NSMutableAttributedString(string: "Ready for a tsunami of content?", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 24)])
         
-        attributedText.append(NSAttributedString(string: "\n\nAre you ready for loads and loads for fun? \nDon't wait any longer! \nWe hope to see you in our event today.", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13), NSAttributedString.Key.foregroundColor: UIColor(named: "AdditionalTextColor") as Any]))
+        attributedText.append(NSAttributedString(string: "\n\nLots of favorite movies with trailers and reviews! \nTop ratings and recommendations! \nHere we go!", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13), NSAttributedString.Key.foregroundColor: UIColor(named: "AdditionalTextColor") as Any]))
         
         textView.attributedText = attributedText
         
@@ -148,8 +148,8 @@ final class OBScreen: UIViewController {
     private func textForTextView() {
         
         if index == 0 {
-            let at = NSMutableAttributedString(string: "Text2", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 24)])
-            at.append(NSAttributedString(string: "\n\nDon't wait any longer! \nAre you ready for loads and loads for fun? \nWe hope to see you in our event today.", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13), NSAttributedString.Key.foregroundColor: UIColor(named: "AdditionalTextColor") as Any]))
+            let at = NSMutableAttributedString(string: "Search for movies", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 24)])
+            at.append(NSAttributedString(string: "\n\nAll movies in one app! \nAre you ready to watch the best movies and shows? \nHigh rated await.", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13), NSAttributedString.Key.foregroundColor: UIColor(named: "AdditionalTextColor") as Any]))
             self.descriptionTextView.attributedText = at
             self.descriptionTextView.textAlignment = .center
             self.descriptionTextView.textColor = UIColor(named: "LabelTextColor")
@@ -158,8 +158,8 @@ final class OBScreen: UIViewController {
             index += 1
             print("INDEX \(index)")
         } else {
-            let at2 = NSMutableAttributedString(string: "Text3", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 24)])
-            at2.append(NSAttributedString(string: "\n\nAre you ready for loads and loads for fun? \nWe hope to see you in our event today. \nDon't wait any longer!", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13), NSAttributedString.Key.foregroundColor: UIColor(named: "AdditionalTextColor") as Any]))
+            let at2 = NSMutableAttributedString(string: "The best is always at hand", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 24)])
+            at2.append(NSAttributedString(string: "\n\nAdd your favorite movies to favorites! \nEasy to search and find what you want to watch. \nDon't wait any longer!", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13), NSAttributedString.Key.foregroundColor: UIColor(named: "AdditionalTextColor") as Any]))
             self.descriptionTextView.attributedText = at2
             self.descriptionTextView.textAlignment = .center
             self.descriptionTextView.textColor = UIColor(named: "LabelTextColor")
@@ -179,6 +179,12 @@ final class OBScreen: UIViewController {
         UIView.animate(withDuration: 1.2) {
             self.profileImageView.alpha = 1
             self.textForTextView()
+        }
+        if progressIndex >= 3 {
+            let vc = TabBarVC()
+            vc.modalPresentationStyle = .overFullScreen
+            vc.modalTransitionStyle = .crossDissolve
+            self.present(vc, animated: true)
         }
     }
     

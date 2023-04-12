@@ -152,7 +152,7 @@ class CreateUserViaEmailVC: UIViewController {
         Task {
             do {
                 try await signUp()
-                navigationController?.pushViewController(TabBarVC(), animated: true)
+                navigationController?.pushViewController(OBScreen(), animated: true)
             } catch {
                 print("Ошибка", error.localizedDescription)
             }
@@ -173,7 +173,7 @@ class CreateUserViaEmailVC: UIViewController {
 
             RealmDataBase.shared.createUserWith(uuid: returnedUserData.uid, firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, email: emailTextField.text!)
             print("Удалось создать пользователя")
-            let vc = TabBarVC()
+            let vc = OBScreen()
             if let window = UIApplication.shared.windows.first {
                 window.rootViewController = vc
                 window.makeKeyAndVisible()
