@@ -18,9 +18,10 @@ class RealmDataBase {
     private var items: List<RealmFilm>!
 //    private var users: Results<RealmUser>!
     
-    private lazy var authUserUid = {
+    private var authUserUid = {
         do {
             let user = try AuthenticationManager.shared.getAuthenticatedUser()
+            print(user.email)
             return user.uid
         } catch {
             print("Ошибка при аутентификации")
@@ -28,7 +29,9 @@ class RealmDataBase {
         }
     }
         
-    lazy var currentRealmUser: RealmUser = loadCurrentUserWith(uuid: authUserUid())
+    var currentRealmUser: RealmUser {
+        return loadCurrentUserWith(uuid: authUserUid())
+    }
     
     // MARK: - Initialization
     
