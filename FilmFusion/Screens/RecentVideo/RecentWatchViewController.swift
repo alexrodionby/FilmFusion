@@ -32,6 +32,7 @@ class RecentWatchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Recent Watch"
         tableView.delegate = self
         tableView.dataSource = self
         collectionView.delegate = self

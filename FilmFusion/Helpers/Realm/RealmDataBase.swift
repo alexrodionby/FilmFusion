@@ -28,7 +28,7 @@ class RealmDataBase {
             return "0"
         }
     }
-        
+            
     var currentRealmUser: RealmUser {
         return loadCurrentUserWith(uuid: authUserUid())
     }
