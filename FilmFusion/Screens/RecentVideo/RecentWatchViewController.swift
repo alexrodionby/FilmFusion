@@ -60,7 +60,7 @@ class RecentWatchViewController: UIViewController {
     private func setupConstraints() {
         
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(40)
         }

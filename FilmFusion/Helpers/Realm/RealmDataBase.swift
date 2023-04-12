@@ -54,9 +54,20 @@ class RealmDataBase {
     }
     
     func write(recentWatchRealmFilm: RealmFilm) {
-        try! realm.write({
-            currentRealmUser.recentWatchFilms.append(recentWatchRealmFilm)
-        })
+        
+        let film = currentRealmUser.recentWatchFilms.where {
+            $0.titleName == recentWatchRealmFilm.titleName
+        }
+        if film.isEmpty {
+            try! realm.write({
+                currentRealmUser.recentWatchFilms.append(recentWatchRealmFilm)
+            })
+        } else {
+            try! realm.write({
+                realm.delete(film)
+                currentRealmUser.recentWatchFilms.append(recentWatchRealmFilm)
+            })
+        }
     }
     
     func createUserWith(uuid: String, firstName: String, lastName: String, email: String) {
