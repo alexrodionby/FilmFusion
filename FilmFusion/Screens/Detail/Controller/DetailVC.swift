@@ -122,6 +122,14 @@ class DetailVC: UIViewController {
         isSaved = RealmDataBase.shared.isItemSaved(withName: posterTitle.text!)
     }
     
+    func addNewRecentWatch() {
+        let newFilm = RealmFilm()
+        newFilm.titleName = posterTitle.text!
+        newFilm.image = (posterImage.image?.pngData()!)!
+        newFilm.releaseDate = additionalInfo.dataReleaseLabel.text!
+        RealmDataBase.shared.write(realmFilm: newFilm)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isToolbarHidden = false
@@ -135,10 +143,15 @@ class DetailVC: UIViewController {
         setupNavBar()
         addStarsToRateView()
     }
+   
+    
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-       
+        addNewRecentWatch()
     }
+    
+  
+    
+
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
