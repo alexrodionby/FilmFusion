@@ -192,11 +192,14 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = DetailVC()
+        
         let movies = movies[indexPath.row]
-        let model = DetailMovieViewModel(id: movies.id, titleName: movies.title , posterURL: movies.poster_path ?? "", releaseDate: movies.release_date ?? "", voteAverage: movies.vote_average, overview: movies.overview ?? "" , runtime: movies.runtime ?? 0)
-       // vc.configure(with: model)
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
+        DispatchQueue.main.async {
+            let vc = DetailVC()
+            let model = DetailMovieViewModel(id: movies.id, titleName: movies.title , posterURL: movies.poster_path ?? "", releaseDate: movies.release_date ?? "", voteAverage: movies.vote_average, overview: movies.overview ?? "" , runtime: movies.runtime ?? 0)
+            vc.configure(with: model)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        }
 }
 
