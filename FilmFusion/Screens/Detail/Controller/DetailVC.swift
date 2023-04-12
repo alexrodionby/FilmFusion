@@ -149,10 +149,6 @@ class DetailVC: UIViewController {
         addNewRecentWatch()
     }
     
-  
-    
-
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
