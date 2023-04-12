@@ -6,13 +6,15 @@
 //
 
 import UIKit
-
+import Kingfisher
 class DetailVC: UIViewController {
     
     let additionalInfo = DetailView()
-    let DiscrpitionView = DescriptionView()
+    let discrpitionView = DescriptionView()
     let castCollection = CastView()
     
+    var voteCount = 0
+    var voteAverage: Double = 0.0
     private lazy var scrollView:UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.frame = view.bounds
@@ -34,7 +36,6 @@ class DetailVC: UIViewController {
     
     private let posterImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .green
         imageView.image = UIImage(named: "luck-movie")
         imageView.layer.cornerRadius = 20
         imageView.layer.masksToBounds = true
@@ -70,6 +71,13 @@ class DetailVC: UIViewController {
         return label
     }()
     
+//    private let toolBarWatchButton: UIView = {
+//       let view = UIView()
+//        view.backgroundColor = .systemGroupedBackground
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        return view
+//    }()
+    
     private let watchButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(named: "customTabBarIconSelectedTint")
@@ -103,8 +111,22 @@ class DetailVC: UIViewController {
         }
     }
     
+    func configure(with model: DetailMovieViewModel ) {
+        guard let url = URL(string: "https://image.tmdb.org/t/p/w500\(model.posterURL)") else { return }
+        posterImage.kf.setImage(with: url)
+        posterTitle.text = model.titleName
+        additionalInfo.dataReleaseLabel.text = model.releaseDate
+        additionalInfo.runTimeLabel.text = "\(model.runtime)"
+        discrpitionView.storyLineTextView.text = model.overview
+        voteAverage = model.voteAverage
+        isSaved = RealmDataBase.shared.isItemSaved(withName: posterTitle.text!)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.isToolbarHidden = false
+        tabBarController?.tabBar.isHidden = true
+        tabBarController?.navigationController?.isNavigationBarHidden = true
         watchButton.addTarget(self, action: #selector(watchButtonTapped), for: .touchUpInside)
         view.backgroundColor = UIColor(named: "customBackground")
         title = "Movie Detail"
@@ -112,41 +134,64 @@ class DetailVC: UIViewController {
         setConstraints()
         setupNavBar()
         addStarsToRateView()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+       
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         
     }
     
     private func setupNavBar() {
-        navigationController?.isToolbarHidden = false
-        navigationItem.leftBarButtonItem =  UIBarButtonItem(image: UIImage(systemName: "arrow.left.circle"), style: .done, target: self, action: #selector(tappedbackButton))
+        
+        navigationItem.leftBarButtonItem =  UIBarButtonItem(image: UIImage(systemName: "arrow.left.circle"), style: .plain, target: self, action: #selector(tappedbackButton))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .done, target: self, action: #selector(tappedHeart))
         navigationController?.navigationBar.tintColor = UIColor(named: "customMiniIcon")
         
     }
     
     @objc  func watchButtonTapped(_ sender: UIButton) {
-        print("watch-button tapped")
-    }
+     
+        }
     
-    @objc private func tappedbackButton() {
-        print("Back to main")
+    @objc func tappedbackButton() {
+        self.dismiss(animated: true,completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc private func tappedHeart() {
+        print("Кнопка избранное нажалась в detailVC")
+        if isSaved {
+            RealmDataBase.shared.deleteitem(withName: posterTitle.text!)
+        } else {
+            let newFilm = RealmFilm()
+            newFilm.titleName = posterTitle.text!
+            newFilm.image = (posterImage.image?.pngData()!)!
+            newFilm.releaseDate = additionalInfo.dataReleaseLabel.text!
+            newFilm.voteAverage = voteAverage
+            newFilm.voteCount = voteCount
+            RealmDataBase.shared.write(realmFilm: newFilm)
+        }
         isSaved.toggle()
+        
     }
     //MARK: - setup Views
     private func setupViews() {
-        navigationController?.toolbar.addSubview(watchButton)
+    navigationController?.toolbar.addSubview(watchButton)
         view.addSubviews(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(posterImage)
         contentView.addSubview(posterTitle)
         contentView.addSubviews(additionalInfo)
         contentView.addSubviews(rateStarsView)
-        contentView.addSubview(DiscrpitionView)
+        contentView.addSubview(discrpitionView)
         contentView.addSubview(castAndCrewTitle)
         contentView.addSubview(castCollection)
-        
+       // view.addSubview(toolBarWatchButton)
+       // toolBarWatchButton.addSubview(watchButton)
     }
 }
 //MARK: - setConstraints
@@ -174,12 +219,12 @@ extension DetailVC {
             rateStarsView.widthAnchor.constraint(equalToConstant: 100),
             rateStarsView.heightAnchor.constraint(equalToConstant: 16),
             
-            DiscrpitionView.topAnchor.constraint(equalTo: rateStarsView.bottomAnchor, constant: 20),
-            DiscrpitionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            DiscrpitionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
-            DiscrpitionView.heightAnchor.constraint(equalToConstant: 200),
+            discrpitionView.topAnchor.constraint(equalTo: rateStarsView.bottomAnchor, constant: 20),
+            discrpitionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            discrpitionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+            discrpitionView.heightAnchor.constraint(equalToConstant: 200),
             
-            castAndCrewTitle.topAnchor.constraint(equalTo: DiscrpitionView.bottomAnchor, constant: 10),
+            castAndCrewTitle.topAnchor.constraint(equalTo: discrpitionView.bottomAnchor, constant: 10),
             castAndCrewTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
             
             castCollection.topAnchor.constraint(equalTo: castAndCrewTitle.bottomAnchor, constant: 15 ),
@@ -187,6 +232,12 @@ extension DetailVC {
             castCollection.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             
             castCollection.heightAnchor.constraint(equalToConstant: 50),
+            
+            //toolBarWatchButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            //toolBarWatchButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            //toolBarWatchButton.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            //toolBarWatchButton.heightAnchor.constraint(equalToConstant: 100),
             
             navigationController!.toolbar.heightAnchor.constraint(equalToConstant: 100),
             
@@ -199,3 +250,5 @@ extension DetailVC {
         ])
     }
 }
+
+
