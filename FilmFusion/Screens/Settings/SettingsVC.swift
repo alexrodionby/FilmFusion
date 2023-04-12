@@ -32,6 +32,11 @@ class SettingsVC: UIViewController {
             do {
                 try AuthenticationManager.shared.singOut()
                 print("Вышли из аккаунта")
+                let vc = AuthVC()
+                if let window = UIApplication.shared.windows.first {
+                    window.rootViewController = vc
+                    window.makeKeyAndVisible()
+                }
             } catch {
                 print("Ошибка", error.localizedDescription)
             }
