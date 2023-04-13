@@ -7,12 +7,12 @@
 
 import UIKit
 import SnapKit
-import Firebase
+import Realm
 
 class SettingsVC: UIViewController {
     
     var userImage = UIImage(named: "defaultAvatar")
-    
+
     private lazy var userAvatar: UIImageView = {
         let imageView = UIImageView(image: userImage)
         let diameter: CGFloat = 100.0
@@ -28,7 +28,7 @@ class SettingsVC: UIViewController {
     
     private let userNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Имя и фамилия"
+        label.text = "\(RealmDataBase.shared.currentRealmUser.firstname) \(RealmDataBase.shared.currentRealmUser.lastName)"
         label.textColor = UIColor(named: "customLabelName")
         label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         return label
@@ -36,7 +36,7 @@ class SettingsVC: UIViewController {
     
     private let userEmailLabel: UILabel = {
         let label = UILabel()
-        label.text = Auth.auth().currentUser?.email ?? "Email Error"
+        label.text = RealmDataBase.shared.currentRealmUser.email
         label.textColor = UIColor(named: "customMiniLabel")
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         return label
@@ -335,7 +335,6 @@ class SettingsVC: UIViewController {
         view.addSubview(themeSwitch)
     }
     
-    
     private func setupConstraints() {
         
         userAvatar.snp.makeConstraints {
@@ -421,7 +420,6 @@ class SettingsVC: UIViewController {
         logoutButton.snp.makeConstraints {
             $0.centerY.equalTo(logoutButtonIcon.snp.centerY)
             $0.leading.equalTo(logoutButtonIcon.snp.trailing).offset(20)
-            
         }
         
         themeIcon.snp.makeConstraints {
