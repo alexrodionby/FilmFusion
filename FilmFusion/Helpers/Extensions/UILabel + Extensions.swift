@@ -17,4 +17,11 @@ extension UILabel {
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     
+    convenience init(textTextFields: String) {
+        self.init()
+        self.text = textTextFields
+        self.textColor = UIColor(named: "customLabelName")
+        self.font = UIFont.systemFont(ofSize: 16)
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
 }
