@@ -30,7 +30,7 @@ class DetailVC: UIViewController {
     }()
     
     private var contentSize: CGSize {
-        CGSize(width: view.frame.width, height: view.frame.height - 50 )
+        CGSize(width: view.frame.width, height: view.frame.height)
     }
     
     
@@ -124,9 +124,9 @@ class DetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.isToolbarHidden = false
+//        navigationController?.isToolbarHidden = false
         tabBarController?.tabBar.isHidden = true
-        tabBarController?.navigationController?.isNavigationBarHidden = true
+//        tabBarController?.navigationController?.isNavigationBarHidden = true
         watchButton.addTarget(self, action: #selector(watchButtonTapped), for: .touchUpInside)
         view.backgroundColor = UIColor(named: "customBackground")
         title = "Movie Detail"
@@ -161,7 +161,7 @@ class DetailVC: UIViewController {
     }
     
     @objc  func watchButtonTapped(_ sender: UIButton) {
-     
+            print("watchButton нажалась")
         }
     
     @objc func tappedbackButton() {
@@ -187,7 +187,7 @@ class DetailVC: UIViewController {
     }
     //MARK: - setup Views
     private func setupViews() {
-    navigationController?.toolbar.addSubview(watchButton)
+    //navigationController?.toolbar.addSubview(watchButton)
         view.addSubviews(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(posterImage)
@@ -197,6 +197,7 @@ class DetailVC: UIViewController {
         contentView.addSubview(discrpitionView)
         contentView.addSubview(castAndCrewTitle)
         contentView.addSubview(castCollection)
+        contentView.addSubview(watchButton)
        // view.addSubview(toolBarWatchButton)
        // toolBarWatchButton.addSubview(watchButton)
     }
@@ -205,6 +206,13 @@ class DetailVC: UIViewController {
 extension DetailVC {
     private func setConstraints() {
         NSLayoutConstraint.activate([
+            
+//            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+//            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+//            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+//            scrollView.bottomAnchor.constraint(equalTo: watchButton.topAnchor, constant: 10),
+            
+            
             posterImage.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 20),
             posterImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             
@@ -246,13 +254,22 @@ extension DetailVC {
             
             //toolBarWatchButton.heightAnchor.constraint(equalToConstant: 100),
             
-            navigationController!.toolbar.heightAnchor.constraint(equalToConstant: 100),
+//            navigationController!.toolbar.heightAnchor.constraint(equalToConstant: 100),
             
-            watchButton.topAnchor.constraint(equalTo: navigationController!.toolbar.topAnchor, constant: 5),
-            watchButton.centerXAnchor.constraint(equalTo: navigationController!.toolbar.centerXAnchor),
             
             watchButton.widthAnchor.constraint(equalToConstant: 180),
             watchButton.heightAnchor.constraint(equalToConstant: 55),
+            watchButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            watchButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            
+            
+            
+//            watchButton.topAnchor.constraint(equalTo: navigationController!.toolbar.topAnchor, constant: 5),
+//            watchButton.centerXAnchor.constraint(equalTo: navigationController!.toolbar.centerXAnchor),
+//
+//            watchButton.widthAnchor.constraint(equalToConstant: 180),
+//            watchButton.heightAnchor.constraint(equalToConstant: 55),
             
         ])
     }
