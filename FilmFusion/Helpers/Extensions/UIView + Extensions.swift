@@ -14,6 +14,12 @@ extension UIView {
         })
     }
     
+    func rotate(angle: CGFloat) {
+        let radians = angle
+        let rotation = CGAffineTransformRotate(self.transform, radians);
+        self.transform = rotation
+    }
+    
     convenience init(forGender: String) {
         self .init()
         self.layer.cornerRadius = 25

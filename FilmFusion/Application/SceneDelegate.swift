@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let authUser = try? AuthenticationManager.shared.getAuthenticatedUser()
         if authUser == nil {
             print("пользователь не залогинился")
-            let vc = AuthVC()
+            let vc = LaunchAnimationVC()
             if let window = UIApplication.shared.windows.first {
                 window.rootViewController = vc
                 window.makeKeyAndVisible()

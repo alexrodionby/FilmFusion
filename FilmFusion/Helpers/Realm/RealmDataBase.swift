@@ -18,17 +18,20 @@ class RealmDataBase {
     private var items: List<RealmFilm>!
 //    private var users: Results<RealmUser>!
     
-    private lazy var authUserUid = {
+    private var authUserUid = {
         do {
             let user = try AuthenticationManager.shared.getAuthenticatedUser()
+            print(user.email)
             return user.uid
         } catch {
             print("Ошибка при аутентификации")
             return "0"
         }
     }
-        
-    lazy var currentRealmUser: RealmUser = loadCurrentUserWith(uuid: authUserUid())
+            
+    var currentRealmUser: RealmUser {
+        return loadCurrentUserWith(uuid: authUserUid())
+    }
     
     // MARK: - Initialization
     
@@ -51,21 +54,43 @@ class RealmDataBase {
     }
     
     func write(recentWatchRealmFilm: RealmFilm) {
-        try! realm.write({
-            currentRealmUser.recentWatchFilms.append(recentWatchRealmFilm)
-        })
+        
+        let film = currentRealmUser.recentWatchFilms.where {
+            $0.titleName == recentWatchRealmFilm.titleName
+        }
+        if film.isEmpty {
+            try! realm.write({
+                currentRealmUser.recentWatchFilms.append(recentWatchRealmFilm)
+            })
+        } else {
+            try! realm.write({
+                realm.delete(film)
+                currentRealmUser.recentWatchFilms.append(recentWatchRealmFilm)
+            })
+        }
     }
     
     func createUserWith(uuid: String, firstName: String, lastName: String, email: String) {
-        let newUser = RealmUser()
-        newUser.uuid = uuid
-        newUser.firstname = firstName
-        newUser.lastName = lastName
-        newUser.email = email
         
-        try! realm.write({
-            self.realm.add(newUser)
-        })
+        let users = realm.objects(RealmUser.self).where {
+            $0.uuid == uuid
+        }
+        
+        if let currentUser = users.first {
+            return
+        } else {
+            let newUser = RealmUser()
+            newUser.uuid = uuid
+            newUser.firstname = firstName
+            newUser.lastName = lastName
+            newUser.email = email
+            
+            try! realm.write({
+                self.realm.add(newUser)
+            })
+        }
+        
+        
     }
     
     func updateUserDataWith(uuid: String, firstName: String, lastName: String, email: String, dateOfBirth: String, gender: String, profilePicture: Data) {
@@ -96,7 +121,7 @@ class RealmDataBase {
             items = results.list
         }
         
-        return items
+        return items //приложуха падает, если ничего нет в items
     }
     
     func deleteItem(withName titleName: String) {
