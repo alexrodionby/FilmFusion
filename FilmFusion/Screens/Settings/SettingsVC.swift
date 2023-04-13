@@ -6,8 +6,63 @@
 //
 
 import UIKit
+import SnapKit
 
 class SettingsVC: UIViewController {
+    
+    var userImage = UIImage(named: "defaultAvatar")
+    
+    private lazy var userAvatar: UIImageView = {
+        let imageView = UIImageView(image: userImage)
+        let diameter: CGFloat = 100.0 // желаемый диаметр круга
+        let borderWidth: CGFloat = 3.0 // желаемая толщина канта
+        imageView.frame.size = CGSize(width: diameter, height: diameter)
+        imageView.layer.cornerRadius = diameter / 2.0
+        imageView.layer.borderWidth = borderWidth
+        imageView.layer.borderColor = UIColor(named: "customTabBarIconSelectedTint")?.cgColor
+        imageView.clipsToBounds = true
+        imageView.tintColor = UIColor(named: "customCategoryBoard")
+        return imageView
+    }()
+    
+    private let userNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Имя и фамилия"
+        label.textColor = UIColor(named: "customLabelName")
+        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        return label
+    }()
+    
+    private let personalInfoLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Personal Info"
+        label.textColor = UIColor(named: "customLabelName")
+        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        return label
+    }()
+    
+    private let profileLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Profile"
+        label.textColor = UIColor(named: "customLabelName")
+        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        return label
+    }()
+    
+    private lazy var profileIcon: UIImageView = {
+        let imageView = UIImageView(image: UIImage(systemName: "person"))
+        imageView.frame.size = CGSize(width: 30, height: 30)
+        imageView.tintColor = UIColor(named: "customLabelName")
+        return imageView
+    }()
+    
+    private let securityLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Security"
+        label.textColor = UIColor(named: "customLabelName")
+        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        return label
+    }()
     
     private let logOutButton: UIButton = {
         let button = UIButton(type: .system)
@@ -168,6 +223,14 @@ class SettingsVC: UIViewController {
     
     private func setupView() {
         view.backgroundColor = UIColor(named: "customBackground")
+        navigationItem.title = "Settings"
+        
+        view.addSubview(userAvatar)
+        view.addSubview(userNameLabel)
+        view.addSubview(personalInfoLabel)
+        view.addSubview(profileIcon)
+        view.addSubview(profileLabel)
+        view.addSubview(securityLabel)
         
         view.addSubview(logOutButton)
         view.addSubview(resetPasswordButton)
@@ -181,6 +244,39 @@ class SettingsVC: UIViewController {
     
     
     private func setupConstraints() {
+        
+        userAvatar.snp.makeConstraints {
+            $0.top.equalTo(view.snp.topMargin).offset(20)
+            $0.leading.equalToSuperview().offset(20)
+            $0.height.width.equalTo(100)
+        }
+        
+        userNameLabel.snp.makeConstraints {
+            $0.top.equalTo(view.snp.topMargin).offset(30)
+            $0.leading.equalTo(userAvatar.snp.trailing).offset(20)
+            $0.height.equalTo(30)
+        }
+        
+        personalInfoLabel.snp.makeConstraints {
+            $0.top.equalTo(userAvatar.snp.bottom).offset(30)
+            $0.leading.equalToSuperview().offset(20)
+        }
+        
+        profileIcon.snp.makeConstraints {
+            $0.top.equalTo(personalInfoLabel.snp.bottom).offset(20)
+            $0.leading.equalToSuperview().offset(20)
+            $0.height.width.equalTo(30)
+        }
+        
+        profileLabel.snp.makeConstraints {
+            $0.centerY.equalTo(profileIcon.snp.centerY)
+            $0.leading.equalTo(profileIcon.snp.trailing).offset(10)
+        }
+        
+        securityLabel.snp.makeConstraints {
+            $0.top.equalTo(profileIcon.snp.bottom).offset(30)
+            $0.leading.equalToSuperview().offset(20)
+        }
         
         logOutButton.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
