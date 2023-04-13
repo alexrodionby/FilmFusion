@@ -15,6 +15,7 @@ class DetailVC: UIViewController {
     
     var voteCount = 0
     var voteAverage: Double = 0.0
+   
     private lazy var scrollView:UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.frame = view.bounds
@@ -52,9 +53,9 @@ class DetailVC: UIViewController {
         return label
     }()
     
+    
     private let rateStarsView:UIStackView = {
         let stackView = UIStackView()
-        
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.spacing = 5
@@ -71,13 +72,6 @@ class DetailVC: UIViewController {
         return label
     }()
     
-//    private let toolBarWatchButton: UIView = {
-//       let view = UIView()
-//        view.backgroundColor = .systemGroupedBackground
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        return view
-//    }()
-    
     private let watchButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(named: "customTabBarIconSelectedTint")
@@ -90,17 +84,39 @@ class DetailVC: UIViewController {
     }()
     
     func addStarsToRateView() {
+      
         let numberOfStars = 5
         for _ in 1...numberOfStars {
             let starImage:UIImageView = {
-                let imageView = UIImageView()
+               let imageView = UIImageView()
+
                 imageView.image = UIImage(named: "star-fill")
                 imageView.tintColor = .yellow
-                return imageView
+               return imageView
             }()
             rateStarsView.addArrangedSubview(starImage)
         }
     }
+    //counting and showing average vote
+    func fillStarStackViewWithRating(averageRating: Double, starStackView: UIStackView) {
+        let ratingOutOfFive = averageRating / 2.0
+        let fullStarCount = Int(ratingOutOfFive)
+        let halfStarCount = Int((ratingOutOfFive - Double(fullStarCount)) * 2)
+        let emptyStarCount = 5 - fullStarCount - halfStarCount
+        
+        for (index, subview) in starStackView.arrangedSubviews.enumerated() {
+            if let imageView = subview as? UIImageView {
+                if index < fullStarCount {
+                    imageView.image = UIImage(named: "star-fill")
+                } else if index < fullStarCount + halfStarCount {
+                    imageView.image = UIImage(named: "star-half")
+                } else {
+                    imageView.image = UIImage(named: "star-empty")
+                }
+            }
+        }
+    }
+
     
     var isSaved: Bool = false {
         didSet {
@@ -117,6 +133,7 @@ class DetailVC: UIViewController {
         posterTitle.text = model.titleName
         additionalInfo.dataReleaseLabel.text = model.releaseDate
         additionalInfo.runTimeLabel.text = "\(model.runtime)"
+        print(model.runtime)
         discrpitionView.storyLineTextView.text = model.overview
         voteAverage = model.voteAverage
         isSaved = RealmDataBase.shared.isItemSaved(withName: posterTitle.text!)
@@ -124,9 +141,8 @@ class DetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        navigationController?.isToolbarHidden = false
+        print("\(voteAverage) оценка и \(voteCount) голосов")
         tabBarController?.tabBar.isHidden = true
-//        tabBarController?.navigationController?.isNavigationBarHidden = true
         watchButton.addTarget(self, action: #selector(watchButtonTapped), for: .touchUpInside)
         view.backgroundColor = UIColor(named: "customBackground")
         title = "Movie Detail"
@@ -134,6 +150,8 @@ class DetailVC: UIViewController {
         setConstraints()
         setupNavBar()
         addStarsToRateView()
+        fillStarStackViewWithRating(averageRating: voteAverage, starStackView: rateStarsView)
+        isMovieFavorite()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -149,7 +167,8 @@ class DetailVC: UIViewController {
    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+        navigationController?.isToolbarHidden = true
+        tabBarController?.tabBar.isHidden = false
     }
     
     private func setupNavBar() {
@@ -158,6 +177,13 @@ class DetailVC: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .done, target: self, action: #selector(tappedHeart))
         navigationController?.navigationBar.tintColor = UIColor(named: "customMiniIcon")
         
+    }
+    
+    func isMovieFavorite() {
+        navigationItem.rightBarButtonItem?.image = RealmDataBase.shared.isItemSaved(withName: posterTitle.text!) ?
+        UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+        navigationItem.rightBarButtonItem?.tintColor =  RealmDataBase.shared.isItemSaved(withName: posterTitle.text!) ?
+        UIColor(hexString: "514EB6") : UIColor(named: "customMiniLabel")
     }
     
     @objc  func watchButtonTapped(_ sender: UIButton) {
@@ -187,7 +213,6 @@ class DetailVC: UIViewController {
     }
     //MARK: - setup Views
     private func setupViews() {
-    //navigationController?.toolbar.addSubview(watchButton)
         view.addSubviews(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(posterImage)
@@ -198,8 +223,6 @@ class DetailVC: UIViewController {
         contentView.addSubview(castAndCrewTitle)
         contentView.addSubview(castCollection)
         contentView.addSubview(watchButton)
-       // view.addSubview(toolBarWatchButton)
-       // toolBarWatchButton.addSubview(watchButton)
     }
 }
 //MARK: - setConstraints
@@ -247,29 +270,12 @@ extension DetailVC {
             castCollection.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             
             castCollection.heightAnchor.constraint(equalToConstant: 50),
-            
-            //toolBarWatchButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            //toolBarWatchButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            //toolBarWatchButton.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            
-            //toolBarWatchButton.heightAnchor.constraint(equalToConstant: 100),
-            
-//            navigationController!.toolbar.heightAnchor.constraint(equalToConstant: 100),
-            
-            
+    
             watchButton.widthAnchor.constraint(equalToConstant: 180),
             watchButton.heightAnchor.constraint(equalToConstant: 55),
             watchButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             watchButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
-            
-            
-            
-//            watchButton.topAnchor.constraint(equalTo: navigationController!.toolbar.topAnchor, constant: 5),
-//            watchButton.centerXAnchor.constraint(equalTo: navigationController!.toolbar.centerXAnchor),
-//
-//            watchButton.widthAnchor.constraint(equalToConstant: 180),
-//            watchButton.heightAnchor.constraint(equalToConstant: 55),
+
             
         ])
     }
