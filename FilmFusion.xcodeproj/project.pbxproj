@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		240B12BD29E685B800C8E287 /* EditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B12BC29E685B800C8E287 /* EditingViewController.swift */; };
+		2471416729E7F838000C0097 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2471416629E7F838000C0097 /* MainView.swift */; };
+		24A64FB029E6A2EF00502C8D /* UIStackView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A64FAF29E6A2EF00502C8D /* UIStackView + Extensions.swift */; };
+		24A64FB229E6CAF000502C8D /* UIButton + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A64FB129E6CAF000502C8D /* UIButton + Extensions.swift */; };
 		24B15CC329DC062000CBC959 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B15CC229DC062000CBC959 /* APICaller.swift */; };
 		24B15CC829DC28F700CBC959 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B15CC729DC28F700CBC959 /* Movie.swift */; };
 		24DA551A29E2D6C000CD70DD /* YoutubeSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DA551929E2D6C000CD70DD /* YoutubeSearchResponse.swift */; };
@@ -66,6 +70,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		240B12BC29E685B800C8E287 /* EditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingViewController.swift; sourceTree = "<group>"; };
+		2471416629E7F838000C0097 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		24A64FAF29E6A2EF00502C8D /* UIStackView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extensions.swift"; sourceTree = "<group>"; };
+		24A64FB129E6CAF000502C8D /* UIButton + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extensions.swift"; sourceTree = "<group>"; };
 		24B15CC229DC062000CBC959 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		24B15CC729DC28F700CBC959 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		24DA551929E2D6C000CD70DD /* YoutubeSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeSearchResponse.swift; sourceTree = "<group>"; };
@@ -137,6 +145,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		240B12BB29E6859900C8E287 /* EditingVC */ = {
+			isa = PBXGroup;
+			children = (
+				240B12BE29E6975200C8E287 /* Views */,
+				240B12BC29E685B800C8E287 /* EditingViewController.swift */,
+			);
+			path = EditingVC;
+			sourceTree = "<group>";
+		};
+		240B12BE29E6975200C8E287 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2471416629E7F838000C0097 /* MainView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		24B15CC129DC061100CBC959 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +302,8 @@
 			isa = PBXGroup;
 			children = (
 				FCEE143A29DCA0A4006B6109 /* UITextField + Extensions.swift */,
+				24A64FAF29E6A2EF00502C8D /* UIStackView + Extensions.swift */,
+				24A64FB129E6CAF000502C8D /* UIButton + Extensions.swift */,
 				FCEE143929DCA0A4006B6109 /* UIView + Extensions.swift */,
 				A13034DA29DC7E1100703F86 /* UIColor + Extensions.swift */,
 				A1613D3729DA2861000EB1B5 /* UIImage + Extensions.swift */,
@@ -326,6 +353,7 @@
 		A1613D3429DA263C000EB1B5 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				240B12BB29E6859900C8E287 /* EditingVC */,
 				A1613D3529DA2652000EB1B5 /* SettingsVC.swift */,
 			);
 			path = Settings;
@@ -495,6 +523,7 @@
 				24B15CC829DC28F700CBC959 /* Movie.swift in Sources */,
 				A17C9DD029D84F8700413796 /* AppDelegate.swift in Sources */,
 				2C376B0929E3398A0047A764 /* RealmUser.swift in Sources */,
+				24A64FB229E6CAF000502C8D /* UIButton + Extensions.swift in Sources */,
 				2CD86D3429DF422900163A55 /* RealmDataBase.swift in Sources */,
 				2C376B0C29E33A220047A764 /* CategoryCollectionViewCell.swift in Sources */,
 				A1613D2A29DA1BA5000EB1B5 /* HomeVC.swift in Sources */,
@@ -504,12 +533,12 @@
 				A13034DB29DC7E1100703F86 /* UIColor + Extensions.swift in Sources */,
 				FCEE143F29DCA0CF006B6109 /* CategoryCell.swift in Sources */,
 				562DECF129E316CA00F9E7D9 /* DescriptionView.swift in Sources */,
+				240B12BD29E685B800C8E287 /* EditingViewController.swift in Sources */,
 				A16D1D5929DDE971001E7123 /* AuthenticationManager.swift in Sources */,
 				A1505A6D29E2A87700FD90A2 /* CreateUserViaEmailVC.swift in Sources */,
 				A1613D2729D8A046000EB1B5 /* Resources.swift in Sources */,
 				FCBE50C229DEA4D9002AD6CA /* FilterVC.swift in Sources */,
 				A1613D3329DA2633000EB1B5 /* FavoritesViewController.swift in Sources */,
-				A16D1D5729DDDB45001E7123 /* LoginWithEmailVC.swift in Sources */,
 				562DECF329E316CA00F9E7D9 /* CrewCollectionViewCell.swift in Sources */,
 				2C376B1029E42C820047A764 /* Ext + Realm.swift in Sources */,
 				2C6D90DB29DC6EF400FC34BB /* FilmTableViewCell.swift in Sources */,
@@ -518,6 +547,7 @@
 				5635EE6B29DD5993007CFC3D /* UIImageView + Extensions.swift in Sources */,
 				562DECF029E316CA00F9E7D9 /* DetailVC.swift in Sources */,
 				5635EE6D29DD5A22007CFC3D /* UILabel + Extensions.swift in Sources */,
+				2471416729E7F838000C0097 /* MainView.swift in Sources */,
 				FCEE143B29DCA0A4006B6109 /* UIView + Extensions.swift in Sources */,
 				24B15CC329DC062000CBC959 /* APICaller.swift in Sources */,
 				A1613D2D29DA25EF000EB1B5 /* SearchVC.swift in Sources */,
@@ -526,6 +556,7 @@
 				FCEE143829DCA084006B6109 /* SearchView.swift in Sources */,
 				562DECF429E316CA00F9E7D9 /* CastView.swift in Sources */,
 				A1613D3829DA2861000EB1B5 /* UIImage + Extensions.swift in Sources */,
+				24A64FB029E6A2EF00502C8D /* UIStackView + Extensions.swift in Sources */,
 				A1613D3029DA260E000EB1B5 /* RecentWatchViewController.swift in Sources */,
 				24DA551A29E2D6C000CD70DD /* YoutubeSearchResponse.swift in Sources */,
 				A1613D3629DA2652000EB1B5 /* SettingsVC.swift in Sources */,
