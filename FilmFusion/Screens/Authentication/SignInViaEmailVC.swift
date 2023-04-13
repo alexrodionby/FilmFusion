@@ -106,7 +106,11 @@ class SignInViaEmailVC: UIViewController {
             let returnedUserData = try await AuthenticationManager.shared.signInUser(email: emailUser, password: passwordUser)
             print("Удалось войти под логином и паролем")
             print(returnedUserData)
-            RealmDataBase.shared.createUserWith(uuid: returnedUserData.uid, firstName: "", lastName: "", email: returnedUserData.email!)
+            let fullName = returnedUserData.fullName
+            let components = fullName?.split(separator: " ")
+            let firstName = String(components?[0] ?? "none")
+            let lastName = String(components?[1] ?? "none")
+            RealmDataBase.shared.createUserWith(uuid: returnedUserData.uid, firstName: firstName, lastName: lastName, email: returnedUserData.email!)
             let vc = TabBarVC()
             if let window = UIApplication.shared.windows.first {
                 window.rootViewController = vc

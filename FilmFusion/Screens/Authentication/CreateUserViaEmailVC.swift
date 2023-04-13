@@ -14,6 +14,7 @@ class CreateUserViaEmailVC: UIViewController {
     private var passwordUser: String = ""
     private var passwordUserConfirm: String = ""
     
+    
     private let completAccountLabel: UILabel = {
         let label = UILabel()
         label.text = "Complet your account"
@@ -169,7 +170,7 @@ class CreateUserViaEmailVC: UIViewController {
             return
         }
         do {
-            let returnedUserData = try await AuthenticationManager.shared.createUser(email: emailUser, password: passwordUser)
+            let returnedUserData = try await AuthenticationManager.shared.createUser(email: emailUser, password: passwordUser, fName: firstNameTextField.text ?? "none", lName: lastNameTextField.text ?? "none")
             RealmDataBase.shared.createUserWith(uuid: returnedUserData.uid, firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, email: emailTextField.text!)
             print("Удалось создать пользователя")
             let vc = OBScreen()

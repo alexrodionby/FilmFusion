@@ -12,11 +12,13 @@ struct AuthDataResultModel {
     let uid: String
     let email: String?
     let photoURL: String?
+    let fullName: String?
     
     init(user: User) {
         self.uid = user.uid
         self.email = user.email
         self.photoURL = user.photoURL?.absoluteString
+        self.fullName = user.displayName
     }
 }
 
@@ -25,8 +27,11 @@ final class AuthenticationManager {
     static let shared = AuthenticationManager()
     init() { }
     
-    func createUser(email: String, password: String) async throws -> AuthDataResultModel {
+    func createUser(email: String, password: String, fName: String, lName: String) async throws -> AuthDataResultModel {
         let authDataResult = try await Auth.auth().createUser(withEmail: email, password: password)
+        var request = Auth.auth().currentUser?.createProfileChangeRequest()
+        request?.displayName = fName + " " + lName
+        try await request?.commitChanges()
         return AuthDataResultModel(user: authDataResult.user)
     }
     
