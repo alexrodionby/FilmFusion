@@ -71,12 +71,12 @@
 		AAE13F9129E873390071D2E2 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE13F8429E873390071D2E2 /* EmptyView.swift */; };
 		AAE13F9229E873390071D2E2 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE13F8529E873390071D2E2 /* AvatarView.swift */; };
 		AAE13F9329E873390071D2E2 /* CardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE13F8629E873390071D2E2 /* CardsView.swift */; };
-		AAE13F9429E873390071D2E2 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE13F8829E873390071D2E2 /* CardCell.swift */; };
-		AAE13F9529E873390071D2E2 /* CategoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE13F8929E873390071D2E2 /* CategoriesCell.swift */; };
-		AAE13F9629E873390071D2E2 /* FilmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE13F8A29E873390071D2E2 /* FilmCell.swift */; };
 		AAE13F9729E873390071D2E2 /* FilmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE13F8C29E873390071D2E2 /* FilmModel.swift */; };
 		AAE13F9829E873390071D2E2 /* ModelUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE13F8D29E873390071D2E2 /* ModelUser.swift */; };
 		AAE13F9929E873390071D2E2 /* CategoriyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE13F8E29E873390071D2E2 /* CategoriyModel.swift */; };
+		AAE13FA529E887540071D2E2 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE13FA229E887540071D2E2 /* CardCell.swift */; };
+		AAE13FA629E887540071D2E2 /* CategoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE13FA329E887540071D2E2 /* CategoriesCell.swift */; };
+		AAE13FA729E887540071D2E2 /* FilmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE13FA429E887540071D2E2 /* FilmCell.swift */; };
 		FCBE50C029DEA1B4002AD6CA /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE50BF29DEA1B4002AD6CA /* FilterView.swift */; };
 		FCBE50C229DEA4D9002AD6CA /* FilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE50C129DEA4D9002AD6CA /* FilterVC.swift */; };
 		FCEE143829DCA084006B6109 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE143729DCA084006B6109 /* SearchView.swift */; };
@@ -139,12 +139,12 @@
 		AAE13F8429E873390071D2E2 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		AAE13F8529E873390071D2E2 /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		AAE13F8629E873390071D2E2 /* CardsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsView.swift; sourceTree = "<group>"; };
-		AAE13F8829E873390071D2E2 /* CardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
-		AAE13F8929E873390071D2E2 /* CategoriesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesCell.swift; sourceTree = "<group>"; };
-		AAE13F8A29E873390071D2E2 /* FilmCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmCell.swift; sourceTree = "<group>"; };
 		AAE13F8C29E873390071D2E2 /* FilmModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmModel.swift; sourceTree = "<group>"; };
 		AAE13F8D29E873390071D2E2 /* ModelUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelUser.swift; sourceTree = "<group>"; };
 		AAE13F8E29E873390071D2E2 /* CategoriyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriyModel.swift; sourceTree = "<group>"; };
+		AAE13FA229E887540071D2E2 /* CardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
+		AAE13FA329E887540071D2E2 /* CategoriesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesCell.swift; sourceTree = "<group>"; };
+		AAE13FA429E887540071D2E2 /* FilmCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmCell.swift; sourceTree = "<group>"; };
 		FCBE50BF29DEA1B4002AD6CA /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		FCBE50C129DEA4D9002AD6CA /* FilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterVC.swift; sourceTree = "<group>"; };
 		FCEE143729DCA084006B6109 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
@@ -370,7 +370,7 @@
 			isa = PBXGroup;
 			children = (
 				A1613D2929DA1BA5000EB1B5 /* HomeVC.swift */,
-				AAE13F8729E873390071D2E2 /* Cells */,
+				AAE13FA129E887540071D2E2 /* Cells */,
 				AAE13F8029E873390071D2E2 /* Layouts */,
 				AAE13F8B29E873390071D2E2 /* Models */,
 				AAE13F8229E873390071D2E2 /* Views */,
@@ -474,17 +474,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		AAE13F8729E873390071D2E2 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				AAE13F8829E873390071D2E2 /* CardCell.swift */,
-				AAE13F8929E873390071D2E2 /* CategoriesCell.swift */,
-				AAE13F8A29E873390071D2E2 /* FilmCell.swift */,
-			);
-			name = Cells;
-			path = ../../../../FMovie/AFMovie/AFMovie/Cells;
-			sourceTree = "<group>";
-		};
 		AAE13F8B29E873390071D2E2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -493,6 +482,16 @@
 				AAE13F8E29E873390071D2E2 /* CategoriyModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		AAE13FA129E887540071D2E2 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				AAE13FA229E887540071D2E2 /* CardCell.swift */,
+				AAE13FA329E887540071D2E2 /* CategoriesCell.swift */,
+				AAE13FA429E887540071D2E2 /* FilmCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		FCEE143529DCA050006B6109 /* Controller */ = {
@@ -628,12 +627,11 @@
 				56A81B5E29E6E7F2002FBD6C /* DetailVC.swift in Sources */,
 				2C376B0C29E33A220047A764 /* CategoryCollectionViewCell.swift in Sources */,
 				A1613D2A29DA1BA5000EB1B5 /* HomeVC.swift in Sources */,
-				AAE13F9429E873390071D2E2 /* CardCell.swift in Sources */,
 				FCBE50C029DEA1B4002AD6CA /* FilterView.swift in Sources */,
 				2CD86D3229DF421B00163A55 /* RealmFilm.swift in Sources */,
-				AAE13F9529E873390071D2E2 /* CategoriesCell.swift in Sources */,
 				FCEE143C29DCA0A4006B6109 /* UITextField + Extensions.swift in Sources */,
 				A13034DB29DC7E1100703F86 /* UIColor + Extensions.swift in Sources */,
+				AAE13FA729E887540071D2E2 /* FilmCell.swift in Sources */,
 				FCEE143F29DCA0CF006B6109 /* CategoryCell.swift in Sources */,
 				AAE13F9829E873390071D2E2 /* ModelUser.swift in Sources */,
 				562DECF129E316CA00F9E7D9 /* DescriptionView.swift in Sources */,
@@ -645,10 +643,10 @@
 				4D09A83729E69C1300B7F6C6 /* LaunchAnimationVC.swift in Sources */,
 				4D09A83A29E69CEA00B7F6C6 /* OnboardingVC.swift in Sources */,
 				FCBE50C229DEA4D9002AD6CA /* FilterVC.swift in Sources */,
-				AAE13F9629E873390071D2E2 /* FilmCell.swift in Sources */,
 				A1613D3329DA2633000EB1B5 /* FavoritesViewController.swift in Sources */,
 				562DECF329E316CA00F9E7D9 /* CrewCollectionViewCell.swift in Sources */,
 				2C376B1029E42C820047A764 /* Ext + Realm.swift in Sources */,
+				AAE13FA629E887540071D2E2 /* CategoriesCell.swift in Sources */,
 				2C6D90DB29DC6EF400FC34BB /* FilmTableViewCell.swift in Sources */,
 				562DECF229E316CA00F9E7D9 /* DetailView.swift in Sources */,
 				A17C9DD229D84F8700413796 /* SceneDelegate.swift in Sources */,
@@ -660,6 +658,7 @@
 				24B15CC329DC062000CBC959 /* APICaller.swift in Sources */,
 				A1613D2D29DA25EF000EB1B5 /* SearchVC.swift in Sources */,
 				A16D1D5529DDCEFA001E7123 /* AuthVC.swift in Sources */,
+				AAE13FA529E887540071D2E2 /* CardCell.swift in Sources */,
 				AAE13F9729E873390071D2E2 /* FilmModel.swift in Sources */,
 				A1505A6F29E2E4E300FD90A2 /* SignInViaEmailVC.swift in Sources */,
 				FCEE143829DCA084006B6109 /* SearchView.swift in Sources */,
