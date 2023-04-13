@@ -171,14 +171,14 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         let movies = movies[indexPath.row]
         APICaller.shared.getDetailsMovies(id: id) { [weak self] results in
             switch results {
-                case.success(let movies):
-                    print("Работает")
-                    guard let self = self else { return }
-                    DispatchQueue.main.async {
-                        self.searchView.searchTableView.reloadData()
-                    }
-                case.failure(let error):
-                    print("Запрос не работает\(error)")
+            case.success(let movies):
+                print("Работает")
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    self.searchView.searchTableView.reloadData()
+                }
+            case.failure(let error):
+                print("Запрос не работает\(error)")
             }
         }
         
@@ -201,6 +201,7 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
             vc.configure(with: model)
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        }
+    }
+    
 }
 
