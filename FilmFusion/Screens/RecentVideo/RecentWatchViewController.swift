@@ -98,8 +98,9 @@ extension RecentWatchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "FilmTableViewCell") as? FilmTableViewCell
             else { return UITableViewCell() }
+        let reversedRecentWatchFilms = Array(recentWatchFilms.reversed())
         cell.delegate = self
-        cell.configureWithRealm(film: recentWatchFilms[indexPath.row])
+        cell.configureWithRealm(film: reversedRecentWatchFilms[indexPath.row])
         return cell
     }
     

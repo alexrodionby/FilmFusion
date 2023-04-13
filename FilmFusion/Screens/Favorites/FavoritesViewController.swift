@@ -114,8 +114,9 @@ extension FavoritesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "FilmTableViewCell") as? FilmTableViewCell
             else { return UITableViewCell() }
+        let reversedFilms = Array(films.reversed())
         cell.delegate = self
-        cell.configureWithRealm(film: films[indexPath.row])
+        cell.configureWithRealm(film: reversedFilms[indexPath.row])
         return cell
     }
     
