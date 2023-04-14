@@ -9,11 +9,19 @@ import UIKit
 class CategoriesCell: UICollectionViewCell {
     static let reuseId = "CategoryCell"
     
-    let ovalView: UIView = {
+    override var isSelected: Bool {
+        didSet {
+            ovalView.backgroundColor = isSelected ? UIColor(named: "customTabBarIconSelectedTint") : .clear
+            titleLabel.textColor = isSelected ? .white : UIColor(named: "customLabelName")
+        }
+    }
+    
+    lazy var  ovalView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 17
         view.layer.borderColor = UIColor.gray.cgColor
         view.layer.borderWidth = 1
+        
         return view
     }()
     

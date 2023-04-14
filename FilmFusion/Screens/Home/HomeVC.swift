@@ -33,7 +33,7 @@ class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "customVCBgnd")
         tableView.dataSource = dataSource
         scrollView.delegate = self
         tableView.delegate = self

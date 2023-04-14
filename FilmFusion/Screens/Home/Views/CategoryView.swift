@@ -38,7 +38,8 @@ class CategoryView: UIView, UICollectionViewDelegate {
     
     let dragBar: UIView = {
         let view = UIView()
-        view.backgroundColor = .darkGray.withAlphaComponent(0.2) // СИСТЕМНЫЙ  синий!!!!
+        
+        view.backgroundColor = UIColor(named: "customTabBarIconSelectedTint")?.withAlphaComponent(0.9) // СИСТЕМНЫЙ  синий!!!!
         view.layer.cornerRadius = 3
         view.clipsToBounds = true
         return view
@@ -61,6 +62,7 @@ class CategoryView: UIView, UICollectionViewDelegate {
     let seeAllLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.textColor =  UIColor(named: "customMiniIcon")
         label.text = "See All"
         return label
     }()
@@ -140,6 +142,19 @@ class CategoryView: UIView, UICollectionViewDelegate {
     }
 }
 
+extension CategoryView {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) {
+            
+        }
+    }
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+            if let cell = collectionView.cellForItem(at: indexPath) {
+            }
+    }
+    
+}
+
 // MARK: - Datasource + update
 extension CategoryView {
         func createDataSource() {
@@ -158,6 +173,4 @@ extension CategoryView {
         }
     
 }
-extension CategoryView {
-    
-}
+
