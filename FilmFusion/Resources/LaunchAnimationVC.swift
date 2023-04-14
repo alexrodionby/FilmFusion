@@ -30,7 +30,7 @@ final class LaunchAnimationVC: UIViewController {
     
     private let textLable: UILabel = {
         let label = UILabel(frame: CGRect(x: 113, y: 407, width: 165, height: 24))
-        label.text = "Moviemax"
+        label.text = "FilmFusion"
         label.font = .boldSystemFont(ofSize: 32)
         label.textColor = .white
         label.textAlignment = .center

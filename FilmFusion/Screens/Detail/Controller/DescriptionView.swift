@@ -26,7 +26,8 @@ class DescriptionView: UIView {
         textView.isSelectable = false
         textView.isScrollEnabled = false
         textView.isEditable = false
-        textView.font = UIFont.PlusJakartaSansMedium14()
+         textView.frame.size.height = textView.contentSize.height
+         textView.font = UIFont.PlusJakartaSansMedium14()
         textView.textColor = UIColor(named: "customMiniLabel")
         textView.text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen bookLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book "
         textView.translatesAutoresizingMaskIntoConstraints = false

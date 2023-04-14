@@ -77,8 +77,6 @@
 		AAE13FA529E887540071D2E2 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE13FA229E887540071D2E2 /* CardCell.swift */; };
 		AAE13FA629E887540071D2E2 /* CategoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE13FA329E887540071D2E2 /* CategoriesCell.swift */; };
 		AAE13FA729E887540071D2E2 /* FilmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE13FA429E887540071D2E2 /* FilmCell.swift */; };
-		FCBE50C029DEA1B4002AD6CA /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE50BF29DEA1B4002AD6CA /* FilterView.swift */; };
-		FCBE50C229DEA4D9002AD6CA /* FilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBE50C129DEA4D9002AD6CA /* FilterVC.swift */; };
 		FCEE143829DCA084006B6109 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE143729DCA084006B6109 /* SearchView.swift */; };
 		FCEE143B29DCA0A4006B6109 /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE143929DCA0A4006B6109 /* UIView + Extensions.swift */; };
 		FCEE143C29DCA0A4006B6109 /* UITextField + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEE143A29DCA0A4006B6109 /* UITextField + Extensions.swift */; };
@@ -145,8 +143,6 @@
 		AAE13FA229E887540071D2E2 /* CardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		AAE13FA329E887540071D2E2 /* CategoriesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesCell.swift; sourceTree = "<group>"; };
 		AAE13FA429E887540071D2E2 /* FilmCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmCell.swift; sourceTree = "<group>"; };
-		FCBE50BF29DEA1B4002AD6CA /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
-		FCBE50C129DEA4D9002AD6CA /* FilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterVC.swift; sourceTree = "<group>"; };
 		FCEE143729DCA084006B6109 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		FCEE143929DCA0A4006B6109 /* UIView + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
 		FCEE143A29DCA0A4006B6109 /* UITextField + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField + Extensions.swift"; sourceTree = "<group>"; };
@@ -498,7 +494,6 @@
 			isa = PBXGroup;
 			children = (
 				A1613D2C29DA25EF000EB1B5 /* SearchVC.swift */,
-				FCBE50C129DEA4D9002AD6CA /* FilterVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -507,7 +502,6 @@
 			isa = PBXGroup;
 			children = (
 				FCEE143729DCA084006B6109 /* SearchView.swift */,
-				FCBE50BF29DEA1B4002AD6CA /* FilterView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -627,7 +621,6 @@
 				56A81B5E29E6E7F2002FBD6C /* DetailVC.swift in Sources */,
 				2C376B0C29E33A220047A764 /* CategoryCollectionViewCell.swift in Sources */,
 				A1613D2A29DA1BA5000EB1B5 /* HomeVC.swift in Sources */,
-				FCBE50C029DEA1B4002AD6CA /* FilterView.swift in Sources */,
 				2CD86D3229DF421B00163A55 /* RealmFilm.swift in Sources */,
 				FCEE143C29DCA0A4006B6109 /* UITextField + Extensions.swift in Sources */,
 				A13034DB29DC7E1100703F86 /* UIColor + Extensions.swift in Sources */,
@@ -642,7 +635,6 @@
 				A1613D2729D8A046000EB1B5 /* Resources.swift in Sources */,
 				4D09A83729E69C1300B7F6C6 /* LaunchAnimationVC.swift in Sources */,
 				4D09A83A29E69CEA00B7F6C6 /* OnboardingVC.swift in Sources */,
-				FCBE50C229DEA4D9002AD6CA /* FilterVC.swift in Sources */,
 				A1613D3329DA2633000EB1B5 /* FavoritesViewController.swift in Sources */,
 				562DECF329E316CA00F9E7D9 /* CrewCollectionViewCell.swift in Sources */,
 				2C376B1029E42C820047A764 /* Ext + Realm.swift in Sources */,

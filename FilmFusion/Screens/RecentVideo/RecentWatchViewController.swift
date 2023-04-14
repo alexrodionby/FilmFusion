@@ -120,6 +120,10 @@ extension RecentWatchViewController: UICollectionViewDelegate {
         switch indexPath.item {
         case 0: recentWatchFilms = RealmDataBase.shared.readRecentWatch(category: "All")
         case 1: recentWatchFilms = RealmDataBase.shared.readRecentWatch(category: "Action")
+        case 2: recentWatchFilms = RealmDataBase.shared.readRecentWatch(category: "Adventure")
+        case 3: recentWatchFilms = RealmDataBase.shared.readRecentWatch(category: "Mystery")
+        case 4: recentWatchFilms = RealmDataBase.shared.readRecentWatch(category: "Fantasy")
+        case 5: recentWatchFilms = RealmDataBase.shared.readRecentWatch(category: "Others")
         default: print("EEEEEERRRRRRROOOOOORRRRR!!!!")
         }
         tableView.reloadData()
