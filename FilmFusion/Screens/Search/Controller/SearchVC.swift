@@ -7,22 +7,24 @@
 
 import UIKit
 
-//@available(iOS 15.0, *)
 class SearchVC: UIViewController {
     
     var movies: [Movie] = [Movie]()
     
     let searchView = SearchView()
-    var selectedCategory = "all"
+    var selectedCategory = "Random"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchView.categoryCollectionView.dataSource = self
         searchView.categoryCollectionView.delegate = self
         searchView.searchTableView.dataSource = self
         searchView.searchTableView.delegate = self
-    //    searchView.filterSearchButton.addTarget(self, action: #selector(filterButtonPressed), for: .touchUpInside)
+        
         setupView()
         fetchDiscoverMovies()
+        searchView.searchTextField.delegate = self
+        
         title = "Search"
         view.backgroundColor = UIColor(named: "customBackground")
     }
@@ -30,14 +32,14 @@ class SearchVC: UIViewController {
     private func fetchDiscoverMovies() {
         APICaller.shared.getDiscoverMovies() { [weak self] results in
             switch results {
-                case.success(let movies):
-                    print("1st request")
-                    self?.movies = movies
-                    DispatchQueue.main.async {
-                        self?.searchView.searchTableView.reloadData()
-                    }
-                case.failure(let error):
-                    print(error)
+            case.success(let movies):
+                print("1st request")
+                self?.movies = movies
+                DispatchQueue.main.async {
+                    self?.searchView.searchTableView.reloadData()
+                }
+            case.failure(let error):
+                print(error)
             }
         }
     }
@@ -47,32 +49,6 @@ class SearchVC: UIViewController {
         tabBarController?.tabBar.isHidden = false
         searchView.searchTableView.reloadData()
     }
-    
-    func prepareBackgroundView(){
-
-        let blurEffectView = UIVisualEffectView()
-        let blurEffect = UIBlurEffect.init(style: .systemUltraThinMaterial)
-//        let visualEffect = UIVisualEffectView.init(effect: blurEffect)
-        let bluredView = UIVisualEffectView.init(effect: blurEffect)
-//        bluredView.alpha = 0.8
-//        bluredView.contentView.addSubview(visualEffect)
-//        visualEffect.frame = UIScreen.main.bounds
-        bluredView.frame = UIScreen.main.bounds
-        view.addSubview(bluredView)
-    }
-//    @objc func filterButtonPressed() {
-//        print("filter")
-//        let viewControllerToPresent = FilterVC()
-//          if let sheet = viewControllerToPresent.sheetPresentationController {
-//              sheet.detents = [.medium(), .large()]
-//              sheet.largestUndimmedDetentIdentifier = .medium
-//              sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-//              sheet.prefersEdgeAttachedInCompactHeight = true
-//              sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
-//          }
-//        prepareBackgroundView()
-//          present(viewControllerToPresent, animated: true, completion: nil)
-//      }
     
     private func setupView() {
         view.addSubview(searchView)
@@ -93,8 +69,6 @@ class SearchVC: UIViewController {
     }
 }
 
-
-@available(iOS 15.0, *)
 extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -106,6 +80,22 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
             setupUICell(cell: cell, backColor: UIColor(named: "customTabBarIconSelectedTint")!, borderColor: .clear)
             cell.categoryLabel.textColor = .white
             selectedCategory = searchView.categories[indexPath.row]
+            
+           
+            APICaller.shared.searchByGenre(with: selectedCategory) { [weak self] results in
+                switch results {
+                case.success(let movies):
+                    print("1st request")
+                    self?.movies = movies
+                    print("ФИЛЬМЫ", self?.movies as Any)
+                    DispatchQueue.main.async {
+                        self?.searchView.searchTableView.reloadData()
+                    }
+                case.failure(let error):
+                    print(error)
+                }
+            }
+            
             
             if let cell1 = collectionView.cellForItem(at: searchView.lastIndexActive) as? CategoryCell {
                 setupUICell(cell: cell1, backColor: UIColor(named: "customBackground")!, borderColor: UIColor(named: "customCategoryBoard")!)
@@ -138,7 +128,7 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
         if searchView.isSelected == false {
             cell.categoryLabel.textColor = UIColor(named: "customCategoryTextUnselected")!
         }
-      
+        
         let category = "\(searchView.categories[indexPath.row])  "
         cell.configure(with: category)
         
@@ -157,7 +147,6 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     }
 }
 
-@available(iOS 15.0, *)
 extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -169,6 +158,7 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         
         let id = movies[indexPath.row].id
         let movies = movies[indexPath.row]
+        print("Одно кино", movies)
         APICaller.shared.getDetailsMovies(id: id) { [weak self] results in
             switch results {
             case.success(let movies):
@@ -183,6 +173,7 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         }
         
         let model = MovieViewModel(id: id, titleName: movies.original_title ?? movies.original_name ?? "", posterURL: movies.poster_path ?? "", releaseDate: movies.release_date ?? "", voteAverage: movies.vote_average, voteCount: movies.vote_count, runtime: movies.runtime ?? movies.id)
+        print("Жанры этого кино ", movies.genres?.first?.name)
         cell.configure(with: model)
         print(model)
         return cell
@@ -205,3 +196,32 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     
 }
 
+extension SearchVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let searchText = textField.text else {
+            return false
+        }
+        
+        searchWithText(searchText)
+        print("Ищем по сллову")
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func searchWithText(_ text: String) {
+        print("Запрос со словом", text)
+        
+        APICaller.shared.search(with: text) { [weak self] results in
+            switch results {
+            case.success(let movies):
+                print("Получили ответ по серчу")
+                self?.movies = movies
+                DispatchQueue.main.async {
+                    self?.searchView.searchTableView.reloadData()
+                }
+            case.failure(let error):
+                print(error)
+            }
+        }
+    }
+}

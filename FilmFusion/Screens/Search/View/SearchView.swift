@@ -7,11 +7,12 @@
 
 import UIKit
 
-//@available(iOS 15.0, *)
 final class SearchView: UIView {
-    var categories = ["all", "side dish", "dessert", "appetizer", "salad", "bread", "breakfast", "soup", "beverage", "sauce", "marinade", "fingerfood", "snack", "drink"]
+    var categories = ["Random", "Action", "Adventure", "Animation", "Comedy", "Crime", "Documentary", "Drama", "Family", "Fantasy", "History", "Horror", "Music", "Mystery", "Romance", "Science Fiction", "TV Movie", "Thriller", "War", "Western", "18"]
+    
     var isSelected = true
     var lastIndexActive:IndexPath = [1 ,0]
+    
     lazy var searchView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(named: "customBackground")
@@ -83,20 +84,6 @@ final class SearchView: UIView {
         searchTextField.text = ""
         print("clear")
     }
-//    @available(iOS 15.0, *)
-//    @objc func filterButtonPressed() {
-//        print("filter")
-//        let viewControllerToPresent = FilterVC()
-//          if let sheet = viewControllerToPresent.sheetPresentationController {
-//              sheet.detents = [.medium(), .large()]
-//              sheet.largestUndimmedDetentIdentifier = .medium
-//              sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-//              sheet.prefersEdgeAttachedInCompactHeight = true
-//              sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
-//          }
-////          present(viewControllerToPresent, animated: true, completion: nil)
-//      }
-        
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -109,6 +96,7 @@ final class SearchView: UIView {
         addSubviews(searchView, searchTextField,categoryCollectionView,searchTableView)
 
         addConstraints()
+    
     }
     
     required init?(coder: NSCoder) {
@@ -150,3 +138,4 @@ final class SearchView: UIView {
         ])
     }
 }
+
