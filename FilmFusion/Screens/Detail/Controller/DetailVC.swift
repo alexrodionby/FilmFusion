@@ -172,7 +172,6 @@ class DetailVC: UIViewController {
     }
     
     private func setupNavBar() {
-        
         navigationItem.leftBarButtonItem =  UIBarButtonItem(image: UIImage(systemName: "arrow.left.circle"), style: .plain, target: self, action: #selector(tappedbackButton))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .done, target: self, action: #selector(tappedHeart))
         navigationController?.navigationBar.tintColor = UIColor(named: "customMiniIcon")
@@ -260,7 +259,7 @@ extension DetailVC {
             discrpitionView.topAnchor.constraint(equalTo: rateStarsView.bottomAnchor, constant: 20),
             discrpitionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
             discrpitionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
-            discrpitionView.heightAnchor.constraint(equalToConstant: 200),
+            //discrpitionView.heightAnchor.constraint(equalToConstant: 200),
             
             castAndCrewTitle.topAnchor.constraint(equalTo: discrpitionView.bottomAnchor, constant: 10),
             castAndCrewTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
