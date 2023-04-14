@@ -89,7 +89,6 @@ class CategoryView: UIView, UICollectionViewDelegate {
 
         createDataSource()
         reloadData()
-
     }
     
     func setupCollectionView() {
@@ -100,7 +99,7 @@ class CategoryView: UIView, UICollectionViewDelegate {
         collectionView.dataSource = dataSource
         collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-                
+
         
         collectionView.collectionViewLayout = layout
         layout.scrollDirection = .horizontal
@@ -160,7 +159,15 @@ extension CategoryView {
         func createDataSource() {
             dataSource = UICollectionViewDiffableDataSource<CatSection, Category>(collectionView: collectionView, cellProvider: { collectionView, indexPath, category -> UICollectionViewCell? in
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoriesCell.reuseId, for: indexPath) as? CategoriesCell
+                cell?.isSelected = true
                     cell?.configure(with: category)
+                
+//                if indexPath.row == 0 {
+//                    DispatchQueue.main.async {
+//                        cell?.isSelected = true
+//                    }
+//                }
+                
                     return cell
             })
         }

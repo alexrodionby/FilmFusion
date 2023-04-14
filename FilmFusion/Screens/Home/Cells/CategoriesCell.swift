@@ -41,13 +41,13 @@ class CategoriesCell: UICollectionViewCell {
     required init() {
         super.init(frame: .zero)
         setupView()
+
     }
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         fatalError("init(coder:) has not been implemented")
     }
     func setupView() {
-        
         self.addSubview(ovalView)
         self.addSubview(titleLabel)
         
@@ -67,7 +67,7 @@ class CategoriesCell: UICollectionViewCell {
     
     func configure(with category: Category) {
         titleLabel.text = category.title
-        print("cat cell configured")
+        layoutIfNeeded()
     }
     
     

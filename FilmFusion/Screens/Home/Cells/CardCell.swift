@@ -40,8 +40,10 @@ class CardCell: UICollectionViewCell {
         self.layer.shadowRadius = 10
         self.layer.shadowOpacity = 0.5
     }
-    func configure(with film: Film) {
-        imageView.image = film.poster
+    func configure(with movie: Movie) {
+//        imageView.image = film.poster
+        guard let url = URL(string: "https://image.tmdb.org/t/p/w500\(movie.unwrappedPosterPath)") else { return }
+        imageView.kf.setImage(with: url)
     }
     
     func setupConstraints() {

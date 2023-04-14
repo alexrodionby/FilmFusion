@@ -15,7 +15,7 @@ class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate {
     }
     private let avatarView = AvatarView()
     
-    let films: [Film] = filmsMy
+//    let films: [Film] = filmsMy
     
     var movies: [Movie] = [Movie]()
     
@@ -35,6 +35,8 @@ class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchDiscoverMovies()
+
         view.backgroundColor = UIColor(named: "customBackground")
         tableView.dataSource = dataSource
         scrollView.delegate = self
@@ -44,14 +46,13 @@ class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate {
         viewInsets = window.safeAreaInsets
         
         configureViews()
-        
+
         createDataSource()
-        fetchDiscoverMovies()
+//        reloadData()
+     
 
- 
     }
-
-    
+   
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         cardsView.setupScrollFirst()
@@ -65,6 +66,8 @@ class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate {
                     self?.movies =  movies
                     DispatchQueue.main.async {
                         self?.reloadData()
+                        self?.cardsView.movies = self!.movies
+                        self!.cardsView.reloadData()
                     }
                 case.failure(let error):
                     print(error)

@@ -37,19 +37,7 @@ class FilmCell: UITableViewCell {
         return label
     }()
     
-    var runtimeLabel: UILabel = {
-        let text = " 140 min"
-        let attachment = NSTextAttachment()
-        attachment.image = UIImage(systemName: "clock.fill")?.withTintColor(.gray)
-        let imageString = NSMutableAttributedString(attachment: attachment)
-        let textString = NSAttributedString(string: text)
-        imageString.append(textString)
-        let label = UILabel()
-        label.attributedText = imageString
-        label.textColor = .gray
-        label.font = UIFont.systemFont(ofSize: 14, weight: .light)
-        return label
-    }()
+    var runtimeLabel: UILabel = UILabel()
     
     var favoriteLabel: UIImageView = {
         let isFavorite: Bool = false
@@ -59,40 +47,14 @@ class FilmCell: UITableViewCell {
         return view
     }()
     
-    var votesLabel: UILabel = {
-        let textVotes = "4.4"
-        let textAllVotes = "(45)"
-        
-        let attachment = NSTextAttachment()
-        attachment.image = UIImage(systemName: "star.fill")?  .withTintColor(.orange)
-        attachment.bounds = CGRect(x:0, y: -1, width: 13, height: 13)
-        
-        let imageString = NSMutableAttributedString(attachment: attachment)
-        
-        let attributeOrrange = [ NSAttributedString.Key.foregroundColor: UIColor.orange]
-        let attributeGray = [ NSAttributedString.Key.foregroundColor: UIColor.gray]
-        
-        let attrStringVotes = NSAttributedString(string: textVotes, attributes: attributeOrrange)
-        let attrStringAllVotes = NSAttributedString(string: textAllVotes, attributes: attributeGray)
-        let attrStringSpace = NSAttributedString(string: " ")
-        
-        imageString.append(attrStringSpace)
-        imageString.append(attrStringVotes)
-        imageString.append(attrStringAllVotes)
-
-        
-        let label = UILabel()
-        label.attributedText = imageString
-        //label.textColor = .gray
-        label.font = UIFont.systemFont(ofSize: 14, weight: .light)
-        return label
-        
-        
-    }()
+    var votesLabel: UILabel = UILabel()
+    
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String? ) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCell()
+        runtimeLabel.addClockBefore(by: 15)
+        votesLabel.addVotes(average: 2.0, 33)
     }
     
     required init?(coder: NSCoder) {
@@ -117,9 +79,12 @@ class FilmCell: UITableViewCell {
         
     }
     func configure(with movie: Movie) {
-        guard let url = URL(string: "https://image.tmdb.org/t/p/w500\(movie.unwrappedPoserPath)") else { return }
+        guard let url = URL(string: "https://image.tmdb.org/t/p/w500\(movie.unwrappedPosterPath)") else { return }
         posterView.kf.setImage(with: url)
-        titleLabel.text = movie.unwrappedTitle
+        titleLabel.text = movie.title
+        runtimeLabel.addClockBefore(by: movie.unwrappedRuntime)
+        votesLabel.addVotes(average: movie.unwrappedVoteAverage, movie.unwrappedVoteCount)
+        //genreLabel.text = movie.unwrappedGenres[0].name
         
     }
     func setupConstraints() {
@@ -152,12 +117,56 @@ class FilmCell: UITableViewCell {
 
         
         votesLabel.snp.makeConstraints { make in
-            
-            make.leading.equalTo(self.snp.trailing).offset(-85)
+            make.leading.equalTo(self.snp.trailing).offset(-86)
             make.bottom.equalTo(runtimeLabel)
         }
         
             
     }
     
+}
+// MARK: - UILabel extentions
+
+extension UILabel {
+    func addClockBefore(by runTime: Int){
+        let text = " \(runTime) min"
+        let attachment = NSTextAttachment()
+        attachment.image = UIImage(systemName: "clock.fill")?.withTintColor(.gray)
+        let imageString = NSMutableAttributedString(attachment: attachment)
+        let textString = NSAttributedString(string: text)
+        imageString.append(textString)
+        
+        self.attributedText = imageString
+        self.textColor = .gray
+        self.font = UIFont.systemFont(ofSize: 14, weight: .light)
+
+    }
+}
+
+extension UILabel {
+    func addVotes(average vote: Double, _ totalVotes: Int) {
+        let textVotes = "\(vote)"
+        let textAllVotes = "(\(totalVotes))"
+        
+        let attachment = NSTextAttachment()
+        attachment.image = UIImage(systemName: "star.fill")?  .withTintColor(.orange)
+        attachment.bounds = CGRect(x:0, y: -1, width: 13, height: 13)
+        
+        let imageString = NSMutableAttributedString(attachment: attachment)
+        
+        let attributeOrrange = [ NSAttributedString.Key.foregroundColor: UIColor.orange]
+        let attributeGray = [ NSAttributedString.Key.foregroundColor: UIColor.gray]
+        
+        let attrStringVotes = NSAttributedString(string: textVotes, attributes: attributeOrrange)
+        let attrStringAllVotes = NSAttributedString(string: textAllVotes, attributes: attributeGray)
+        let attrStringSpace = NSAttributedString(string: " ")
+        
+        imageString.append(attrStringSpace)
+        imageString.append(attrStringVotes)
+        imageString.append(attrStringAllVotes)
+
+        self.attributedText = imageString
+        //label.textColor = .gray
+        self.font = UIFont.systemFont(ofSize: 14, weight: .light)
+    }
 }

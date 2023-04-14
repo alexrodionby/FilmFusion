@@ -23,7 +23,6 @@ struct Movie: Codable, Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
-    
     let media_type: String?
     let id: Int
     let original_name: String?
@@ -48,8 +47,20 @@ struct Movie: Codable, Hashable {
     var unwrappedTitle: String {
         original_title ?? "no title"
     }
-    var unwrappedPoserPath: String {
+    var unwrappedPosterPath: String {
         poster_path ?? ""
+    }
+    var unwrappedRuntime: Int {
+        runtime ?? 0
+    }
+    var unwrappedVoteCount: Int {
+        vote_count ?? 0
+    }
+    var unwrappedVoteAverage: Double {
+        vote_average ?? 0.0
+    }
+    var unwrappedGenres: [MovieGenre] {
+        genres ?? [MovieGenre]()
     }
 
 }
@@ -83,6 +94,10 @@ struct MovieCrew: Codable {
 struct MovieGenre: Codable {
     let id: Int
     let name: String
+    
+    var unvrappedName: String {
+        name ?? "."
+    }
 }
 
 struct ProductionCompanies: Codable {
