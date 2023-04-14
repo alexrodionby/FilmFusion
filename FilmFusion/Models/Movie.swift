@@ -16,7 +16,14 @@ struct MovieCreditResponse: Codable {
     let crew: [MovieCrew]
 }
 
-struct Movie: Codable {
+struct Movie: Codable, Hashable {
+    static func == (lhs: Movie, rhs: Movie) -> Bool {
+        return lhs.id == rhs.id
+    }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
     let media_type: String?
     let id: Int
     let original_name: String?
@@ -37,8 +44,29 @@ struct Movie: Codable {
     let production_companies: [ProductionCompanies]?
     let tagline: String?
     let title: String
+    
+    var unwrappedTitle: String {
+        original_title ?? "no title"
+    }
+    var unwrappedPoserPath: String {
+        poster_path ?? ""
+    }
 
 }
+
+//extension Movie: Identifiable, Hashable {
+//    var identifier: String {
+//        return UUID().uuidString
+//    }
+//
+//    public func hash(into hasher: inout Hasher) {
+//        return hasher.combine(identifier)
+//    }
+//
+//    public static func == (lhs: Movie, rhs: Movie) -> Bool {
+//        return lhs.identifier == rhs.identifier
+//    }
+//}
 
 struct MovieCast: Codable {
     let id: Int
@@ -63,11 +91,6 @@ struct ProductionCompanies: Codable {
     let logo_path: String?
     let origin_country: String
 }
-
-
-
-
-
 
 
 struct DetailMovieViewModel {

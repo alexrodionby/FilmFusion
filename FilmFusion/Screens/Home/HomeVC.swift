@@ -17,7 +17,9 @@ class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate {
     
     let films: [Film] = filmsMy
     
-    var dataSource: UITableViewDiffableDataSource<Section, Film>?
+    var movies: [Movie] = [Movie]()
+    
+    var dataSource: UITableViewDiffableDataSource<Section, Movie>?
 
     private let scrollView = UIScrollView()
     private let cardsView = CardsView()
@@ -33,7 +35,7 @@ class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(named: "customVCBgnd")
+        view.backgroundColor = UIColor(named: "customBackground")
         tableView.dataSource = dataSource
         scrollView.delegate = self
         tableView.delegate = self
@@ -42,11 +44,32 @@ class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate {
         viewInsets = window.safeAreaInsets
         
         configureViews()
-                
+        
+        createDataSource()
+        fetchDiscoverMovies()
+
+ 
     }
+
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         cardsView.setupScrollFirst()
+    }
+    
+    private func fetchDiscoverMovies() {
+        APICaller.shared.getDiscoverMovies() { [weak self] results in
+            switch results {
+                case.success(let movies):
+                    print("1st request")
+                    self?.movies =  movies
+                    DispatchQueue.main.async {
+                        self?.reloadData()
+                    }
+                case.failure(let error):
+                    print(error)
+            }
+        }
     }
   
     func configureViews() {
@@ -83,6 +106,7 @@ class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate {
         tableView.register(FilmCell.self, forCellReuseIdentifier: FilmCell.reuseId)
         tableView.showsVerticalScrollIndicator = false
         tableView.separatorStyle = .none
+        //tableView.backgroundColor = UIColor(named: "customBackground")
         
         createDataSource()
         reloadData()
@@ -90,18 +114,18 @@ class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate {
     }
  // MARK: - DiffableDataSource
     func createDataSource(){
-        dataSource = UITableViewDiffableDataSource(tableView: tableView, cellProvider: { (tableView, indexPath, film) -> UITableViewCell?  in
+        dataSource = UITableViewDiffableDataSource(tableView: tableView, cellProvider: { (tableView, indexPath, movie) -> UITableViewCell?  in
             let cell = tableView.dequeueReusableCell(withIdentifier: "FilmCell", for: indexPath) as? FilmCell
-            cell?.configure(with: film)
+                cell?.configure(with: movie)
             return cell
-            
         })
     }
     
+    
     func reloadData() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Film>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Movie>()
         snapshot.appendSections([.mainFilms])
-        snapshot.appendItems(films, toSection: .mainFilms)
+        snapshot.appendItems(movies, toSection: .mainFilms)
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
     
@@ -150,22 +174,4 @@ extension HomeVC {
     }
 }
 
-// MARK: - SwiftUI
-import SwiftUI
-struct ListProvider: PreviewProvider {
-    static var previews: some View {
-        ContainterView().edgesIgnoringSafeArea(.all)
-    }
 
-    struct ContainterView: UIViewControllerRepresentable {
-
-        let listVC = HomeVC()
-        func makeUIViewController(context: UIViewControllerRepresentableContext<ListProvider.ContainterView>) -> HomeVC {
-            return listVC
-        }
-
-        func updateUIViewController(_ uiViewController: ListProvider.ContainterView.UIViewControllerType, context: UIViewControllerRepresentableContext<ListProvider.ContainterView>) {
-
-        }
-    }
-}

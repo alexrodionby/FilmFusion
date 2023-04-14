@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Kingfisher
+
 class FilmCell: UITableViewCell {
     
     static let reuseId = "FilmCell"
@@ -104,6 +106,7 @@ class FilmCell: UITableViewCell {
         self.contentView.addSubview(runtimeLabel)
         self.contentView.addSubview(favoriteLabel)
         self.contentView.addSubview(votesLabel)
+        self.backgroundColor = UIColor(named: "customBackground")
         
         setupConstraints()
         posterView.layer.shadowOffset = CGSize(width: 2, height: 2)
@@ -113,8 +116,11 @@ class FilmCell: UITableViewCell {
         
         
     }
-    func configure(with film: Film) {
-        posterView.image = film.poster
+    func configure(with movie: Movie) {
+        guard let url = URL(string: "https://image.tmdb.org/t/p/w500\(movie.unwrappedPoserPath)") else { return }
+        posterView.kf.setImage(with: url)
+        titleLabel.text = movie.unwrappedTitle
+        
     }
     func setupConstraints() {
         posterView.snp.makeConstraints { make in

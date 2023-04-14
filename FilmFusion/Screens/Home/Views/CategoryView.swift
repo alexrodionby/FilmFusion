@@ -106,7 +106,7 @@ class CategoryView: UIView, UICollectionViewDelegate {
         layout.scrollDirection = .horizontal
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
 //        layout.minimumInteritemSpacing = 10.0
-//        collectionView.backgroundColor = .red
+       collectionView.backgroundColor = UIColor(named: "customBackground")
 
     }
     
