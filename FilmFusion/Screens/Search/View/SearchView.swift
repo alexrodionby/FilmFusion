@@ -8,10 +8,10 @@
 import UIKit
 
 final class SearchView: UIView {
-    var categories = ["Random", "Action", "Adventure", "Animation", "Comedy", "Crime", "Documentary", "Drama", "Family", "Fantasy", "History", "Horror", "Music", "Mystery", "Romance", "Science Fiction", "TV Movie", "Thriller", "War", "Western", "18"]
+    var categories = ["Random", "Action", "Adventure", "Animation", "Comedy", "Crime", "Documentary", "Drama", "Family", "Fantasy", "History", "Horror", "Music", "Mystery", "Romance", "Science Fiction", "TV Movie", "Thriller", "War", "Western"]
     
     var isSelected = true
-    var lastIndexActive:IndexPath = [1 ,0]
+    var lastIndexActive: IndexPath = [1,0]
     
     lazy var searchView: UIView = {
         let view = UIView()

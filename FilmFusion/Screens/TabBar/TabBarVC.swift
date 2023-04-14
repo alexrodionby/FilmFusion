@@ -7,7 +7,6 @@
 
 import UIKit
 
-//@available(iOS 15.0, *)
 class TabBarVC: UITabBarController {
     
     enum Tabs: Int {
@@ -22,8 +21,6 @@ class TabBarVC: UITabBarController {
         super.viewDidLoad()
         generateTabBar()
         setTabBarAppearance()
-  //      self.navigationController?.navigationBar.isHidden = true
-       
     }
     
     private func generateTabBar() {
