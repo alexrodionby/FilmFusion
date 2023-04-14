@@ -121,7 +121,7 @@ class RealmDataBase {
             items = results.list
         }
         
-        return items //приложуха падает, если ничего нет в items
+        return items
     }
     
     func deleteItem(withName titleName: String) {
