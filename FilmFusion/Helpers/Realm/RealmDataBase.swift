@@ -62,12 +62,12 @@ class RealmDataBase {
             try! realm.write({
                 currentRealmUser.recentWatchFilms.append(recentWatchRealmFilm)
             })
-        } else {
-            try! realm.write({
-                realm.delete(film)
-                currentRealmUser.recentWatchFilms.append(recentWatchRealmFilm)
-            })
-        }
+        } //else {
+//            try! realm.write({
+//                realm.delete(film)
+//                currentRealmUser.recentWatchFilms.append(recentWatchRealmFilm)
+//            })
+//        }
     }
     
     func createUserWith(uuid: String, firstName: String, lastName: String, email: String) {

@@ -114,6 +114,7 @@ struct DetailMovieViewModel {
     let posterURL: String
     let releaseDate: String
     let voteAverage: Double
+    let voteCount: Int
     let overview: String
     let runtime: Int
 }
