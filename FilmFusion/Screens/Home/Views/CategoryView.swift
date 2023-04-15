@@ -39,7 +39,7 @@ class CategoryView: UIView, UICollectionViewDelegate {
     let dragBar: UIView = {
         let view = UIView()
         
-        view.backgroundColor = UIColor(named: "customTabBarIconSelectedTint")?.withAlphaComponent(0.9) // СИСТЕМНЫЙ  синий!!!!
+        view.backgroundColor = UIColor(named: "customTabBarIconSelectedTint")?.withAlphaComponent(0.9)
         view.layer.cornerRadius = 3
         view.clipsToBounds = true
         return view
@@ -143,8 +143,10 @@ class CategoryView: UIView, UICollectionViewDelegate {
 
 extension CategoryView {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: IndexPath(row: 0, section: 0))
+        cell?.isSelected = false
         if let cell = collectionView.cellForItem(at: indexPath) {
-            
+             
         }
     }
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
@@ -162,11 +164,11 @@ extension CategoryView {
                 cell?.isSelected = true
                     cell?.configure(with: category)
                 
-//                if indexPath.row == 0 {
-//                    DispatchQueue.main.async {
-//                        cell?.isSelected = true
-//                    }
-//                }
+                if indexPath.row == 0 {
+                    DispatchQueue.main.async {
+                        cell?.isSelected = true
+                    }
+                }
                 
                     return cell
             })

@@ -13,6 +13,7 @@ class CategoriesCell: UICollectionViewCell {
         didSet {
             ovalView.backgroundColor = isSelected ? UIColor(named: "customTabBarIconSelectedTint") : .clear
             titleLabel.textColor = isSelected ? .white : UIColor(named: "customLabelName")
+            
         }
     }
     

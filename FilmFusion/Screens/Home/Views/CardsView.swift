@@ -9,10 +9,9 @@ import UIKit
 import SnapKit
 
 class CardsView: UIView {
-    
-//    var films = [Film]()
     var movies: [Movie] = [Movie]()
 
+    var delegate: PushToVC?
     
     let backgroundView = UIImageView()
     
@@ -21,7 +20,7 @@ class CardsView: UIView {
     }
     var dataSource: UICollectionViewDiffableDataSource<CardSection, Movie>?
     
-    private let cardsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+     let cardsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private let layout = CustomLayout()
     var itemW: CGFloat {
         return UIScreen.viewWidth * 0.4
@@ -34,12 +33,12 @@ class CardsView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        
         setupView()
         
         setupCollectionView()
         setupConstraints()
         
-        //print("cards view movieee \(movies[0])")
         createDataSource()
         reloadData()
     }
@@ -81,7 +80,9 @@ extension CardsView {
     }
     
     private func setupView() {
-        //films = filmsMy
+        
+        
+        
         movies = [Movie(media_type: nil, id: 2, original_name: "xas", original_title: nil, poster_path: nil, overview: nil, vote_count: 8, release_date: nil, vote_average: 0.7, runtime: nil, video: true, genres: nil, adult: false, backdrop_path: nil, budget: nil, homepage: nil, original_language: "", production_companies: nil, tagline: nil, title: "dw"),
                   Movie(media_type: nil, id: 223, original_name: "xas", original_title: nil, poster_path: nil, overview: nil, vote_count: 8, release_date: nil, vote_average: 0.7, runtime: nil, video: true, genres: nil, adult: false, backdrop_path: nil, budget: nil, homepage: nil, original_language: "", production_companies: nil, tagline: nil, title: "dw"),
                   Movie(media_type: nil, id: 322, original_name: "xas", original_title: nil, poster_path: nil, overview: nil, vote_count: 8, release_date: nil, vote_average: 0.7, runtime: nil, video: true, genres: nil, adult: false, backdrop_path: nil, budget: nil, homepage: nil, original_language: "", production_companies: nil, tagline: nil, title: "dw")
@@ -122,11 +123,17 @@ extension CardsView {
 // MARK: - UICollectionViewDelegate
 
 extension CardsView: UICollectionViewDelegate {
+ 
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
         if indexPath.item == layout.currentPage {
             print("Selected is\(indexPath)")
             
+            self.delegate?.pushDetailVC(from: indexPath)
+            
+            
+
         }
         else {
             cardsCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
@@ -154,20 +161,15 @@ extension CardsView {
         let indexPath = IndexPath(item: layout.currentPage, section: 0)
         if let cell = cardsCollectionView.cellForItem(at: indexPath) {
             UIView.transition(with: backgroundView, duration: 0.2, options: .transitionCrossDissolve) {
-//                self.backgroundView.image = self.movies[self.layout.currentPage].poster
                 
                 guard let url = URL(string: "https://image.tmdb.org/t/p/w500\( self.movies[self.layout.currentPage].unwrappedPosterPath )") else { return }
                
                 self.backgroundView.kf.setImage(with: url)
-                
-                
-                
-                
+
             }
         }
         layoutIfNeeded()
     }
-    
     
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         print("stop anima")

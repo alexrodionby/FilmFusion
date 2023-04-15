@@ -4,11 +4,16 @@
 //
 //  Created by Alex Fount on 5.04.23.
 //
+protocol PushToVC {
+    func pushDetailVC(from indexPath: IndexPath)
+}
 
 import UIKit
 import SnapKit
 
-class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate {
+class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, PushToVC {
+    
+    
     
     enum Section: CaseIterable {
         case mainFilms
@@ -41,7 +46,10 @@ class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate {
         tableView.dataSource = dataSource
         scrollView.delegate = self
         tableView.delegate = self
-
+        
+        cardsView.delegate = self
+        
+        
         let window = UIApplication.shared.windows[0]
         viewInsets = window.safeAreaInsets
         
@@ -103,12 +111,14 @@ class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate {
         scrollView.frame = .zero
         scrollView.contentSize.height = scrollViewContentH
         scrollView.showsVerticalScrollIndicator = false
+        scrollView.decelerationRate = .fast
     }
     
     func setupTableView() {
         tableView.register(FilmCell.self, forCellReuseIdentifier: FilmCell.reuseId)
         tableView.showsVerticalScrollIndicator = false
         tableView.separatorStyle = .none
+        tableView.decelerationRate = .fast
         //tableView.backgroundColor = UIColor(named: "customBackground")
         
         createDataSource()
@@ -174,6 +184,27 @@ class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate {
 extension HomeVC {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         96
+    }
+   
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let movies = movies[indexPath.row]
+        DispatchQueue.main.async {
+            let vc = DetailVC()
+            let model = DetailMovieViewModel(id: movies.id, titleName: movies.title , posterURL: movies.poster_path ?? "", releaseDate: movies.release_date ?? "", voteAverage: movies.vote_average, overview: movies.overview ?? "" , runtime: movies.runtime ?? 0)
+            vc.configure(with: model)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    
+    func pushDetailVC(from indexPath: IndexPath) {
+        let movies = movies[indexPath.row]
+        DispatchQueue.main.async {
+            let vc = DetailVC()
+            let model = DetailMovieViewModel(id: movies.id, titleName: movies.title , posterURL: movies.poster_path ?? "", releaseDate: movies.release_date ?? "", voteAverage: movies.vote_average, overview: movies.overview ?? "" , runtime: movies.runtime ?? 0)
+            vc.configure(with: model)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 
