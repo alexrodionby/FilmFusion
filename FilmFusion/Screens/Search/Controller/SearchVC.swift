@@ -172,7 +172,9 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
             }
         }
         
-        let model = MovieViewModel(id: id, titleName: movies.original_title ?? movies.original_name ?? "", posterURL: movies.poster_path ?? "", releaseDate: movies.release_date ?? "", voteAverage: movies.vote_average, voteCount: movies.vote_count, runtime: movies.runtime ?? movies.id)
+        let model = DetailMovieViewModel(id: id, titleName: movies.original_title ?? movies.original_name ?? "", posterURL: movies.poster_path ?? "", releaseDate: movies.release_date ?? "", voteAverage: movies.vote_average, voteCount: movies.vote_count, overview: movies.overview ?? "хуй", runtime: movies.runtime ?? movies.id)
+        
+//        let model = MovieViewModel(id: id, titleName: movies.original_title ?? movies.original_name ?? "", posterURL: movies.poster_path ?? "", releaseDate: movies.release_date ?? "", voteAverage: movies.vote_average, voteCount: movies.vote_count, runtime: movies.runtime ?? movies.id)
         print("Жанры этого кино ", movies.genres?.first?.name)
         cell.configure(with: model)
         print(model)
@@ -188,7 +190,7 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         let movies = movies[indexPath.row]
         DispatchQueue.main.async {
             let vc = DetailVC()
-            let model = DetailMovieViewModel(id: movies.id, titleName: movies.title , posterURL: movies.poster_path ?? "", releaseDate: movies.release_date ?? "", voteAverage: movies.vote_average, overview: movies.overview ?? "" , runtime: movies.runtime ?? 0)
+            let model = DetailMovieViewModel(id: movies.id, titleName: movies.title , posterURL: movies.poster_path ?? "", releaseDate: movies.release_date ?? "", voteAverage: movies.vote_average, voteCount: movies.vote_count, overview: movies.overview ?? "" , runtime: movies.runtime ?? 0)
             vc.configure(with: model)
             self.navigationController?.pushViewController(vc, animated: true)
         }

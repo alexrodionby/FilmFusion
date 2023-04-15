@@ -19,6 +19,8 @@ final class FilmTableViewCell: UITableViewCell {
         
     static let identifier = "FilmCell"
     
+    var filmDescription: String = ""
+    
     private let pictureImageView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "luck-movie")
@@ -139,8 +141,22 @@ final class FilmTableViewCell: UITableViewCell {
     
     @objc func favButtonTapped() {
         print("Кнопка избранное нажалась")
+        let recentWatchFilms = RealmDataBase.shared.readRecentWatch(category: "All")
+        
+        let recentWatchFilm = recentWatchFilms.filter("titleName = %@", titleLabel.text!)
+        
         if isSaved {
             RealmDataBase.shared.deleteItem(withName: titleLabel.text!)
+        } else if !recentWatchFilm.isEmpty {
+            let realmFilm = recentWatchFilm.first!
+            let newFilm = RealmFilm()
+            newFilm.titleName = realmFilm.titleName
+            newFilm.image = realmFilm.image
+            newFilm.releaseDate = realmFilm.releaseDate
+            newFilm.voteAverage = realmFilm.voteAverage
+            newFilm.voteCount = realmFilm.voteCount
+            newFilm.filmDescription = realmFilm.filmDescription
+            RealmDataBase.shared.write(favoritesRealmFilm: newFilm)
         } else {
             let newFilm = RealmFilm()
             newFilm.titleName = titleLabel.text!
@@ -148,6 +164,7 @@ final class FilmTableViewCell: UITableViewCell {
             newFilm.releaseDate = calendarLabel.text!
             newFilm.voteAverage = Double(raitingLabel.text!)!
             newFilm.voteCount = Int(reviewsLabel.text!)!
+            newFilm.filmDescription = filmDescription
             RealmDataBase.shared.write(favoritesRealmFilm: newFilm)
         }
         delegate?.didTapFavoriteButton(onCell: self)
@@ -155,7 +172,7 @@ final class FilmTableViewCell: UITableViewCell {
     }
     
     
-    func configure(with model: MovieViewModel) {
+    func configure(with model: DetailMovieViewModel) {
         
         guard let url = URL(string: "https://image.tmdb.org/t/p/w500\(model.posterURL)") else { return }
         pictureImageView.kf.setImage(with: url)
@@ -164,6 +181,7 @@ final class FilmTableViewCell: UITableViewCell {
         raitingLabel.text = "\(model.voteAverage)"
         reviewsLabel.text = "\(model.voteCount)"
 //        timeLabel.text = "\(model.runtime)"
+        filmDescription = model.overview
         isSaved = RealmDataBase.shared.isItemSaved(withName: titleLabel.text!)
     }
     

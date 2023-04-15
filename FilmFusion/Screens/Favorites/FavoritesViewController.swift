@@ -101,6 +101,11 @@ final class FavoritesViewController: UIViewController {
 extension FavoritesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Тыкнули по ячейке")
+        let rev = Array(films.reversed())
+        let movie = rev[indexPath.row]
+        let vc = DetailVC()
+        vc.configureWithRealm(film: movie)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
