@@ -165,6 +165,8 @@ final class FilmTableViewCell: UITableViewCell {
         reviewsLabel.text = "\(model.voteCount)"
 //        timeLabel.text = "\(model.runtime)"
         isSaved = RealmDataBase.shared.isItemSaved(withName: titleLabel.text!)
+        
+        
     }
     
     func configureWithRealm(film: RealmFilm) {

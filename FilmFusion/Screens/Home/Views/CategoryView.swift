@@ -10,13 +10,12 @@ import UIKit
 class CategoryView: UIView, UICollectionViewDelegate {
 
     var movies: [Movie] = [Movie]()
-
     
-    let categoryTemp = ["All", "Action", "Adventure", "Animation", "Comedy", "Crime", "Documentary", "Drama", "Family", "Fantasy", "History", "Horror", "Music", "Mystery", "Romance", "Science Fiction", "TV Movie", "Thriller", "War", "Western"]
+     let categoryTemp = ["All", "Action", "Adventure", "Animation", "Comedy", "Crime", "Documentary", "Drama", "Family", "Fantasy", "History", "Horror", "Music", "Mystery", "Romance", "Science Fiction", "TV Movie", "Thriller", "War", "Western"]
     
     var categories = [Category]()
     
-    var delegate: implementHomeVC?
+    var delegate: ImplementHomeVC?
 
     
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -79,7 +78,7 @@ class CategoryView: UIView, UICollectionViewDelegate {
         self.addSubview(titleLabel)
         self.addSubview(collectionView)
         self.addSubview(boxOfficeLabel)
-        self.addSubview(seeAllLabel)
+        //self.addSubview(seeAllLabel)
         self.addSubview(dragBar)
         
         collectionView.delegate  = self
@@ -129,10 +128,10 @@ class CategoryView: UIView, UICollectionViewDelegate {
             make.bottom.equalToSuperview().offset(-12)
         }
         
-        seeAllLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(boxOfficeLabel)
-            make.trailing.equalToSuperview().offset(-25)
-        }
+//        seeAllLabel.snp.makeConstraints { make in
+//            make.bottom.equalTo(boxOfficeLabel)
+//            make.trailing.equalToSuperview().offset(-25)
+//        }
         dragBar.snp.makeConstraints { make in
             make.width.equalTo(86)
             make.height.equalTo(4)

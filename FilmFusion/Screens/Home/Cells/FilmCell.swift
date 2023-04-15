@@ -7,10 +7,17 @@
 
 import UIKit
 import Kingfisher
+import SnapKit
+
+protocol FilmCellDelegate: AnyObject {
+    func didTapFavoriteButton()
+}
 
 class FilmCell: UITableViewCell {
     
     static let reuseId = "FilmCell"
+    
+    weak var delegate: FilmCellDelegate?
     
     var posterView: UIImageView = {
         let postView = UIImageView()
@@ -31,7 +38,7 @@ class FilmCell: UITableViewCell {
     
     var genreLabel: UILabel = {
         let label = UILabel()
-        label.text = "Action"
+        label.text = "Genre"
         label.textColor = .gray
         label.font = UIFont.systemFont(ofSize: 14, weight: .light)
         return label
@@ -39,17 +46,31 @@ class FilmCell: UITableViewCell {
     
     var runtimeLabel: UILabel = UILabel()
     
-    var favoriteLabel: UIImageView = {
-        let isFavorite: Bool = false
+    var isSaved: Bool = false {
+        didSet {
+            favoriteLabel.image = isSaved ?
+            UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+            favoriteLabel.tintColor = isSaved ?
+            UIColor(hexString: "514EB6") : UIColor(named: "customMiniLabel")
+            print("isSaved: \(self.isSaved)")
+        }
+        
+    }
+    
+    
+    lazy var favoriteLabel: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(systemName: (isFavorite ? "heart.fill" : "heart"))
-        view.tintColor = isFavorite ? UIColor.orange : UIColor.gray
+        view.image = UIImage(systemName: (isSaved ? "heart.fill" : "heart"))
+        view.tintColor = isSaved ? UIColor.orange : UIColor.gray
+        view.image = UIImage(systemName: "heart")
+        view.tintColor = UIColor.gray
+        
         return view
     }()
     
     var votesLabel: UILabel = UILabel()
     
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String? ) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCell()
@@ -61,15 +82,41 @@ class FilmCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc func favTapped() {
+        print("Кнопка SSS нажалась")
+        if isSaved {
+            RealmDataBase.shared.deleteItem(withName: titleLabel.text!)
+        } else {
+            let newFilm = RealmFilm()
+            newFilm.titleName = titleLabel.text!
+            newFilm.image = (posterView.image?.pngData()!)!
+            //newFilm.releaseDate = calendarLabel.text!
+            //            newFilm.voteAverage = Double(raitingLabel.text!)!
+            //            newFilm.voteCount = Int(reviewsLabel.text!)!
+            
+            RealmDataBase.shared.write(favoritesRealmFilm: newFilm)
+        }
+        delegate?.didTapFavoriteButton()
+        isSaved.toggle()
+    }
+    
+    func setupTapView() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(favTapped))
+        self.favoriteLabel.isUserInteractionEnabled = true
+        self.favoriteLabel.addGestureRecognizer(tap)
+    }
+
     func setupCell() {
+
         self.contentView.addSubview(posterView)
         self.contentView.addSubview(genreLabel)
         self.contentView.addSubview(titleLabel)
         self.contentView.addSubview(runtimeLabel)
-        self.contentView.addSubview(favoriteLabel)
         self.contentView.addSubview(votesLabel)
+        self.contentView.addSubview(favoriteLabel)
+
         self.backgroundColor = UIColor(named: "customBackground")
-        
+        setupTapView()
         setupConstraints()
         posterView.layer.shadowOffset = CGSize(width: 2, height: 2)
         posterView.layer.shadowColor = UIColor.black.cgColor
@@ -80,13 +127,24 @@ class FilmCell: UITableViewCell {
     func configure(with movie: Movie) {
         guard let url = URL(string: "https://image.tmdb.org/t/p/w500\(movie.unwrappedPosterPath)") else { return }
         posterView.kf.setImage(with: url)
-        titleLabel.text = movie.title
-       // runtimeLabel.addClockBefore(by: movie.unwrappedRuntime)
+        titleLabel.text = movie.unwrappedOriginalTitle
+        // runtimeLabel.addClockBefore(by: movie.unwrappedRuntime)
         runtimeLabel.addClockBefore(by: Int.random(in: 110..<149))
         votesLabel.addVotes(average: movie.unwrappedVoteAverage, movie.unwrappedVoteCount)
         //genreLabel.text = movie.unwrappedGenres[0].name
         
+        let categoryTemp = ["Action", "Adventure", "Animation", "Comedy", "Crime", "Documentary", "Drama", "Family", "Fantasy", "History", "Horror", "Music", "Mystery", "Romance", "Science Fiction", "TV Movie", "Thriller", "War", "Western"]
+        
+        genreLabel.text = categoryTemp.randomElement()
+        
+       isSaved = RealmDataBase.shared.isItemSaved(withName: titleLabel.text!)
+
+
+        
     }
+    
+    
+    
     func setupConstraints() {
         posterView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(8)
@@ -114,12 +172,12 @@ class FilmCell: UITableViewCell {
             make.top.equalTo(posterView)
             make.trailing.equalTo(self.snp.trailing).offset(-25)
         }
-
+        
         votesLabel.snp.makeConstraints { make in
             make.leading.equalTo(self.snp.trailing).offset(-86)
             make.bottom.equalTo(runtimeLabel)
         }
-    
+        
     }
     
 }
@@ -137,7 +195,7 @@ extension UILabel {
         self.attributedText = imageString
         self.textColor = .gray
         self.font = UIFont.systemFont(ofSize: 14, weight: .light)
-
+        
     }
 }
 
@@ -162,7 +220,7 @@ extension UILabel {
         imageString.append(attrStringSpace)
         imageString.append(attrStringVotes)
         imageString.append(attrStringAllVotes)
-
+        
         self.attributedText = imageString
         self.font = UIFont.systemFont(ofSize: 14, weight: .light)
     }

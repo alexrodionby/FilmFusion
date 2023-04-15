@@ -4,7 +4,7 @@
 //
 //  Created by Alex Fount on 5.04.23.
 //
-protocol implementHomeVC {
+protocol ImplementHomeVC {
     func pushDetailVC(from indexPath: IndexPath)
     func reloadDataRand()
 }
@@ -12,8 +12,8 @@ protocol implementHomeVC {
 import UIKit
 import SnapKit
 
-class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, implementHomeVC {
- 
+class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, ImplementHomeVC {
+    
     enum Section: CaseIterable {
         case mainFilms
     }
@@ -22,23 +22,24 @@ class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, imple
     var movies: [Movie] = [Movie]()
     
     var dataSource: UITableViewDiffableDataSource<Section, Movie>?
-
+    
     private let scrollView = UIScrollView()
     private let cardsView = CardsView()
-    private let categoryView = CategoryView()
+    private var categoryView = CategoryView()
     private let tableView = UITableView()
-
+    
+    
     var viewInsets: UIEdgeInsets = UIEdgeInsets()
     var avatarViewHeight: CGFloat = 60
     var cardsViewHeight: CGFloat = 0
     var categoryHeight: CGFloat = 120
     var tableViewHeight: CGFloat = 0
     var scrollViewContentH: CGFloat = 0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchDiscoverMovies()
-
+        
         view.backgroundColor = UIColor(named: "customBackground")
         tableView.dataSource = dataSource
         scrollView.delegate = self
@@ -46,45 +47,47 @@ class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, imple
         cardsView.delegate = self
         categoryView.delegate = self
         
-        
         let window = UIApplication.shared.windows[0]
         viewInsets = window.safeAreaInsets
         
         configureViews()
-
+        
         createDataSource()
-//        reloadData()
-     
-
+        
     }
-   
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         cardsView.setupScrollFirst()
+        
     }
     
     private func fetchDiscoverMovies() {
         APICaller.shared.getDiscoverMovies() { [weak self] results in
             switch results {
-                case.success(let movies):
-                    print("1st request")
-                    self?.movies =  movies
-                    DispatchQueue.main.async {
-                        self?.reloadData()
-                        self?.cardsView.movies = self!.movies
-                        self!.cardsView.reloadData()
-                    }
-                case.failure(let error):
-                    print(error)
+            case.success(let movies):
+                print("1st request")
+                self?.movies =  movies
+                DispatchQueue.main.async {
+                    self?.reloadData()
+                    self?.cardsView.movies = self!.movies
+                    self!.cardsView.reloadData()
+                }
+            case.failure(let error):
+                print(error)
             }
         }
     }
-  
+    
     func configureViews() {
         
         cardsViewHeight = UIScreen.viewHeight * 0.4
         tableViewHeight = UIScreen.viewHeight - viewInsets.top - avatarViewHeight - categoryHeight
-
+        
         scrollViewContentH = cardsViewHeight + categoryHeight + tableViewHeight - viewInsets.bottom
         
         view.addSubview(avatarView)
@@ -100,7 +103,7 @@ class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, imple
         setupConstraints()
         
     }
-
+    
     func setupAvatarView() {
     }
     
@@ -122,11 +125,11 @@ class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, imple
         reloadData()
         
     }
- // MARK: - DiffableDataSource
+    // MARK: - DiffableDataSource
     func createDataSource(){
         dataSource = UITableViewDiffableDataSource(tableView: tableView, cellProvider: { (tableView, indexPath, movie) -> UITableViewCell?  in
             let cell = tableView.dequeueReusableCell(withIdentifier: "FilmCell", for: indexPath) as? FilmCell
-                cell?.configure(with: movie)
+            cell?.configure(with: movie)
             return cell
         })
     }
@@ -144,7 +147,7 @@ class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, imple
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
     
-// MARK: - setup constraints
+    // MARK: - setup constraints
     
     func setupConstraints() {
         avatarView.snp.makeConstraints { make in
@@ -164,7 +167,7 @@ class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, imple
             make.width.equalTo(view)
             make.height.equalTo(cardsViewHeight)
             make.top.equalTo(scrollView)
-
+            
         }
         
         categoryView.snp.makeConstraints { make in
@@ -180,14 +183,14 @@ class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, imple
         }
         
     }
-
-
+    
+    
 }
 extension HomeVC {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         96
     }
-   
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let movies = movies[indexPath.row]
         DispatchQueue.main.async {
@@ -197,7 +200,6 @@ extension HomeVC {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
-    
     
     func pushDetailVC(from indexPath: IndexPath) {
         let movies = movies[indexPath.row]
@@ -212,3 +214,10 @@ extension HomeVC {
 }
 
 
+extension HomeVC: FilmCellDelegate {
+    func didTapFavoriteButton() {
+        tableView.reloadData()
+        print("reloadddaaa")
+    }
+    
+}

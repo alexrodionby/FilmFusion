@@ -15,8 +15,10 @@ class AvatarView: UIView {
         let iView = UIImageView()
         iView.contentMode = .scaleAspectFill
         iView.clipsToBounds = true
-        iView.image = UIImage(named: "avatar")
+        iView.image = UIImage(systemName: "person.fill")
         iView.layer.cornerRadius = avatarHeight / 2
+        iView.layer.borderWidth = 1
+        iView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.6).cgColor
 
         return iView
     }()

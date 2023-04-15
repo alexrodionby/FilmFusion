@@ -44,7 +44,7 @@ struct Movie: Codable, Hashable {
     let tagline: String?
     let title: String
     
-    var unwrappedTitle: String {
+    var unwrappedOriginalTitle: String {
         original_title ?? "no title"
     }
     var unwrappedPosterPath: String {
@@ -61,6 +61,10 @@ struct Movie: Codable, Hashable {
     }
     var unwrappedGenres: [MovieGenre] {
         genres ?? [MovieGenre]()
+    }
+    
+    var unwrappedRelease_date: String? {
+        release_date ?? "no date"
     }
 
 }

@@ -11,7 +11,7 @@ import SnapKit
 class CardsView: UIView {
     var movies: [Movie] = [Movie]()
 
-    var delegate: implementHomeVC?
+    var delegate: ImplementHomeVC?
     
     let backgroundView = UIImageView()
     

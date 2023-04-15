@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 class DetailVC: UIViewController {
-    
+        
     let additionalInfo = DetailView()
     let discrpitionView = DescriptionView()
     let castCollection = CastView()
@@ -192,6 +192,7 @@ class DetailVC: UIViewController {
     @objc func tappedbackButton() {
         self.dismiss(animated: true,completion: nil)
         self.navigationController?.popViewController(animated: true)
+        
     }
     
     @objc private func tappedHeart() {
