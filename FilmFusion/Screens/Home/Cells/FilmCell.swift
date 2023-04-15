@@ -76,13 +76,13 @@ class FilmCell: UITableViewCell {
         posterView.layer.shadowRadius = 10
         posterView.layer.shadowOpacity = 0.5
         
-        
     }
     func configure(with movie: Movie) {
         guard let url = URL(string: "https://image.tmdb.org/t/p/w500\(movie.unwrappedPosterPath)") else { return }
         posterView.kf.setImage(with: url)
         titleLabel.text = movie.title
-        runtimeLabel.addClockBefore(by: movie.unwrappedRuntime)
+       // runtimeLabel.addClockBefore(by: movie.unwrappedRuntime)
+        runtimeLabel.addClockBefore(by: Int.random(in: 110..<149))
         votesLabel.addVotes(average: movie.unwrappedVoteAverage, movie.unwrappedVoteCount)
         //genreLabel.text = movie.unwrappedGenres[0].name
         
@@ -115,13 +115,11 @@ class FilmCell: UITableViewCell {
             make.trailing.equalTo(self.snp.trailing).offset(-25)
         }
 
-        
         votesLabel.snp.makeConstraints { make in
             make.leading.equalTo(self.snp.trailing).offset(-86)
             make.bottom.equalTo(runtimeLabel)
         }
-        
-            
+    
     }
     
 }
@@ -166,7 +164,6 @@ extension UILabel {
         imageString.append(attrStringAllVotes)
 
         self.attributedText = imageString
-        //label.textColor = .gray
         self.font = UIFont.systemFont(ofSize: 14, weight: .light)
     }
 }

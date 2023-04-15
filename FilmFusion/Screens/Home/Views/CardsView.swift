@@ -2,7 +2,7 @@
 //  CardsView.swift
 //  AFMovie
 //
-//  Created by Alex F on 5.04.23.
+//  Created by Alex Fount on 5.04.23.
 //
 
 import UIKit
@@ -11,7 +11,7 @@ import SnapKit
 class CardsView: UIView {
     var movies: [Movie] = [Movie]()
 
-    var delegate: PushToVC?
+    var delegate: implementHomeVC?
     
     let backgroundView = UIImageView()
     
@@ -29,10 +29,8 @@ class CardsView: UIView {
         return itemW * 1.45
     }
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         
         setupView()
         
@@ -76,13 +74,10 @@ extension CardsView {
         if let cell = cardsCollectionView.cellForItem(at: indexPath) {
             transformCell(cell)
         }
-        
     }
     
     private func setupView() {
-        
-        
-        
+         
         movies = [Movie(media_type: nil, id: 2, original_name: "xas", original_title: nil, poster_path: nil, overview: nil, vote_count: 8, release_date: nil, vote_average: 0.7, runtime: nil, video: true, genres: nil, adult: false, backdrop_path: nil, budget: nil, homepage: nil, original_language: "", production_companies: nil, tagline: nil, title: "dw"),
                   Movie(media_type: nil, id: 223, original_name: "xas", original_title: nil, poster_path: nil, overview: nil, vote_count: 8, release_date: nil, vote_average: 0.7, runtime: nil, video: true, genres: nil, adult: false, backdrop_path: nil, budget: nil, homepage: nil, original_language: "", production_companies: nil, tagline: nil, title: "dw"),
                   Movie(media_type: nil, id: 322, original_name: "xas", original_title: nil, poster_path: nil, overview: nil, vote_count: 8, release_date: nil, vote_average: 0.7, runtime: nil, video: true, genres: nil, adult: false, backdrop_path: nil, budget: nil, homepage: nil, original_language: "", production_companies: nil, tagline: nil, title: "dw")
@@ -123,16 +118,12 @@ extension CardsView {
 // MARK: - UICollectionViewDelegate
 
 extension CardsView: UICollectionViewDelegate {
- 
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
         if indexPath.item == layout.currentPage {
-            print("Selected is\(indexPath)")
             
             self.delegate?.pushDetailVC(from: indexPath)
-            
-            
 
         }
         else {
@@ -207,7 +198,6 @@ extension CardsView {
                 }
             }
         }
-        
     }
 }
 

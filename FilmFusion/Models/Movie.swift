@@ -65,19 +65,6 @@ struct Movie: Codable, Hashable {
 
 }
 
-//extension Movie: Identifiable, Hashable {
-//    var identifier: String {
-//        return UUID().uuidString
-//    }
-//
-//    public func hash(into hasher: inout Hasher) {
-//        return hasher.combine(identifier)
-//    }
-//
-//    public static func == (lhs: Movie, rhs: Movie) -> Bool {
-//        return lhs.identifier == rhs.identifier
-//    }
-//}
 
 struct MovieCast: Codable {
     let id: Int

@@ -41,7 +41,6 @@ class CardCell: UICollectionViewCell {
         self.layer.shadowOpacity = 0.5
     }
     func configure(with movie: Movie) {
-//        imageView.image = film.poster
         guard let url = URL(string: "https://image.tmdb.org/t/p/w500\(movie.unwrappedPosterPath)") else { return }
         imageView.kf.setImage(with: url)
     }

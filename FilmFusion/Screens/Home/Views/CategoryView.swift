@@ -8,10 +8,16 @@
 import UIKit
 
 class CategoryView: UIView, UICollectionViewDelegate {
- 
-    let categories: [Category] = [
-        Category(title: "All"), Category(title: "Actdededeion"), Category(title: "Adventure"), Category(title: "Mystery"), Category(title: "Fantasy"), Category(title: "Uhti"), Category(title: "Actdededev ion3"),
-    ]
+
+    var movies: [Movie] = [Movie]()
+
+    
+    let categoryTemp = ["All", "Action", "Adventure", "Animation", "Comedy", "Crime", "Documentary", "Drama", "Family", "Fantasy", "History", "Horror", "Music", "Mystery", "Romance", "Science Fiction", "TV Movie", "Thriller", "War", "Western"]
+    
+    var categories = [Category]()
+    
+    var delegate: implementHomeVC?
+
     
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
@@ -44,21 +50,8 @@ class CategoryView: UIView, UICollectionViewDelegate {
         view.clipsToBounds = true
         return view
         
-        
     }()
-    
-//    let seeAllButton: UIButton = {
-//        let button = UIButton()
-//        button.setTitle("See All", for: .normal)
-//        if #available(iOS 15.0, *) {
-//            button.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-//        } else {
-//            button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-//        }
-//
-//        return button
-//    }()
-    
+
     let seeAllLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 16)
@@ -66,7 +59,7 @@ class CategoryView: UIView, UICollectionViewDelegate {
         label.text = "See All"
         return label
     }()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
@@ -78,15 +71,23 @@ class CategoryView: UIView, UICollectionViewDelegate {
     }
     
     func setupView() {
+        
+        for index in 0..<(self.categoryTemp.count) {
+            categories.append(Category(title: categoryTemp[index]))
+        }
+        
         self.addSubview(titleLabel)
         self.addSubview(collectionView)
         self.addSubview(boxOfficeLabel)
         self.addSubview(seeAllLabel)
         self.addSubview(dragBar)
         
+        collectionView.delegate  = self
+
+        
         setupCollectionView()
         setupConstraints()
-
+        
         createDataSource()
         reloadData()
     }
@@ -99,17 +100,17 @@ class CategoryView: UIView, UICollectionViewDelegate {
         collectionView.dataSource = dataSource
         collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-
+        
         
         collectionView.collectionViewLayout = layout
         layout.scrollDirection = .horizontal
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-//        layout.minimumInteritemSpacing = 10.0
-       collectionView.backgroundColor = UIColor(named: "customBackground")
-
+        //        layout.minimumInteritemSpacing = 10.0
+        collectionView.backgroundColor = UIColor(named: "customBackground")
+        
     }
     
-// MARK: - Setup Constraints
+    // MARK: - Setup Constraints
     
     func setupConstraints() {
         titleLabel.snp.makeConstraints { make in
@@ -143,43 +144,46 @@ class CategoryView: UIView, UICollectionViewDelegate {
 
 extension CategoryView {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         let cell = collectionView.cellForItem(at: IndexPath(row: 0, section: 0))
         cell?.isSelected = false
-        if let cell = collectionView.cellForItem(at: indexPath) {
-             
-        }
+        
+        self.delegate?.reloadDataRand()
+//        if let cell = collectionView.cellForItem(at: indexPath) {
+//
+//        }
     }
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-            if let cell = collectionView.cellForItem(at: indexPath) {
-            }
+        if let cell = collectionView.cellForItem(at: indexPath) {
+        }
     }
     
 }
 
 // MARK: - Datasource + update
 extension CategoryView {
-        func createDataSource() {
-            dataSource = UICollectionViewDiffableDataSource<CatSection, Category>(collectionView: collectionView, cellProvider: { collectionView, indexPath, category -> UICollectionViewCell? in
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoriesCell.reuseId, for: indexPath) as? CategoriesCell
-                cell?.isSelected = true
-                    cell?.configure(with: category)
-                
-                if indexPath.row == 0 {
-                    DispatchQueue.main.async {
-                        cell?.isSelected = true
-                    }
+    func createDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<CatSection, Category>(collectionView: collectionView, cellProvider: { collectionView, indexPath, category -> UICollectionViewCell? in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoriesCell.reuseId, for: indexPath) as? CategoriesCell
+            cell?.isSelected = true
+            cell?.configure(with: category)
+            
+            if indexPath.row == 0 {
+                DispatchQueue.main.async {
+                    cell?.isSelected = true
                 }
-                
-                    return cell
-            })
-        }
-
-        func reloadData() {
-            var snapshot = NSDiffableDataSourceSnapshot<CatSection, Category>()
-            snapshot.appendSections([.main])
-            snapshot.appendItems(categories)
-            dataSource?.apply(snapshot)
-        }
+            }
+            
+            return cell
+        })
+    }
+    
+    func reloadData() {
+        var snapshot = NSDiffableDataSourceSnapshot<CatSection, Category>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(categories)
+        dataSource?.apply(snapshot)
+    }
     
 }
 

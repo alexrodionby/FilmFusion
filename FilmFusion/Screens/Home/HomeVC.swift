@@ -4,23 +4,20 @@
 //
 //  Created by Alex Fount on 5.04.23.
 //
-protocol PushToVC {
+protocol implementHomeVC {
     func pushDetailVC(from indexPath: IndexPath)
+    func reloadDataRand()
 }
 
 import UIKit
 import SnapKit
 
-class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, PushToVC {
-    
-    
-    
+class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, implementHomeVC {
+ 
     enum Section: CaseIterable {
         case mainFilms
     }
     private let avatarView = AvatarView()
-    
-//    let films: [Film] = filmsMy
     
     var movies: [Movie] = [Movie]()
     
@@ -46,8 +43,8 @@ class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, PushT
         tableView.dataSource = dataSource
         scrollView.delegate = self
         tableView.delegate = self
-        
         cardsView.delegate = self
+        categoryView.delegate = self
         
         
         let window = UIApplication.shared.windows[0]
@@ -134,11 +131,16 @@ class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, PushT
         })
     }
     
-    
     func reloadData() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Movie>()
         snapshot.appendSections([.mainFilms])
         snapshot.appendItems(movies, toSection: .mainFilms)
+        dataSource?.apply(snapshot, animatingDifferences: true)
+    }
+    func reloadDataRand() {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Movie>()
+        snapshot.appendSections([.mainFilms])
+        snapshot.appendItems(movies.shuffled(), toSection: .mainFilms)
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
     
@@ -206,6 +208,7 @@ extension HomeVC {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
+    
 }
 
 
