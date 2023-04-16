@@ -7,15 +7,18 @@
 
 import UIKit
 import Kingfisher
+import WebKit
 class DetailVC: UIViewController {
         
     let additionalInfo = DetailView()
     let discrpitionView = DescriptionView()
     let castCollection = CastView()
+    let presentTrailer = PresentTrailer()
     
-    var voteCount = 0
-    var voteAverage: Double = 0.0
-   
+    private var voteCount = 0
+    private var voteAverage: Double = 0.0
+    private var randomRunTime = Int.random(in: 110...190)
+    
     private lazy var scrollView:UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.frame = view.bounds
@@ -86,15 +89,15 @@ class DetailVC: UIViewController {
     }()
     
     func addStarsToRateView() {
-      
+        
         let numberOfStars = 5
         for _ in 1...numberOfStars {
             let starImage:UIImageView = {
-               let imageView = UIImageView()
-
+                let imageView = UIImageView()
+                
                 imageView.image = UIImage(named: "star-fill")
                 imageView.tintColor = .yellow
-               return imageView
+                return imageView
             }()
             rateStarsView.addArrangedSubview(starImage)
         }
@@ -118,7 +121,7 @@ class DetailVC: UIViewController {
             }
         }
     }
-
+    
     
     var isSaved: Bool = false {
         didSet {
@@ -134,8 +137,7 @@ class DetailVC: UIViewController {
         posterImage.kf.setImage(with: url)
         posterTitle.text = model.titleName
         additionalInfo.dataReleaseLabel.text = model.releaseDate
-        additionalInfo.runTimeLabel.text = "\(model.runtime)"
-        print(model.runtime)
+        additionalInfo.runTimeLabel.text = "\(randomRunTime) munites"
         discrpitionView.storyLineTextView.text = model.overview
         voteAverage = model.voteAverage
         isSaved = RealmDataBase.shared.isItemSaved(withName: posterTitle.text!)
@@ -176,7 +178,7 @@ class DetailVC: UIViewController {
 //        newFilm.voteCount = voteCount
 //        RealmDataBase.shared.write(recentWatchRealmFilm: newFilm)
     }
-   
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.isToolbarHidden = true
@@ -251,11 +253,6 @@ extension DetailVC {
     private func setConstraints() {
         NSLayoutConstraint.activate([
             
-//            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-//            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-//            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-//            scrollView.bottomAnchor.constraint(equalTo: watchButton.topAnchor, constant: 10),
-            
             
             posterImage.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 20),
             posterImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
@@ -283,7 +280,7 @@ extension DetailVC {
             discrpitionView.topAnchor.constraint(equalTo: rateStarsView.bottomAnchor, constant: 20),
             discrpitionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
             discrpitionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
-            //discrpitionView.heightAnchor.constraint(equalToConstant: 200),
+
             
             castAndCrewTitle.topAnchor.constraint(equalTo: discrpitionView.bottomAnchor, constant: 10),
             castAndCrewTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
