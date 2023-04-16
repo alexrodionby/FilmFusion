@@ -17,6 +17,11 @@ class MainView: UIView {
     lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "defaultUser")
+
+        if let image = UIImage(data: RealmDataBase.shared.currentRealmUser.profilePicture) {
+            imageView.image = image
+        }
+        
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = avatarHeight / 2

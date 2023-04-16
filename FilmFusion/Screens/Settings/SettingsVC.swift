@@ -15,6 +15,9 @@ class SettingsVC: UIViewController {
 
     private lazy var userAvatar: UIImageView = {
         let imageView = UIImageView(image: userImage)
+        if let image = UIImage(data: RealmDataBase.shared.currentRealmUser.profilePicture) {
+            imageView.image = image
+        }
         let diameter: CGFloat = 100.0
         let borderWidth: CGFloat = 3.0
         imageView.frame.size = CGSize(width: diameter, height: diameter)
@@ -308,8 +311,18 @@ class SettingsVC: UIViewController {
         super.viewDidLoad()
         setupView()
         setupConstraints()
+            
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+    updateAvatarImage()
+    }
+     func updateAvatarImage(){
+        if let image = UIImage(data: RealmDataBase.shared.currentRealmUser.profilePicture) {
+            userAvatar.image = image
+        }
+         print("test upd")
+    }
     private func setupView() {
         view.backgroundColor = UIColor(named: "customBackground")
         navigationItem.title = "Settings"

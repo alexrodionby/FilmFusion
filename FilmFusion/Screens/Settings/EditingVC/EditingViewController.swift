@@ -53,7 +53,6 @@ extension EditingViewController: UIImagePickerControllerDelegate, UINavigationCo
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.originalImage] as? UIImage else { return  }
         mainView.updateImage(with: image)
-//        RealmDataBase.shared.updateUserDataWith(uuid: cu, firstName: <#T##String#>, lastName: <#T##String#>, email: <#T##String#>, dateOfBirth: <#T##String#>, gender: <#T##String#>, profilePicture: <#T##Data#>)
         dismiss(animated: true)
     }
     
