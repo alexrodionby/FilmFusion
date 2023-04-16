@@ -13,7 +13,9 @@ class DetailVC: UIViewController {
     let additionalInfo = DetailView()
     let discrpitionView = DescriptionView()
     let castCollection = CastView()
+
 //    let presentTrailer = PresentTrailer()
+
     
     private var voteCount = 0
     private var voteAverage: Double = 0.0
