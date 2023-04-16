@@ -195,7 +195,7 @@ extension HomeVC {
         let movies = movies[indexPath.row]
         DispatchQueue.main.async {
             let vc = DetailVC()
-            let model = DetailMovieViewModel(id: movies.id, titleName: movies.title , posterURL: movies.poster_path ?? "", releaseDate: movies.release_date ?? "", voteAverage: movies.vote_average, overview: movies.overview ?? "" , runtime: movies.runtime ?? 0)
+            let model = DetailMovieViewModel(id: movies.id, titleName: movies.title , posterURL: movies.poster_path ?? "", releaseDate: movies.release_date ?? "", voteAverage: movies.vote_average, voteCount: movies.vote_count, overview: movies.overview ?? "" , runtime: movies.runtime ?? 0)
             vc.configure(with: model)
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -205,7 +205,7 @@ extension HomeVC {
         let movies = movies[indexPath.row]
         DispatchQueue.main.async {
             let vc = DetailVC()
-            let model = DetailMovieViewModel(id: movies.id, titleName: movies.title , posterURL: movies.poster_path ?? "", releaseDate: movies.release_date ?? "", voteAverage: movies.vote_average, overview: movies.overview ?? "" , runtime: movies.runtime ?? 0)
+            let model = DetailMovieViewModel(id: movies.id, titleName: movies.title , posterURL: movies.poster_path ?? "", releaseDate: movies.release_date ?? "", voteAverage: movies.vote_average, voteCount: movies.vote_count, overview: movies.overview ?? "" , runtime: movies.runtime ?? 0)
             vc.configure(with: model)
             self.navigationController?.pushViewController(vc, animated: true)
         }
