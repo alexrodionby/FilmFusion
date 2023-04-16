@@ -19,6 +19,10 @@ class FilmCell: UITableViewCell {
     
     weak var delegate: FilmCellDelegate?
     
+    var date: String = "11"
+    var voteAverage: Double = 11.1
+    var voteCount: Int = 11
+    
     var posterView: UIImageView = {
         let postView = UIImageView()
         postView.contentMode = .scaleAspectFill
@@ -90,9 +94,9 @@ class FilmCell: UITableViewCell {
             let newFilm = RealmFilm()
             newFilm.titleName = titleLabel.text!
             newFilm.image = (posterView.image?.pngData()!)!
-            //newFilm.releaseDate = calendarLabel.text!
-            //            newFilm.voteAverage = Double(raitingLabel.text!)!
-            //            newFilm.voteCount = Int(reviewsLabel.text!)!
+            newFilm.releaseDate = date
+            newFilm.voteAverage = voteAverage
+            newFilm.voteCount = voteCount
             
             RealmDataBase.shared.write(favoritesRealmFilm: newFilm)
         }
@@ -132,6 +136,9 @@ class FilmCell: UITableViewCell {
         runtimeLabel.addClockBefore(by: Int.random(in: 110..<149))
         votesLabel.addVotes(average: movie.unwrappedVoteAverage, movie.unwrappedVoteCount)
         //genreLabel.text = movie.unwrappedGenres[0].name
+        date = movie.release_date!
+        voteCount = movie.vote_count
+        voteAverage = movie.vote_average
         
         let categoryTemp = ["Action", "Adventure", "Animation", "Comedy", "Crime", "Documentary", "Drama", "Family", "Fantasy", "History", "Horror", "Music", "Mystery", "Romance", "Science Fiction", "TV Movie", "Thriller", "War", "Western"]
         
