@@ -9,7 +9,7 @@ import UIKit
 
 class CrewCollectionViewCell: UICollectionViewCell {
     
-    private let PhotoCastImage: UIImageView = {
+     let PhotoCastImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "luck-movie")
         
@@ -20,7 +20,7 @@ class CrewCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    private let fullNameCastLabel: UILabel = {
+     let fullNameCastLabel: UILabel = {
         let label = UILabel()
         label.text = "Ivan Ivanov"
         label.font = UIFont.PlusJakartaSansMedium14()
@@ -29,7 +29,7 @@ class CrewCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private let jobTitleCastLabel: UILabel = {
+     let jobTitleCastLabel: UILabel = {
         let label = UILabel()
         label.text = "President of whole galaxy"
         label.font = UIFont.PlusJakartaSansMedium10()
@@ -37,7 +37,6 @@ class CrewCollectionViewCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)

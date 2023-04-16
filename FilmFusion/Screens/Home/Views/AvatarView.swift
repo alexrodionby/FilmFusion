@@ -63,12 +63,15 @@ class AvatarView: UIView {
 
     }
     func updateUserdata() {
-        if  RealmDataBase.shared.currentRealmUser.firstname.count > 1 {
-            nameLabel.text = "Hi, \(RealmDataBase.shared.currentRealmUser.firstname)"
-        } else {return}
-        if  RealmDataBase.shared.currentRealmUser.lastName.count > 1 {
-            nameLabel.text = RealmDataBase.shared.currentRealmUser.lastName
-        } else {return}
+        nameLabel.text = "Hi, \(RealmDataBase.shared.currentRealmUser.firstname) \(RealmDataBase.shared.currentRealmUser.lastName)"
+        subTitleLabel.text = RealmDataBase.shared.currentRealmUser.email
+        imageView.image = UIImage(named: "defaultUser")
+//        if  RealmDataBase.shared.currentRealmUser.firstname.count > 0 {
+//            nameLabel.text = "Hi, \(RealmDataBase.shared.currentRealmUser.firstname)"
+//        } else {return}
+//        if  RealmDataBase.shared.currentRealmUser.lastName.count > 0 {
+//            nameLabel.text = RealmDataBase.shared.currentRealmUser.lastName
+//        } else {return}
         
     }
     
