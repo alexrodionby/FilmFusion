@@ -180,8 +180,17 @@ class MainView: UIView {
         }
     }
     
+    //RealmDataBase.shared.currentRealmUser.firstname
+    
     @objc private func didTap() {
-        print("Save")
+        RealmDataBase.shared.updateUserDataWith(uuid:RealmDataBase.shared.currentRealmUser.uuid ,
+                                                firstName: firstNameTextField.text ?? "noName",
+                                                lastName: lastNameTextField.text ?? "",
+                                                email: emailTextField.text ?? "",
+                                                dateOfBirth: "",
+                                                gender: "",
+                                                profilePicture: userImageView.image?.jpegData(compressionQuality: 0.6) ?? Data())
+        print("Save profile")
     }
     
     required init?(coder: NSCoder) {
