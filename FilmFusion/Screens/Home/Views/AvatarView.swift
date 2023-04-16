@@ -59,16 +59,17 @@ class AvatarView: UIView {
         self.addSubview(subTitleLabel)
         setupConstraints()
         
-        //updateUserdata()
+        updateUserdata()
 
     }
     func updateUserdata() {
-        if  RealmDataBase.shared.currentRealmUser.firstname.count > 1 {
-            nameLabel.text = "Hi, \(RealmDataBase.shared.currentRealmUser.firstname)"
-        } else {return}
-        if  RealmDataBase.shared.currentRealmUser.lastName.count > 1 {
-            nameLabel.text = RealmDataBase.shared.currentRealmUser.lastName
-        } else {return}
+        nameLabel.text = "Hi, \(RealmDataBase.shared.currentRealmUser.firstname) \(RealmDataBase.shared.currentRealmUser.lastName)"
+//        if  RealmDataBase.shared.currentRealmUser.firstname.count > 0 {
+//            nameLabel.text = "Hi, \(RealmDataBase.shared.currentRealmUser.firstname)"
+//        } else {return}
+//        if  RealmDataBase.shared.currentRealmUser.lastName.count > 0 {
+//            nameLabel.text = RealmDataBase.shared.currentRealmUser.lastName
+//        } else {return}
         
     }
     
