@@ -315,13 +315,15 @@ class SettingsVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-    updateAvatarImage()
+    updateUserData()
     }
-     func updateAvatarImage(){
+     func updateUserData(){
         if let image = UIImage(data: RealmDataBase.shared.currentRealmUser.profilePicture) {
             userAvatar.image = image
         }
-         print("test upd")
+         userNameLabel.text = "\(RealmDataBase.shared.currentRealmUser.firstname)  \(RealmDataBase.shared.currentRealmUser.lastName )"
+         userEmailLabel.text = RealmDataBase.shared.currentRealmUser.email
+         
     }
     private func setupView() {
         view.backgroundColor = UIColor(named: "customBackground")
