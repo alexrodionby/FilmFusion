@@ -113,6 +113,9 @@ class MainView: UIView {
         
         setupView()
         setConstraints()
+        firstNameTextField.text = RealmDataBase.shared.currentRealmUser.firstname
+        lastNameTextField.text = RealmDataBase.shared.currentRealmUser.lastName
+        emailTextField.text = RealmDataBase.shared.currentRealmUser.email
     }
     
     private func setupView() {
