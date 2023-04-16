@@ -105,16 +105,16 @@ class FilmCell: UITableViewCell {
         self.favoriteLabel.isUserInteractionEnabled = true
         self.favoriteLabel.addGestureRecognizer(tap)
     }
-
+    
     func setupCell() {
-
+        
         self.contentView.addSubview(posterView)
         self.contentView.addSubview(genreLabel)
         self.contentView.addSubview(titleLabel)
         self.contentView.addSubview(runtimeLabel)
         self.contentView.addSubview(votesLabel)
         self.contentView.addSubview(favoriteLabel)
-
+        
         self.backgroundColor = UIColor(named: "customBackground")
         setupTapView()
         setupConstraints()
@@ -137,10 +137,9 @@ class FilmCell: UITableViewCell {
         
         genreLabel.text = categoryTemp.randomElement()
         
-       isSaved = RealmDataBase.shared.isItemSaved(withName: titleLabel.text!)
-
-
+        isSaved = RealmDataBase.shared.isItemSaved(withName: titleLabel.text!)
         
+        print(movie.id)
     }
     
     

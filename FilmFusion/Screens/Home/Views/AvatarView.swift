@@ -15,7 +15,7 @@ class AvatarView: UIView {
         let iView = UIImageView()
         iView.contentMode = .scaleAspectFill
         iView.clipsToBounds = true
-        iView.image = UIImage(systemName: "person.fill")
+        iView.image = UIImage(named: "avatar")
         iView.layer.cornerRadius = avatarHeight / 2
         iView.layer.borderWidth = 1
         iView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.6).cgColor
@@ -25,7 +25,7 @@ class AvatarView: UIView {
     var nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.text = "Hi, Veniamin"
+        label.text = "Hi, dear User"
         return label
         }()
     var subTitleLabel: UILabel = {
@@ -58,8 +58,20 @@ class AvatarView: UIView {
         self.addSubview(nameLabel)
         self.addSubview(subTitleLabel)
         setupConstraints()
+        
+        //updateUserdata()
 
     }
+    func updateUserdata() {
+        if  RealmDataBase.shared.currentRealmUser.firstname.count > 1 {
+            nameLabel.text = "Hi, \(RealmDataBase.shared.currentRealmUser.firstname)"
+        } else {return}
+        if  RealmDataBase.shared.currentRealmUser.lastName.count > 1 {
+            nameLabel.text = RealmDataBase.shared.currentRealmUser.lastName
+        } else {return}
+        
+    }
+    
     func setupConstraints() {
         imageView.snp.makeConstraints { make in
             make.width.equalTo(avatarHeight)
