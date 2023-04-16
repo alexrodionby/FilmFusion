@@ -64,6 +64,8 @@ class AvatarView: UIView {
     }
     func updateUserdata() {
         nameLabel.text = "Hi, \(RealmDataBase.shared.currentRealmUser.firstname) \(RealmDataBase.shared.currentRealmUser.lastName)"
+        subTitleLabel.text = RealmDataBase.shared.currentRealmUser.email
+        imageView.image = UIImage(named: "defaultUser")
 //        if  RealmDataBase.shared.currentRealmUser.firstname.count > 0 {
 //            nameLabel.text = "Hi, \(RealmDataBase.shared.currentRealmUser.firstname)"
 //        } else {return}
