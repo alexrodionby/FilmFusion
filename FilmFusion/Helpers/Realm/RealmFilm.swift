@@ -15,7 +15,8 @@ class RealmFilm: Object {
     @objc dynamic var releaseDate: String = ""
     @objc dynamic var voteAverage: Double = 0.0
     @objc dynamic var voteCount: Int = 0
-//    @objc dynamic var runtime: Int
+    @objc dynamic var runtime: Int = 0
+    @objc dynamic var filmDescription: String = ""
     @objc dynamic var category: String = ""
     var parentCategory = LinkingObjects(fromType: RealmUser.self, property: "favoritesFilms")
 }

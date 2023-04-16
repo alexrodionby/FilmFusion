@@ -83,6 +83,11 @@ extension RecentWatchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Тыкнули по ячейке в Recent Watch")
+        let rev = Array(recentWatchFilms.reversed())
+        let movie = rev[indexPath.row]
+        let vc = DetailVC()
+        vc.configureWithRealm(film: movie)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

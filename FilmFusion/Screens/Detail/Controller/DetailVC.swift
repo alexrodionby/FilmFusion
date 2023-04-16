@@ -46,6 +46,8 @@ class DetailVC: UIViewController {
     
     private let posterTitle: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 0
+        label.textAlignment = .center
         label.text = "Movie name"
         label.font = UIFont.PlusJakartaSansBold24()
         label.textColor = UIColor(named: "customLabelName")
@@ -139,6 +141,15 @@ class DetailVC: UIViewController {
         isSaved = RealmDataBase.shared.isItemSaved(withName: posterTitle.text!)
     }
     
+    func configureWithRealm(film: RealmFilm) {
+        posterImage.image = UIImage(data: film.image)
+        posterTitle.text = film.titleName
+        additionalInfo.dataReleaseLabel.text = film.releaseDate
+        additionalInfo.runTimeLabel.text = String(film.runtime)
+        discrpitionView.storyLineTextView.text = film.filmDescription
+        voteAverage = film.voteAverage
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("\(voteAverage) оценка и \(voteCount) голосов")
@@ -156,19 +167,28 @@ class DetailVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let newFilm = RealmFilm()
-        newFilm.titleName = posterTitle.text!
-        newFilm.image = (posterImage.image?.pngData()!)!
-        newFilm.releaseDate = additionalInfo.dataReleaseLabel.text!
-        newFilm.voteAverage = voteAverage
-        newFilm.voteCount = voteCount
-        RealmDataBase.shared.write(recentWatchRealmFilm: newFilm)
+//        let newFilm = RealmFilm()
+//        newFilm.titleName = posterTitle.text!
+//        newFilm.image = (posterImage.image?.pngData()!)!
+//        newFilm.releaseDate = additionalInfo.dataReleaseLabel.text!
+//        newFilm.filmDescription = discrpitionView.storyLineTextView.text!
+//        newFilm.voteAverage = voteAverage
+//        newFilm.voteCount = voteCount
+//        RealmDataBase.shared.write(recentWatchRealmFilm: newFilm)
     }
    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.isToolbarHidden = true
         tabBarController?.tabBar.isHidden = false
+        let newFilm = RealmFilm()
+        newFilm.titleName = posterTitle.text!
+        newFilm.image = (posterImage.image?.pngData()!)!
+        newFilm.releaseDate = additionalInfo.dataReleaseLabel.text!
+        newFilm.filmDescription = discrpitionView.storyLineTextView.text!
+        newFilm.voteAverage = voteAverage
+        newFilm.voteCount = voteCount
+        RealmDataBase.shared.write(recentWatchRealmFilm: newFilm)
     }
     
     private func setupNavBar() {
@@ -206,6 +226,7 @@ class DetailVC: UIViewController {
             newFilm.releaseDate = additionalInfo.dataReleaseLabel.text!
             newFilm.voteAverage = voteAverage
             newFilm.voteCount = voteCount
+            newFilm.filmDescription = discrpitionView.storyLineTextView.text!
             RealmDataBase.shared.write(favoritesRealmFilm: newFilm)
         }
         isSaved.toggle()
@@ -244,6 +265,8 @@ extension DetailVC {
             
             posterTitle.topAnchor.constraint(equalTo: posterImage.bottomAnchor, constant: 10),
             posterTitle.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            posterTitle.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            posterTitle.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             
             additionalInfo.topAnchor.constraint(equalTo: posterTitle.bottomAnchor, constant: 15),
             additionalInfo.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
