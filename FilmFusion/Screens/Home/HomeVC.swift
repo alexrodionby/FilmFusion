@@ -58,6 +58,7 @@ class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, Imple
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
+        avatarView.updateUserdata()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -105,6 +106,7 @@ class HomeVC: UIViewController, UIScrollViewDelegate, UITableViewDelegate, Imple
     }
     
     func setupAvatarView() {
+        
     }
     
     func setupScrollView() {
