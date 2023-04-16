@@ -355,9 +355,9 @@
 				AAE13F7C29E872CF0071D2E2 /* UIView+HeightWidth.swift */,
 				AAE13F7D29E872CF0071D2E2 /* UIView+shadow.swift */,
 				A1613D3729DA2861000EB1B5 /* UIImage + Extensions.swift */,
-				5635EE6A29DD5993007CFC3D /* UIImageView + Extensions.swift */,
 				5635EE6C29DD5A22007CFC3D /* UILabel + Extensions.swift */,
 				2C376B0D29E33AC10047A764 /* UIFont + Extensions.swift */,
+				5635EE6A29DD5993007CFC3D /* UIImageView + Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
