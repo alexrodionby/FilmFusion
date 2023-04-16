@@ -7,9 +7,14 @@
 
 import UIKit
 
-class EditingViewController: UIViewController {
+protocol ImagePickerProtocol {
+    func showImagePicker()
+}
+
+class EditingViewController: UIViewController, ImagePickerProtocol {
     
     private let mainView = MainView()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +27,7 @@ class EditingViewController: UIViewController {
         view.backgroundColor = UIColor(named: "customBackground")
         
         view.addSubview(mainView)
+        mainView.delegate = self
     }
 }
 
@@ -34,4 +40,23 @@ extension EditingViewController {
             mainView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
+}
+// MARK: - imagePicker
+extension EditingViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func showImagePicker() {
+        print("show in VC")
+        let imagePickerVC = UIImagePickerController()
+        imagePickerVC.sourceType = .photoLibrary
+        imagePickerVC.delegate = self
+        self.present(imagePickerVC, animated: true)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.originalImage] as? UIImage else { return  }
+        mainView.updateImage(with: image)
+        dismiss(animated: true)
+    }
+    
+    
+    
+    
 }

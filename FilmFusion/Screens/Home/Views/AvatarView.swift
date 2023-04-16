@@ -59,7 +59,7 @@ class AvatarView: UIView {
         self.addSubview(subTitleLabel)
         setupConstraints()
         
-        //updateUserdata()
+        updateUserdata()
 
     }
     func updateUserdata() {

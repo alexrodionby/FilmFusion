@@ -9,12 +9,18 @@ import UIKit
 
 class MainView: UIView {
     
-    private let scrollView = UIScrollView()
+    var delegate: ImagePickerProtocol?
     
-    let userImageView: UIImageView = {
+    private let scrollView = UIScrollView()
+     private let avatarHeight: CGFloat = 120
+    
+    lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "defaultUser")
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = avatarHeight / 2
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -105,6 +111,8 @@ class MainView: UIView {
     }
     
     private func setupView() {
+        setGesture()
+        
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .clear
         
@@ -192,6 +200,10 @@ extension MainView {
             
             userImageView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             userImageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 30),
+            
+            userImageView.heightAnchor.constraint(equalToConstant: avatarHeight),
+            userImageView.widthAnchor.constraint(equalToConstant: avatarHeight),
+            
 
             editImageView.centerXAnchor.constraint(equalTo: userImageView.centerXAnchor, constant: 40),
             editImageView.centerYAnchor.constraint(equalTo: userImageView.centerYAnchor, constant: 35),
@@ -230,5 +242,23 @@ extension MainView {
             saveButton.heightAnchor.constraint(equalToConstant: 60),
             saveButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -100),
         ])
+    }
+}
+// MARK: - image picker
+extension MainView {
+    func setGesture() {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(selectImage))
+        editImageView.isUserInteractionEnabled = true
+        editImageView.addGestureRecognizer(gesture)
+
+    }
+    
+    @objc func selectImage() {
+        print("taptap edit ava")
+        self.delegate?.showImagePicker()
+    }
+    
+    func updateImage(with image: UIImage) {
+        userImageView.image = image
     }
 }
